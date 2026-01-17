@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-gray-900;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange-500;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Button hover animations */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300;
+  }
+
+  /* Card hover effects */
+  .service-card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-orange-200;
+  }
+
+  /* Input focus styles */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors;
+  }
+
+  /* Section headings */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-navy-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-gray-600 max-w-3xl mx-auto;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  /* Text gradient utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-600;
+  }
+
+  /* Smooth scroll offset for fixed header */
+  .scroll-mt-header {
+    scroll-margin-top: 100px;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Selection color */
+::selection {
+  @apply bg-orange-500 text-white;
+}
+
+/* Scrollbar styling (Webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-navy-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-navy-600;
+}
