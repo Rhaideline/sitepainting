@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Painting Services | Mass Painters Pro - Massachusetts</title>
+    <meta name="description" content="Professional commercial painting services in Massachusetts. Offices, retail spaces, warehouses, and more. Licensed, insured painters serving Boston, Worcester, and all of MA.">
+    <link rel="canonical" href="https://masspainter.pro/commercial-painting.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --navy: #1C1F2E;
+            --navy-light: #2D3142;
+            --green: #00B894;
+            --green-dark: #00A085;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--navy); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Top Bar */
+        .top-bar { background: var(--navy); color: white; padding: 10px 0; font-size: 14px; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .top-bar a { color: white; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
+        .top-bar a:hover { color: var(--green); }
+        .top-bar-left { display: flex; gap: 20px; }
+
+        /* Header */
+        .header { background: white; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 50px; }
+        .nav { display: flex; gap: 30px; align-items: center; }
+        .nav a { color: var(--navy); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav a:hover { color: var(--green); }
+
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; font-size: 16px; }
+        .btn-primary { background: var(--green); color: white; }
+        .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,184,148,0.4); }
+        .btn-outline-dark { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+        .btn-outline-dark:hover { background: var(--navy); color: white; }
+
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(rgba(28, 31, 46, 0.85), rgba(28, 31, 46, 0.9)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920') center/cover;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .page-hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; }
+        .page-hero h1 span { color: var(--green); }
+        .page-hero p { font-size: 18px; color: #B8BCC8; max-width: 600px; }
+        .breadcrumb { margin-bottom: 20px; font-size: 14px; }
+        .breadcrumb a { color: #B8BCC8; text-decoration: none; }
+        .breadcrumb a:hover { color: var(--green); }
+        .breadcrumb span { color: var(--green); }
+
+        /* Section Styles */
+        .section { padding: 80px 0; }
+        .section-gray { background: var(--gray-light); }
+
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+
+        .content h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+        .content p { color: var(--gray); margin-bottom: 20px; font-size: 16px; }
+
+        .service-list { list-style: none; margin: 30px 0; }
+        .service-list li { display: flex; align-items: flex-start; gap: 12px; padding: 15px 0; border-bottom: 1px solid #E5E7EB; }
+        .service-list li:last-child { border-bottom: none; }
+        .service-list i { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+        .service-list strong { display: block; color: var(--navy); margin-bottom: 4px; }
+        .service-list span { color: var(--gray); font-size: 14px; }
+
+        /* Sidebar */
+        .sidebar-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        .sidebar-card.dark { background: var(--navy); color: white; }
+        .sidebar-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .sidebar-card.dark h3 { color: white; }
+        .sidebar-card p { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
+        .sidebar-card.dark p { color: #B8BCC8; }
+
+        .trust-list { list-style: none; }
+        .trust-list li { display: flex; align-items: center; gap: 10px; padding: 10px 0; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .trust-list li:last-child { border-bottom: none; }
+        .trust-list i { color: var(--green); }
+
+        /* Image Grid */
+        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 30px 0; }
+        .image-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; }
+
+        /* CTA Section */
+        .cta-section { background: var(--green); padding: 60px 0; text-align: center; color: white; }
+        .cta-section h2 { font-size: 36px; font-weight: 800; margin-bottom: 15px; }
+        .cta-section p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-white { background: white; color: var(--navy); }
+        .btn-white:hover { background: var(--gray-light); }
+        .btn-outline-white { background: transparent; color: white; border: 2px solid white; }
+        .btn-outline-white:hover { background: white; color: var(--navy); }
+
+        /* Footer */
+        .footer { background: var(--navy); color: white; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand p { color: #9CA3AF; margin: 20px 0; font-size: 14px; }
+        .footer-social { display: flex; gap: 10px; }
+        .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s; }
+        .footer-social a:hover { background: var(--green); }
+        .footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul a { color: #9CA3AF; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .footer ul a:hover { color: var(--green); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: #9CA3AF; font-size: 14px; }
+
+        @media (max-width: 1024px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-hero h1 { font-size: 32px; }
+            .content h2 { font-size: 24px; }
+            .image-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <a href="tel:+15551234567"><i data-lucide="phone" style="width:16px;height:16px;"></i> (555) 123-4567</a>
+                    <a href="mailto:info@masspainterspro.com"><i data-lucide="mail" style="width:16px;height:16px;"></i> info@masspainterspro.com</a>
+                </div>
+                <div><i data-lucide="map-pin" style="width:16px;height:16px;display:inline;vertical-align:middle;"></i> Serving All of Massachusetts</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo"><img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro"></a>
+                <nav class="nav">
+                    <a href="/">Home</a>
+                    <a href="/#services">Services</a>
+                    <a href="/#about">About</a>
+                    <a href="/#contact">Contact</a>
+                    <a href="/#contact" class="btn btn-primary">Get Free Estimate <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></a>
+                </nav>
+                <button class="mobile-menu-btn"><i data-lucide="menu" style="width:28px;height:28px;color:var(--navy);"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a> / <a href="/#services">Services</a> / <span>Commercial Painting</span>
+            </div>
+            <h1><span>Commercial Painting</span> Services</h1>
+            <p>Professional painting solutions for offices, retail spaces, warehouses, and commercial properties throughout Massachusetts.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content">
+                    <h2>Professional Commercial Painting in Massachusetts</h2>
+                    <p>Your business deserves a professional appearance that reflects your brand and creates a positive impression on clients and employees. Mass Painters Pro delivers expert commercial painting services designed to minimize disruption while maximizing results.</p>
+
+                    <p>From small office refreshes to large-scale industrial projects, our experienced commercial painting crews have transformed business spaces throughout Boston, Worcester, Springfield, and the entire Massachusetts area.</p>
+
+                    <div class="image-grid">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600" alt="Commercial office painting">
+                        <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600" alt="Retail space painting">
+                    </div>
+
+                    <h2>Our Commercial Painting Services Include</h2>
+                    <ul class="service-list">
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Office Buildings</strong>
+                                <span>Interior and exterior painting for office spaces of all sizes, from small suites to multi-story buildings.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Retail Spaces</strong>
+                                <span>Create inviting retail environments with professional painting that enhances your brand and customer experience.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Warehouses & Industrial</strong>
+                                <span>Durable coatings for warehouses, manufacturing facilities, and industrial spaces that withstand heavy use.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Restaurants & Hospitality</strong>
+                                <span>Fast-turnaround painting for restaurants, hotels, and hospitality venues with minimal business disruption.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Healthcare Facilities</strong>
+                                <span>Low-VOC and antimicrobial painting solutions for medical offices, clinics, and healthcare environments.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <div>
+                                <strong>Multi-Unit Properties</strong>
+                                <span>Apartment buildings, condominiums, and HOA common areas with consistent, professional results.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h2>Why Businesses Choose Mass Painters Pro</h2>
+                    <p>We understand that time is money in business. Our commercial crews work efficiently around your schedule—including evenings, weekends, and phased approaches—to minimize disruption to your operations.</p>
+
+                    <p>Every commercial project includes detailed project planning, proper surface preparation, premium commercial-grade coatings, and thorough cleanup. We're fully licensed and insured with $2 million in liability coverage for your peace of mind.</p>
+                </div>
+
+                <div class="sidebar">
+                    <div class="sidebar-card dark">
+                        <h3>Get Your Free Estimate</h3>
+                        <p>Request a free, no-obligation quote for your commercial painting project.</p>
+                        <div style="min-height:450px;background:white;border-radius:8px;overflow:hidden;">
+                            <iframe
+                                src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
+                                style="width:100%;height:450px;border:none;"
+                                id="inline-PAkCy4I8PqgdMLhpiPb0"
+                                data-layout="{'id':'INLINE'}"
+                                data-trigger-type="alwaysShow"
+                                data-form-id="PAkCy4I8PqgdMLhpiPb0"
+                                title="Free Estimate Form"
+                            ></iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Why Choose Us</h3>
+                        <ul class="trust-list" style="color:var(--navy);">
+                            <li><i data-lucide="shield-check" style="width:20px;height:20px;"></i> Licensed & Insured</li>
+                            <li><i data-lucide="award" style="width:20px;height:20px;"></i> 5-Year Warranty</li>
+                            <li><i data-lucide="clock" style="width:20px;height:20px;"></i> Flexible Scheduling</li>
+                            <li><i data-lucide="star" style="width:20px;height:20px;"></i> 4.9 Star Rating</li>
+                            <li><i data-lucide="building" style="width:20px;height:20px;"></i> $2M Liability Coverage</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Call Us Today</h3>
+                        <p>Speak directly with a commercial painting expert.</p>
+                        <a href="tel:+15551234567" class="btn btn-primary" style="width:100%;justify-content:center;">
+                            <i data-lucide="phone" style="width:18px;height:18px;"></i>
+                            (555) 123-4567
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business Space?</h2>
+            <p>Get a free, no-obligation estimate from Massachusetts' commercial painting experts.</p>
+            <div class="cta-buttons">
+                <a href="/#contact" class="btn btn-white">Get Free Estimate <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></a>
+                <a href="tel:+15551234567" class="btn btn-outline-white"><i data-lucide="phone" style="width:18px;height:18px;"></i> (555) 123-4567</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro" style="height:45px;filter:brightness(0) invert(1);">
+                    <p>Massachusetts' trusted painting professionals. Quality workmanship and exceptional service since 2009.</p>
+                    <div class="footer-social">
+                        <a href="#"><i data-lucide="facebook" style="width:20px;height:20px;"></i></a>
+                        <a href="#"><i data-lucide="instagram" style="width:20px;height:20px;"></i></a>
+                        <a href="#"><i data-lucide="linkedin" style="width:20px;height:20px;"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="interior-painting.html">Interior Painting</a></li>
+                        <li><a href="exterior-painting.html">Exterior Painting</a></li>
+                        <li><a href="cabinet-refinishing.html">Cabinet Refinishing</a></li>
+                        <li><a href="commercial-painting.html">Commercial Painting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#areas">Service Areas</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                        <li><a href="mailto:info@masspainterspro.com">info@masspainterspro.com</a></li>
+                        <li>Boston, MA 02101</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mass Painters Pro. All rights reserved. | Licensed & Insured in Massachusetts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

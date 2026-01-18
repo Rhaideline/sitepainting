@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Painters Pro | Professional Painting Services in Massachusetts</title>
+    <meta name="description" content="Top-rated painting professionals serving Boston, Worcester, Springfield and all of Massachusetts. Licensed, insured, family-owned. Interior, exterior painting & cabinet refinishing.">
+    <link rel="canonical" href="https://masspainter.pro/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mass Painters Pro | Professional Painting Services">
+    <meta property="og:description" content="Transform your home with Massachusetts' most trusted painting professionals.">
+    <meta property="og:url" content="https://masspainter.pro/">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --navy: #1C1F2E;
+            --navy-light: #2D3142;
+            --green: #00B894;
+            --green-dark: #00A085;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--navy);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--green);
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--green);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,184,148,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+        .btn-dark {
+            background: var(--navy);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: var(--navy-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(28, 31, 46, 0.85), rgba(28, 31, 46, 0.9)),
+                        url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1920') center/cover;
+            color: white;
+            padding: 100px 0 120px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,184,148,0.2);
+            color: var(--green);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #B8BCC8;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--green);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #B8BCC8;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .hero-card h3 {
+            color: var(--navy);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #E5E7EB;
+            color: var(--gray);
+        }
+
+        .trust-item:last-child {
+            border-bottom: none;
+        }
+
+        .trust-item i {
+            color: var(--green);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-gray {
+            background: var(--gray-light);
+        }
+
+        .section-dark {
+            background: var(--navy);
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(0,184,148,0.1);
+            color: var(--green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28,31,46,0.8), transparent);
+        }
+
+        .service-card-content {
+            padding: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .service-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--green);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .service-card:hover .service-card-link {
+            gap: 12px;
+        }
+
+        /* Why Choose Us */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0,184,148,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .why-icon i {
+            color: var(--green);
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Process Section */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .process-step p {
+            color: #B8BCC8;
+            font-size: 14px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+        }
+
+        .testimonial-location {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* Areas Grid */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .area-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .area-item:hover {
+            background: var(--green);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .area-item i {
+            color: var(--green);
+        }
+
+        .area-item:hover i {
+            color: white;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 40px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-info h2 span {
+            color: var(--green);
+        }
+
+        .contact-info p {
+            color: #B8BCC8;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0,184,148,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item-icon i {
+            color: var(--green);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--green);
+        }
+
+        .contact-form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .contact-form-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .contact-form-card > p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--green);
+        }
+
+        .footer h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer ul a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer ul a:hover {
+            color: var(--green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .services-grid,
+            .why-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .areas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar-content {
+                justify-content: center;
+            }
+
+            .top-bar-left {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <a href="tel:+15551234567">
+                        <i data-lucide="phone" style="width:16px;height:16px;"></i>
+                        (555) 123-4567
+                    </a>
+                    <a href="mailto:info@masspainterspro.com">
+                        <i data-lucide="mail" style="width:16px;height:16px;"></i>
+                        info@masspainterspro.com
+                    </a>
+                </div>
+                <div>
+                    <i data-lucide="map-pin" style="width:16px;height:16px;display:inline;vertical-align:middle;"></i>
+                    Serving All of Massachusetts
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro">
+                </a>
+                <nav class="nav">
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#areas">Areas</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#contact" class="btn btn-primary">
+                        Get Free Estimate
+                        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                    </a>
+                </nav>
+                <button class="mobile-menu-btn">
+                    <i data-lucide="menu" style="width:28px;height:28px;color:var(--navy);"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <div class="hero-badge">
+                        <i data-lucide="award" style="width:16px;height:16px;"></i>
+                        #1 Rated Painters in Massachusetts
+                    </div>
+                    <h1>Professional <span>Painting Services</span> You Can Trust</h1>
+                    <p>Transform your home with Massachusetts' most trusted painting professionals. Licensed, insured, and committed to exceptional quality on every project.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            Get Free Estimate
+                            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                        </a>
+                        <a href="tel:+15551234567" class="btn btn-outline">
+                            <i data-lucide="phone" style="width:18px;height:18px;"></i>
+                            Call Now
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Projects Done</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Star Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <h3>Why Choose Us?</h3>
+                        <div class="trust-item">
+                            <i data-lucide="shield-check" style="width:24px;height:24px;"></i>
+                            <span>Licensed & Fully Insured</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="clock" style="width:24px;height:24px;"></i>
+                            <span>Free Estimates Within 24 Hours</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="badge-check" style="width:24px;height:24px;"></i>
+                            <span>5-Year Workmanship Warranty</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="users" style="width:24px;height:24px;"></i>
+                            <span>Family Owned Since 2009</span>
+                        </div>
+                        <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px;">
+                            Request Free Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Our Services</div>
+                <h2 class="section-title">Professional Painting Solutions</h2>
+                <p class="section-subtitle">From residential interiors to commercial exteriors, we deliver exceptional results on every project.</p>
+            </div>
+            <div class="services-grid">
+                <a href="interior-painting.html" class="service-card">
+                    <div class="service-card-image" style="background-image:url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600');"></div>
+                    <div class="service-card-content">
+                        <h3>Interior Painting</h3>
+                        <p>Transform your living spaces with premium interior painting. Walls, ceilings, trim, and more.</p>
+                        <span class="service-card-link">
+                            Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                        </span>
+                    </div>
+                </a>
+                <a href="exterior-painting.html" class="service-card">
+                    <div class="service-card-image" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600');"></div>
+                    <div class="service-card-content">
+                        <h3>Exterior Painting</h3>
+                        <p>Weather-resistant exterior painting built to withstand New England's harsh climate.</p>
+                        <span class="service-card-link">
+                            Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                        </span>
+                    </div>
+                </a>
+                <a href="cabinet-refinishing.html" class="service-card">
+                    <div class="service-card-image" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600');"></div>
+                    <div class="service-card-content">
+                        <h3>Cabinet Refinishing</h3>
+                        <p>Give your kitchen a stunning makeover without the cost of full replacement.</p>
+                        <span class="service-card-link">
+                            Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                        </span>
+                    </div>
+                </a>
+                <a href="commercial-painting.html" class="service-card">
+                    <div class="service-card-image" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=600');"></div>
+                    <div class="service-card-content">
+                        <h3>Commercial Painting</h3>
+                        <p>Professional painting services for offices, retail spaces, and industrial facilities.</p>
+                        <span class="service-card-link">
+                            Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section section-gray" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Why Mass Painters Pro</div>
+                <h2 class="section-title">The Trusted Choice for Massachusetts</h2>
+                <p class="section-subtitle">We bring over 15 years of experience and a commitment to excellence to every painting project.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="shield-check" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>Licensed & Insured</h3>
+                    <p>Full liability coverage and workers' compensation for your complete peace of mind.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="award" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>5-Year Warranty</h3>
+                    <p>We stand behind our work with an industry-leading workmanship guarantee.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="clock" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>On-Time Completion</h3>
+                    <p>We respect your schedule and always complete projects on time.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="palette" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>Premium Materials</h3>
+                    <p>We use only top-quality paints and materials from trusted brands.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="sparkles" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>Clean Worksite</h3>
+                    <p>We leave your property cleaner than we found it. Guaranteed.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i data-lucide="heart-handshake" style="width:32px;height:32px;"></i>
+                    </div>
+                    <h3>100% Satisfaction</h3>
+                    <p>We're not done until you're completely happy with the results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Our Process</div>
+                <h2 class="section-title" style="color:white;">How We Work</h2>
+                <p class="section-subtitle" style="color:#B8BCC8;">A simple, transparent process from start to finish.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Free Consultation</h3>
+                    <p>Contact us and we'll schedule a free on-site estimate within 24 hours.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Detailed Quote</h3>
+                    <p>We provide a comprehensive, no-obligation quote with all costs clearly outlined.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Expert Execution</h3>
+                    <p>Our skilled team completes your project with precision and care.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Final Walkthrough</h3>
+                    <p>We review the work together to ensure your complete satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied customers.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                    </div>
+                    <p class="testimonial-text">"Mass Painters Pro transformed our 100-year-old Victorian. Their attention to detail and knowledge of historic home painting was exceptional!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sarah M.</div>
+                            <div class="testimonial-location">Worcester, MA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                    </div>
+                    <p class="testimonial-text">"Professional, punctual, and the quality of work exceeded our expectations. Our kitchen cabinets look brand new!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JD</div>
+                        <div>
+                            <div class="testimonial-name">John D.</div>
+                            <div class="testimonial-location">Boston, MA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                        <i data-lucide="star" style="width:20px;height:20px;fill:#FFD700;"></i>
+                    </div>
+                    <p class="testimonial-text">"They painted the entire exterior of our commercial building over a weekend to minimize business disruption. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <div class="testimonial-name">Mike R.</div>
+                            <div class="testimonial-location">Cambridge, MA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas Section -->
+    <section class="section section-gray" id="areas">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Service Areas</div>
+                <h2 class="section-title">Proudly Serving Massachusetts</h2>
+                <p class="section-subtitle">From Boston to the Berkshires, we bring professional painting services to your doorstep.</p>
+            </div>
+            <div class="areas-grid">
+                <a href="ma/boston/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Boston</a>
+                <a href="ma/worcester/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Worcester</a>
+                <a href="ma/springfield/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Springfield</a>
+                <a href="ma/cambridge/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Cambridge</a>
+                <a href="ma/lowell/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Lowell</a>
+                <a href="ma/brockton/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Brockton</a>
+                <a href="ma/new-bedford/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> New Bedford</a>
+                <a href="ma/quincy/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Quincy</a>
+                <a href="ma/lynn/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Lynn</a>
+                <a href="ma/fall-river/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Fall River</a>
+                <a href="ma/newton/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Newton</a>
+                <a href="ma/somerville/interior-painting" class="area-item"><i data-lucide="map-pin" style="width:16px;height:16px;"></i> Somerville</a>
+            </div>
+            <p style="text-align:center;margin-top:30px;color:var(--gray);">
+                Don't see your city? <a href="#contact" style="color:var(--green);font-weight:600;">Contact us</a> - we serve all of Massachusetts!
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Ready to Transform <span>Your Space?</span></h2>
+                    <p>Get a free, no-obligation estimate from Massachusetts' most trusted painters. We respond within 24 hours!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i data-lucide="phone" style="width:24px;height:24px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:14px;color:#9CA3AF;">Call Us</div>
+                                <a href="tel:+15551234567" style="font-size:18px;font-weight:600;">(555) 123-4567</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i data-lucide="mail" style="width:24px;height:24px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:14px;color:#9CA3AF;">Email Us</div>
+                                <a href="mailto:info@masspainterspro.com" style="font-size:18px;font-weight:600;">info@masspainterspro.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i data-lucide="map-pin" style="width:24px;height:24px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:14px;color:#9CA3AF;">Location</div>
+                                <span style="font-size:18px;font-weight:600;">Boston, MA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-card">
+                    <h3>Get Your Free Estimate</h3>
+                    <p>Fill out the form and we'll get back to you within 24 hours.</p>
+                    <div style="min-height:500px;">
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
+                            style="width:100%;height:500px;border:none;border-radius:8px;"
+                            id="inline-PAkCy4I8PqgdMLhpiPb0"
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="Form 1"
+                            data-height="500"
+                            data-layout-iframe-id="inline-PAkCy4I8PqgdMLhpiPb0"
+                            data-form-id="PAkCy4I8PqgdMLhpiPb0"
+                            title="Free Estimate Form"
+                        ></iframe>
+                        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro" style="height:45px;filter:brightness(0) invert(1);">
+                    <p>Massachusetts' trusted painting professionals. Quality workmanship, honest pricing, and exceptional customer service since 2009.</p>
+                    <div class="footer-social">
+                        <a href="#"><i data-lucide="facebook" style="width:20px;height:20px;"></i></a>
+                        <a href="#"><i data-lucide="instagram" style="width:20px;height:20px;"></i></a>
+                        <a href="#"><i data-lucide="linkedin" style="width:20px;height:20px;"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="interior-painting.html">Interior Painting</a></li>
+                        <li><a href="exterior-painting.html">Exterior Painting</a></li>
+                        <li><a href="cabinet-refinishing.html">Cabinet Refinishing</a></li>
+                        <li><a href="commercial-painting.html">Commercial Painting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#areas">Service Areas</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                        <li><a href="mailto:info@masspainterspro.com">info@masspainterspro.com</a></li>
+                        <li>Boston, MA 02101</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mass Painters Pro. All rights reserved. | Licensed & Insured in Massachusetts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
