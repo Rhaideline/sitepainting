@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { cities, services } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://masspainterspro.com";
+  const baseUrl = "https://masspainter.pro";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

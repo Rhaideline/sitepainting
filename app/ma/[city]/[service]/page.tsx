@@ -49,7 +49,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://masspainterspro.com/ma/${city.slug}/${service.slug}`,
+      url: `https://masspainter.pro/ma/${city.slug}/${service.slug}`,
       siteName: businessInfo.name,
       locale: "en_US",
       type: "website",
@@ -60,7 +60,7 @@ export async function generateMetadata({
       description,
     },
     alternates: {
-      canonical: `https://masspainterspro.com/ma/${city.slug}/${service.slug}`,
+      canonical: `https://masspainter.pro/ma/${city.slug}/${service.slug}`,
     },
   };
 }
@@ -75,11 +75,11 @@ function generateSchema(city: any, service: any) {
       // LocalBusiness Schema
       {
         "@type": "LocalBusiness",
-        "@id": `https://masspainterspro.com/ma/${city.slug}/${service.slug}#business`,
+        "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#business`,
         name: businessInfo.name,
         image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
         description: `Professional ${service.name.toLowerCase()} services in ${city.name}, MA`,
-        url: `https://masspainterspro.com/ma/${city.slug}/${service.slug}`,
+        url: `https://masspainter.pro/ma/${city.slug}/${service.slug}`,
         telephone: businessInfo.phoneFormatted,
         email: businessInfo.email,
         address: {
@@ -108,11 +108,11 @@ function generateSchema(city: any, service: any) {
       // Service Schema
       {
         "@type": "Service",
-        "@id": `https://masspainterspro.com/ma/${city.slug}/${service.slug}#service`,
+        "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#service`,
         name: `${service.name} in ${city.name}, MA`,
         description: service.description,
         provider: {
-          "@id": `https://masspainterspro.com/ma/${city.slug}/${service.slug}#business`,
+          "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#business`,
         },
         areaServed: {
           "@type": "City",
@@ -123,7 +123,7 @@ function generateSchema(city: any, service: any) {
       // FAQPage Schema
       {
         "@type": "FAQPage",
-        "@id": `https://masspainterspro.com/ma/${city.slug}/${service.slug}#faq`,
+        "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#faq`,
         mainEntity: [
           {
             "@type": "Question",
@@ -382,45 +382,28 @@ export default function CityServicePage({
                   <h3 className="text-xl font-bold mb-4">
                     Get Your Free Estimate
                   </h3>
-                  <p className="text-gray-300 mb-6 text-sm">
+                  <p className="text-gray-300 mb-4 text-sm">
                     Request a free quote for {service.name.toLowerCase()} in {city.name}
                   </p>
-                  <form className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
+                  <div className="min-h-[500px] bg-white rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
+                      style={{ width: '100%', height: '500px', border: 'none' }}
+                      id="inline-PAkCy4I8PqgdMLhpiPb0"
+                      data-layout="{'id':'INLINE'}"
+                      data-trigger-type="alwaysShow"
+                      data-trigger-value=""
+                      data-activation-type="alwaysActivated"
+                      data-activation-value=""
+                      data-deactivation-type="neverDeactivate"
+                      data-deactivation-value=""
+                      data-form-name="Form 1"
+                      data-height="500"
+                      data-layout-iframe-id="inline-PAkCy4I8PqgdMLhpiPb0"
+                      data-form-id="PAkCy4I8PqgdMLhpiPb0"
+                      title="Free Estimate Form"
                     />
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
-                    />
-                    <select className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white">
-                      <option value="">Select Service</option>
-                      {services.map((s) => (
-                        <option key={s.slug} value={s.slug} selected={s.slug === service.slug}>
-                          {s.name}
-                        </option>
-                      ))}
-                    </select>
-                    <textarea
-                      placeholder="Project Details"
-                      rows={3}
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400"
-                    />
-                    <button
-                      type="submit"
-                      className="w-full bg-[#00B894] text-white py-4 rounded-lg font-bold hover:bg-[#00a085] transition"
-                    >
-                      Get Free Quote →
-                    </button>
-                  </form>
+                  </div>
                   <p className="text-xs text-gray-400 mt-4 text-center">
                     Or call us: {businessInfo.phone}
                   </p>

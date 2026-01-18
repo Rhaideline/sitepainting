@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Mass Painters Pro | Top-Rated Painting Professionals in Massachusetts",
     description:
       "Transform your home with Massachusetts' most trusted painting professionals. Licensed, insured, and satisfaction guaranteed. Get your free estimate today!",
-    url: "https://masspainterspro.com",
+    url: "https://masspainter.pro",
     siteName: "Mass Painters Pro",
     locale: "en_US",
     type: "website",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 
   // Canonical URL
   alternates: {
-    canonical: "https://masspainterspro.com",
+    canonical: "https://masspainter.pro",
   },
 
   // Verification (add your actual verification codes)
@@ -99,12 +99,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://masspainterspro.com",
+  "@id": "https://masspainter.pro",
   name: "Mass Painters Pro",
   image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
   description:
     "Top-rated painting professionals serving all of Massachusetts. Interior, exterior painting & cabinet refinishing services.",
-  url: "https://masspainterspro.com",
+  url: "https://masspainter.pro",
   telephone: "+1-555-123-4567",
   email: "info@masspainterspro.com",
   address: {
@@ -216,6 +216,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
+        {/* LeadConnector Form Embed Script */}
+        <script src="https://link.msgsndr.com/js/form_embed.js" async />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
