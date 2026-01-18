@@ -616,144 +616,31 @@ export default function HomePage() {
               </p>
             </div>
 
-            <form className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-semibold text-navy-900 mb-2"
-                  >
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                    placeholder="John"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-sm font-semibold text-navy-900 mb-2"
-                  >
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-semibold text-navy-900 mb-2"
-                  >
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-semibold text-navy-900 mb-2"
-                  >
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                    placeholder="(555) 123-4567"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-semibold text-navy-900 mb-2"
-                >
-                  City/Town in Massachusetts *
-                </label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                  placeholder="Boston, Worcester, Springfield..."
+<div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+              <div style={{ minHeight: '550px' }}>
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
+                  style={{ width: '100%', height: '550px', border: 'none', borderRadius: '8px' }}
+                  id="inline-PAkCy4I8PqgdMLhpiPb0"
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-trigger-value=""
+                  data-activation-type="alwaysActivated"
+                  data-activation-value=""
+                  data-deactivation-type="neverDeactivate"
+                  data-deactivation-value=""
+                  data-form-name="Form 1"
+                  data-height="550"
+                  data-layout-iframe-id="inline-PAkCy4I8PqgdMLhpiPb0"
+                  data-form-id="PAkCy4I8PqgdMLhpiPb0"
+                  title="Free Estimate Form"
                 />
               </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="service"
-                  className="block text-sm font-semibold text-navy-900 mb-2"
-                >
-                  Service Needed *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                >
-                  <option value="">Select a service...</option>
-                  <option value="interior">Residential Interior Painting</option>
-                  <option value="exterior">Exterior Painting</option>
-                  <option value="cabinet">Cabinet Refinishing</option>
-                  <option value="commercial">Commercial Painting</option>
-                  <option value="other">Other / Multiple Services</option>
-                </select>
-              </div>
-
-              <div className="mb-8">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-semibold text-navy-900 mb-2"
-                >
-                  Project Details
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                  placeholder="Tell us about your project (rooms, square footage, timeline, etc.)..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
-              >
-                Get My Free Quote
-              </button>
-
               <p className="text-center text-gray-500 text-sm mt-4">
                 No obligation. We respect your privacy and will never share your
                 information.
               </p>
-            </form>
+            </div>
           </div>
         </div>
       </section>
