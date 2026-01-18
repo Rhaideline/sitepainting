@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Painting Services Massachusetts | Office & Business Painters | Mass Painters Pro</title>
+    <meta name="description" content="Professional commercial painting services in Massachusetts. Offices, retail, restaurants, healthcare & industrial facilities. Minimal downtime, maximum impact. Serving Boston, Worcester & all MA. Free estimates!">
+    <meta name="keywords" content="commercial painting Massachusetts, office painters Boston, business painting Worcester, retail painting, industrial painting MA">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Commercial Painting Services | Mass Painters Pro">
+    <meta property="og:description" content="Professional commercial painting for Massachusetts businesses. Minimal downtime, maximum impact.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://masspainterspro.com/commercial-painting">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Commercial Painting Services",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Mass Painters Pro",
+            "telephone": "+1-555-123-4567",
+            "areaServed": "Massachusetts"
+        },
+        "description": "Professional commercial painting services for businesses in Massachusetts",
+        "areaServed": {
+            "@type": "State",
+            "name": "Massachusetts"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --navy-primary: #1A1A2E;
+            --navy-dark: #16213E;
+            --navy-gradient: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            --emerald-light: #00B894;
+            --emerald-dark: #00A085;
+            --emerald-gradient: linear-gradient(135deg, #00B894 0%, #00A085 100%);
+            --gray-medium: #636E72;
+            --gray-light: #B0B0B0;
+            --gray-very-light: #E8E8E8;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(26, 26, 46, 0.08);
+            --shadow-md: 0 4px 20px rgba(26, 26, 46, 0.12);
+            --shadow-lg: 0 8px 40px rgba(26, 26, 46, 0.16);
+            --shadow-xl: 0 20px 60px rgba(26, 26, 46, 0.2);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-primary); background: var(--white); color: var(--navy-primary); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-base); }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; }
+        .text-gradient { background: var(--emerald-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-weight: 600; font-size: 15px; border-radius: 12px; transition: var(--transition-base); }
+        .btn-primary { background: var(--emerald-gradient); color: var(--white); box-shadow: var(--shadow-md); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 184, 148, 0.4); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: rgba(0, 184, 148, 0.1); color: var(--emerald-dark); font-size: 13px; font-weight: 600; border-radius: 100px; border: 1px solid rgba(0, 184, 148, 0.2); }
+
+        /* TOP BAR */
+        .top-bar { background: var(--navy-primary); padding: 10px 0; }
+        .top-bar-inner { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar-left { display: flex; align-items: center; gap: 8px; color: var(--white); font-size: 14px; font-weight: 500; }
+        .top-bar-right { display: flex; align-items: center; gap: 20px; }
+        .top-bar-right a { color: var(--white); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .top-bar-right a:hover { color: var(--emerald-light); }
+
+        /* HEADER - WHITE BACKGROUND */
+        .header { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: var(--shadow-sm); transition: var(--transition-base); }
+        .header.scrolled { box-shadow: var(--shadow-md); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 48px; }
+
+        /* NAVIGATION */
+        .nav { display: flex; align-items: center; gap: 32px; }
+        .nav-menu { display: flex; align-items: center; gap: 8px; }
+        .nav-item { position: relative; }
+        .nav-link { display: flex; align-items: center; gap: 6px; padding: 12px 18px; font-size: 15px; font-weight: 500; color: var(--navy-primary); border-radius: 8px; transition: var(--transition-base); }
+        .nav-link:hover { background: rgba(0, 184, 148, 0.08); color: var(--emerald-dark); }
+        .nav-link svg { transition: var(--transition-base); }
+        .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+
+        /* DROPDOWN */
+        .dropdown { position: absolute; top: 100%; left: 0; min-width: 280px; background: var(--white); border-radius: 16px; box-shadow: var(--shadow-xl); opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition-base); padding: 12px; z-index: 100; }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px; transition: var(--transition-base); }
+        .dropdown-item:hover { background: rgba(0, 184, 148, 0.08); }
+        .dropdown-icon { width: 44px; height: 44px; background: linear-gradient(135deg, rgba(0,184,148,0.1) 0%, rgba(0,160,133,0.1) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .dropdown-icon svg { color: var(--emerald-dark); }
+        .dropdown-item:hover .dropdown-icon { background: var(--emerald-gradient); }
+        .dropdown-item:hover .dropdown-icon svg { color: var(--white); }
+        .dropdown-content h4 { font-size: 14px; font-weight: 600; color: var(--navy-primary); margin-bottom: 2px; }
+        .dropdown-content p { font-size: 12px; color: var(--gray-medium); }
+
+        .nav-cta .btn { padding: 12px 24px; font-size: 14px; }
+
+        /* MOBILE MENU */
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; border: none; background: none; }
+        .mobile-menu-btn span { width: 24px; height: 2px; background: var(--navy-primary); transition: var(--transition-base); }
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 999; padding: 100px 24px 40px; flex-direction: column; overflow-y: auto; }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a { font-size: 18px; color: var(--navy-primary); padding: 16px 0; border-bottom: 1px solid var(--gray-very-light); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu .btn { margin-top: 24px; justify-content: center; }
+
+        /* PAGE HERO WITH IMAGE */
+        .page-hero { padding: 80px 0; background: var(--navy-gradient); position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(0, 184, 148, 0.15) 0%, transparent 70%); border-radius: 50%; }
+        .page-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero .badge { margin-bottom: 24px; background: rgba(0,184,148,0.2); border-color: rgba(0,184,148,0.3); }
+        .page-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 4vw, 52px); font-weight: 700; color: var(--white); margin-bottom: 24px; line-height: 1.1; }
+        .page-hero p { font-size: 18px; color: var(--gray-light); margin-bottom: 32px; line-height: 1.7; }
+        .page-hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+        .page-hero-image { position: relative; z-index: 1; }
+        .page-hero-image img { border-radius: 24px; box-shadow: var(--shadow-xl); width: 100%; height: 400px; object-fit: cover; }
+
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); font-weight: 700; color: var(--navy-primary); margin-bottom: 16px; }
+        .section-description { font-size: 18px; color: var(--gray-medium); line-height: 1.7; }
+
+        /* INDUSTRIES GRID */
+        .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .industry-card { background: var(--white); border: 1px solid var(--gray-very-light); border-radius: 20px; overflow: hidden; transition: var(--transition-base); }
+        .industry-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+        .industry-image { height: 180px; overflow: hidden; }
+        .industry-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-base); }
+        .industry-card:hover .industry-image img { transform: scale(1.05); }
+        .industry-content { padding: 24px; }
+        .industry-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .industry-card p { font-size: 14px; color: var(--gray-medium); line-height: 1.6; }
+
+        /* BENEFITS SECTION */
+        .benefits-section { background: var(--navy-gradient); }
+        .benefits-section .section-title { color: var(--white); }
+        .benefits-section .section-description { color: var(--gray-light); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .benefit-item { text-align: center; padding: 32px 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; transition: var(--transition-base); }
+        .benefit-item:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+        .benefit-icon { width: 64px; height: 64px; background: var(--emerald-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--white); }
+        .benefit-item h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .benefit-item p { font-size: 14px; color: var(--gray-light); line-height: 1.6; }
+
+        /* SERVICES SECTION */
+        .services-section { background: linear-gradient(180deg, #F8F9FA 0%, var(--white) 100%); }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .services-content h2 { font-family: var(--font-display); font-size: clamp(28px, 3vw, 36px); font-weight: 700; margin-bottom: 24px; }
+        .services-list { display: flex; flex-direction: column; gap: 16px; }
+        .service-item { display: flex; gap: 16px; align-items: center; padding: 20px; background: var(--white); border: 1px solid var(--gray-very-light); border-radius: 12px; transition: var(--transition-base); }
+        .service-item:hover { border-color: var(--emerald-light); box-shadow: var(--shadow-md); }
+        .service-item svg { color: var(--emerald-light); flex-shrink: 0; }
+        .service-item span { font-weight: 500; }
+        .services-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .stat-card { background: var(--navy-gradient); border-radius: 20px; padding: 32px; text-align: center; color: var(--white); }
+        .stat-card .value { font-family: var(--font-display); font-size: 48px; font-weight: 700; background: var(--emerald-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-card .label { font-size: 14px; color: var(--gray-light); margin-top: 8px; }
+
+        /* GALLERY */
+        .gallery-section { background: var(--white); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .gallery-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-base); }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,46,0.8) 0%, transparent 50%); opacity: 0; transition: var(--transition-base); display: flex; align-items: flex-end; padding: 20px; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span { color: var(--white); font-weight: 600; font-size: 14px; }
+
+        /* CTA SECTION */
+        .cta-section { background: var(--emerald-gradient); padding: 80px 0; }
+        .cta-content { text-align: center; max-width: 700px; margin: 0 auto; }
+        .cta-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); font-weight: 700; color: var(--white); margin-bottom: 20px; }
+        .cta-description { font-size: 18px; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta-buttons .btn-primary { background: var(--white); color: var(--emerald-dark); }
+
+        /* FOOTER */
+        .footer { background: var(--navy-primary); color: var(--white); padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { color: var(--gray-light); font-size: 14px; line-height: 1.7; margin-top: 20px; }
+        .footer-logo img { height: 44px; filter: brightness(0) invert(1); }
+        .footer-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a { color: var(--gray-light); font-size: 14px; transition: var(--transition-base); }
+        .footer-links a:hover { color: var(--emerald-light); padding-left: 4px; }
+        .footer-contact-item { display: flex; align-items: center; gap: 12px; color: var(--gray-light); font-size: 14px; margin-bottom: 12px; }
+        .footer-contact-item svg { color: var(--emerald-light); flex-shrink: 0; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; gap: 16px; }
+        .footer-copyright { color: var(--gray-light); font-size: 14px; }
+        .footer-legal { display: flex; gap: 24px; }
+        .footer-legal a { color: var(--gray-light); font-size: 14px; }
+        .footer-legal a:hover { color: var(--emerald-light); }
+
+        /* CITIES SECTION IN FOOTER */
+        .footer-cities { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; margin-top: 32px; margin-bottom: 32px; }
+        .footer-cities-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+        .footer-cities-list { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+        .footer-cities-list span { color: var(--gray-light); font-size: 13px; }
+
+        @media (max-width: 1024px) {
+            .page-hero-grid { grid-template-columns: 1fr; }
+            .page-hero-image { display: none; }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .top-bar-left { display: none; }
+            .top-bar-right { width: 100%; justify-content: center; }
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .industries-grid, .benefits-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .page-hero { padding: 60px 0; }
+            .page-hero-cta, .cta-buttons { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-legal { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-inner">
+                <div class="top-bar-left">
+                    <i data-lucide="map-pin" style="width:16px;height:16px;color:var(--emerald-light);"></i>
+                    <span>Serving All of Massachusetts</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="tel:+15551234567">
+                        <i data-lucide="phone" style="width:16px;height:16px;"></i>
+                        (555) 123-4567
+                    </a>
+                    <a href="mailto:info@masspainterspro.com">
+                        <i data-lucide="mail" style="width:16px;height:16px;"></i>
+                        info@masspainterspro.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro">
+                </a>
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Services
+                                <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                            </a>
+                            <div class="dropdown">
+                                <a href="interior-painting.html" class="dropdown-item">
+                                    <div class="dropdown-icon">
+                                        <i data-lucide="home" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="dropdown-content">
+                                        <h4>Interior Painting</h4>
+                                        <p>Walls, ceilings, trim & more</p>
+                                    </div>
+                                </a>
+                                <a href="exterior-painting.html" class="dropdown-item">
+                                    <div class="dropdown-icon">
+                                        <i data-lucide="sun" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="dropdown-content">
+                                        <h4>Exterior Painting</h4>
+                                        <p>Weather-resistant finishes</p>
+                                    </div>
+                                </a>
+                                <a href="cabinet-refinishing.html" class="dropdown-item">
+                                    <div class="dropdown-icon">
+                                        <i data-lucide="square-stack" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="dropdown-content">
+                                        <h4>Cabinet Refinishing</h4>
+                                        <p>Kitchen & bathroom cabinets</p>
+                                    </div>
+                                </a>
+                                <a href="commercial-painting.html" class="dropdown-item">
+                                    <div class="dropdown-icon">
+                                        <i data-lucide="building-2" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="dropdown-content">
+                                        <h4>Commercial Painting</h4>
+                                        <p>Offices, retail & industrial</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#gallery" class="nav-link">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="nav-cta">
+                        <a href="contact.html" class="btn btn-primary">
+                            Get Free Quote
+                            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                        </a>
+                    </div>
+                </nav>
+                <button type="button" class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="interior-painting.html">Interior Painting</a>
+        <a href="exterior-painting.html">Exterior Painting</a>
+        <a href="cabinet-refinishing.html">Cabinet Refinishing</a>
+        <a href="commercial-painting.html">Commercial Painting</a>
+        <a href="index.html#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Get Free Quote</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-grid">
+                <div class="page-hero-content">
+                    <span class="badge"><i data-lucide="building-2" style="width:14px;height:14px;"></i> Commercial Painting</span>
+                    <h1>Professional <span class="text-gradient">Commercial Painting</span> for Massachusetts Businesses</h1>
+                    <p>Minimize downtime and maximize impact with our commercial painting services. We work around your schedule to deliver exceptional results without disrupting your business operations.</p>
+                    <div class="page-hero-cta">
+                        <a href="contact.html" class="btn btn-primary">Request Commercial Quote <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></a>
+                        <a href="tel:+15551234567" class="btn btn-outline"><i data-lucide="phone" style="width:18px;height:18px;"></i> (555) 123-4567</a>
+                    </div>
+                </div>
+                <div class="page-hero-image">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad4d97483037a7b3998a0.png" alt="Professional commercial painting in Massachusetts">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Industries We Serve</span>
+                <h2 class="section-title">Commercial Painting Expertise</h2>
+                <p class="section-description">From small offices to large facilities, we deliver professional results across all commercial sectors throughout Massachusetts.</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png" alt="Office building painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Office Buildings</h3>
+                        <p>Corporate offices, co-working spaces, and professional suites with minimal disruption to your daily operations.</p>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1adedb8a29431d5b7f6.png" alt="Retail space painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Retail Spaces</h3>
+                        <p>Storefronts, shopping centers, and boutiques that attract customers and elevate your brand presence.</p>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef6e700e05965908c1.png" alt="Restaurant painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Restaurants & Hotels</h3>
+                        <p>Hospitality venues requiring quick turnarounds and premium finishes that impress guests.</p>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png" alt="Healthcare facility painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Healthcare Facilities</h3>
+                        <p>Medical offices, clinics, and care facilities with strict compliance and hygiene standards.</p>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef6e700e2e495908c0.png" alt="School painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Educational Institutions</h3>
+                        <p>Schools, universities, and daycare centers during breaks and off-hours for zero disruption.</p>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad2446e700e3230594791.png" alt="Warehouse painting">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Industrial & Warehouses</h3>
+                        <p>Manufacturing facilities, warehouses, and industrial complexes requiring durable coatings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits-section section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge" style="background:rgba(0,184,148,0.2);border-color:rgba(0,184,148,0.3);">Why Choose Us</span>
+                <h2 class="section-title">The Mass Painters Pro Advantage</h2>
+                <p class="section-description">We understand commercial painting requires a different approach than residential work. Here's why businesses trust us.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="moon" style="width:28px;height:28px;"></i></div>
+                    <h3>After-Hours Work</h3>
+                    <p>Nights and weekends available to keep your business running smoothly.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="clock" style="width:28px;height:28px;"></i></div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Large crews for quick completion without sacrificing quality or attention to detail.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="shield-check" style="width:28px;height:28px;"></i></div>
+                    <h3>Fully Insured</h3>
+                    <p>$2M liability coverage protecting your property, employees, and business.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i data-lucide="file-text" style="width:28px;height:28px;"></i></div>
+                    <h3>Detailed Quotes</h3>
+                    <p>Transparent pricing with no surprises or hidden fees. What we quote is what you pay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="services-content">
+                    <span class="badge">Commercial Services</span>
+                    <h2>Complete Commercial Solutions</h2>
+                    <p style="color:var(--gray-medium);margin-bottom:32px;">From interior offices to exterior facades, we handle all aspects of commercial painting with professional-grade materials and expert craftsmanship.</p>
+                    <div class="services-list">
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Interior Wall & Ceiling Painting</span>
+                        </div>
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Exterior Building Painting</span>
+                        </div>
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Parking Lot & Line Striping</span>
+                        </div>
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Epoxy Floor Coatings</span>
+                        </div>
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Metal & Structural Painting</span>
+                        </div>
+                        <div class="service-item">
+                            <i data-lucide="check-circle" style="width:24px;height:24px;"></i>
+                            <span>Tenant Improvement Painting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-visual">
+                    <div class="stat-card">
+                        <div class="value">500+</div>
+                        <div class="label">Commercial Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">2M+</div>
+                        <div class="label">Sq Ft Painted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">98%</div>
+                        <div class="label">On-Time Delivery</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value">15+</div>
+                        <div class="label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Our Work</span>
+                <h2 class="section-title">Commercial Projects Gallery</h2>
+                <p class="section-description">Browse our portfolio of commercial painting projects across Massachusetts.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png" alt="Commercial interior - Boston">
+                    <div class="gallery-overlay"><span>Commercial Interior - Boston</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1adedb8a29431d5b7f6.png" alt="Commercial exterior - Worcester">
+                    <div class="gallery-overlay"><span>Exterior Project - Worcester</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef6e700e05965908c1.png" alt="Commercial painting - Cambridge">
+                    <div class="gallery-overlay"><span>Business Exterior - Cambridge</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad202edb8a223b9d5c8c9.png" alt="Commercial project - Newton">
+                    <div class="gallery-overlay"><span>Commercial Project - Newton</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad2446e700e3230594791.png" alt="Transformation - Brookline">
+                    <div class="gallery-overlay"><span>Before & After - Brookline</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef6e700e2e495908c0.png" alt="Professional team - Springfield">
+                    <div class="gallery-overlay"><span>Our Team - Springfield</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png" alt="Interior work - Somerville">
+                    <div class="gallery-overlay"><span>Interior Work - Somerville</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1adedb8a29431d5b7f6.png" alt="Exterior painting - Quincy">
+                    <div class="gallery-overlay"><span>Exterior - Quincy</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Upgrade Your Business Space?</h2>
+                <p class="cta-description">Get a customized commercial quote tailored to your business needs, timeline, and budget. We'll work around your schedule.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Request Commercial Quote <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></a>
+                    <a href="tel:+15551234567" class="btn btn-outline"><i data-lucide="phone" style="width:18px;height:18px;"></i> (555) 123-4567</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg" alt="Mass Painters Pro">
+                    </a>
+                    <p>Massachusetts' trusted painting professionals. Delivering exceptional quality and service for over 15 years across Greater Boston and beyond.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <div class="footer-links">
+                        <a href="interior-painting.html">Interior Painting</a>
+                        <a href="exterior-painting.html">Exterior Painting</a>
+                        <a href="cabinet-refinishing.html">Cabinet Refinishing</a>
+                        <a href="commercial-painting.html">Commercial Painting</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <div class="footer-links">
+                        <a href="index.html#about">About Us</a>
+                        <a href="index.html#gallery">Our Work</a>
+                        <a href="index.html#testimonials">Reviews</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone" style="width:18px;height:18px;"></i>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail" style="width:18px;height:18px;"></i>
+                        <span>info@masspainterspro.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
+                        <span>Serving All of Massachusetts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CITIES SECTION -->
+            <div class="footer-cities">
+                <h4 class="footer-cities-title">Proudly Serving These Massachusetts Communities</h4>
+                <div class="footer-cities-list">
+                    <span>Boston</span><span>Worcester</span><span>Springfield</span><span>Cambridge</span><span>Lowell</span>
+                    <span>Brockton</span><span>New Bedford</span><span>Quincy</span><span>Lynn</span><span>Fall River</span>
+                    <span>Newton</span><span>Somerville</span><span>Lawrence</span><span>Framingham</span><span>Haverhill</span>
+                    <span>Waltham</span><span>Malden</span><span>Brookline</span><span>Plymouth</span><span>Medford</span>
+                    <span>Taunton</span><span>Chicopee</span><span>Weymouth</span><span>Revere</span><span>Peabody</span>
+                    <span>Methuen</span><span>Barnstable</span><span>Pittsfield</span><span>Attleboro</span><span>Arlington</span>
+                    <span>Everett</span><span>Salem</span><span>Westfield</span><span>Leominster</span><span>Fitchburg</span>
+                    <span>Beverly</span><span>Holyoke</span><span>Marlborough</span><span>Woburn</span><span>Chelsea</span>
+                    <span>Braintree</span><span>Natick</span><span>Randolph</span><span>Watertown</span><span>Franklin</span>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2024 Mass Painters Pro. All rights reserved. Licensed & Insured in Massachusetts.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('active')));
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
