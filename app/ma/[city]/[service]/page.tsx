@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -9,6 +10,26 @@ import {
   cities,
   services,
 } from "@/lib/data";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Shield,
+  Star,
+  CheckCircle2,
+  Facebook,
+  Instagram,
+  Linkedin,
+  ArrowRight,
+  Clock,
+  Award,
+  Users,
+  ChevronRight,
+  Home,
+  Paintbrush,
+  Building2,
+  PaintBucket,
+} from "lucide-react";
 
 // ============================================
 // STATIC PARAMS - Generate all 400+ pages at build time
@@ -32,8 +53,8 @@ export async function generateMetadata({
     return { title: "Page Not Found" };
   }
 
-  const title = `${service.name} in ${city.name}, MA — ${businessInfo.name} | Free Estimate`;
-  const description = `Top ${service.name.toLowerCase()} in ${city.name}, MA. Local pros, fast scheduling, 5-year warranty. Serving ${city.county} County. Get a free estimate today!`;
+  const title = `${service.name} in ${city.name}, MA | Mass Painters Pro | Free Estimate`;
+  const description = `Top-rated ${service.name.toLowerCase()} in ${city.name}, Massachusetts. Local pros, fast scheduling, 5-year warranty. Serving ${city.county} County. Licensed, insured. Get your free estimate today!`;
 
   return {
     title,
@@ -45,6 +66,7 @@ export async function generateMetadata({
       `house painters ${city.name}`,
       `painting contractors ${city.county} county`,
       `professional painters near ${city.name}`,
+      `best painters ${city.name} massachusetts`,
     ],
     openGraph: {
       title,
@@ -53,11 +75,20 @@ export async function generateMetadata({
       siteName: businessInfo.name,
       locale: "en_US",
       type: "website",
+      images: [
+        {
+          url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
+          width: 1200,
+          height: 630,
+          alt: `${service.name} in ${city.name}, MA - Mass Painters Pro`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"],
     },
     alternates: {
       canonical: `https://masspainter.pro/ma/${city.slug}/${service.slug}`,
@@ -72,7 +103,6 @@ function generateSchema(city: any, service: any) {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      // LocalBusiness Schema
       {
         "@type": "LocalBusiness",
         "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#business`,
@@ -105,7 +135,6 @@ function generateSchema(city: any, service: any) {
           reviewCount: businessInfo.reviewCount,
         },
       },
-      // Service Schema
       {
         "@type": "Service",
         "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#service`,
@@ -120,7 +149,6 @@ function generateSchema(city: any, service: any) {
         },
         serviceType: service.name,
       },
-      // FAQPage Schema
       {
         "@type": "FAQPage",
         "@id": `https://masspainter.pro/ma/${city.slug}/${service.slug}#faq`,
@@ -151,9 +179,54 @@ function generateSchema(city: any, service: any) {
           },
         ],
       },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://masspainter.pro",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Massachusetts",
+            item: "https://masspainter.pro/ma",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: city.name,
+            item: `https://masspainter.pro/ma/${city.slug}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: service.name,
+            item: `https://masspainter.pro/ma/${city.slug}/${service.slug}`,
+          },
+        ],
+      },
     ],
   };
 }
+
+// Service icon mapping
+const serviceIcons: Record<string, any> = {
+  "interior-painting": Home,
+  "exterior-painting": Paintbrush,
+  "cabinet-refinishing": PaintBucket,
+  "commercial-painting": Building2,
+};
+
+// Service color mapping
+const serviceColors: Record<string, { bg: string; text: string; gradient: string }> = {
+  "interior-painting": { bg: "bg-blue-500/10", text: "text-blue-600", gradient: "from-blue-500 to-blue-600" },
+  "exterior-painting": { bg: "bg-emerald-500/10", text: "text-emerald-600", gradient: "from-emerald-500 to-emerald-600" },
+  "cabinet-refinishing": { bg: "bg-amber-500/10", text: "text-amber-600", gradient: "from-amber-500 to-orange-500" },
+  "commercial-painting": { bg: "bg-purple-500/10", text: "text-purple-600", gradient: "from-purple-500 to-purple-600" },
+};
 
 // ============================================
 // PAGE COMPONENT
@@ -171,6 +244,8 @@ export default function CityServicePage({
   }
 
   const schema = generateSchema(city, service);
+  const ServiceIcon = serviceIcons[service.slug] || Paintbrush;
+  const colors = serviceColors[service.slug] || serviceColors["interior-painting"];
 
   // Get nearby cities for internal linking
   const nearbyCities = cities
@@ -182,158 +257,250 @@ export default function CityServicePage({
 
   return (
     <>
-      {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
       <div className="min-h-screen bg-white">
-        {/* TOP BAR */}
-        <div className="bg-[#1C1F2E] text-white py-2 text-sm">
-          <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href={`tel:${businessInfo.phoneFormatted}`} className="hover:text-[#00B894]">
-              {businessInfo.phone}
-            </a>
-            <span>Serving {city.name}, MA & {city.county} County</span>
-          </div>
-        </div>
+        {/* Header */}
+        <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-4">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
+                  alt="Mass Painters Pro"
+                  width={180}
+                  height={50}
+                  className="h-11 w-auto"
+                  priority
+                />
+              </Link>
 
-        {/* HEADER */}
-        <header className="bg-white shadow-sm sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-[#1C1F2E]">
-              {businessInfo.name}
-            </Link>
-            <nav className="hidden md:flex gap-6">
-              <Link href="/#services" className="hover:text-[#00B894]">Services</Link>
-              <Link href="/#about" className="hover:text-[#00B894]">About</Link>
-              <Link href="/#contact" className="hover:text-[#00B894]">Contact</Link>
-            </nav>
-            <a
-              href={`tel:${businessInfo.phoneFormatted}`}
-              className="bg-[#00B894] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#00a085] transition"
-            >
-              Free Estimate
-            </a>
+              <nav className="hidden lg:flex items-center gap-8">
+                <Link href="/interior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Interior
+                </Link>
+                <Link href="/exterior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Exterior
+                </Link>
+                <Link href="/cabinet-refinishing" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Cabinets
+                </Link>
+                <Link href="/commercial-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Commercial
+                </Link>
+              </nav>
+
+              <div className="hidden lg:flex items-center gap-4">
+                <a href="tel:+17743415233" className="flex items-center gap-2 text-gray-700 hover:text-emerald-600 font-medium">
+                  <Phone size={18} />
+                  {businessInfo.phone}
+                </a>
+                <a
+                  href="#quote"
+                  className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25"
+                >
+                  Free Quote
+                  <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
           </div>
         </header>
 
-        {/* HERO SECTION */}
-        <section className="bg-gradient-to-br from-[#1C1F2E] to-[#2a2d3e] text-white py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="max-w-3xl">
-              {/* Breadcrumb */}
-              <nav className="text-sm text-gray-400 mb-4">
-                <Link href="/" className="hover:text-white">Home</Link>
-                {" / "}
-                <Link href="/ma" className="hover:text-white">Massachusetts</Link>
-                {" / "}
-                <Link href={`/ma/${city.slug}`} className="hover:text-white">{city.name}</Link>
-                {" / "}
-                <span className="text-[#00B894]">{service.name}</span>
-              </nav>
+        {/* Hero Section */}
+        <section className="relative bg-[#1C1F2E] overflow-hidden">
+          <div className="absolute inset-0">
+            <div className={`absolute inset-0 bg-gradient-to-br from-[#1C1F2E] via-[#1C1F2E] to-emerald-900/20`} />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl" />
+          </div>
 
-              {/* H1 - Primary SEO keyword */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                {service.name} in{" "}
-                <span className="text-[#00B894]">{city.name}, MA</span>
-              </h1>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm text-gray-400 mb-6">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight size={14} />
+              <Link href={`/${service.slug}`} className="hover:text-white transition-colors">{service.name}</Link>
+              <ChevronRight size={14} />
+              <span className="text-emerald-400">{city.name}, MA</span>
+            </nav>
 
-              <p className="text-xl text-gray-300 mb-8">
-                Professional {service.name.toLowerCase()} services for homes and businesses in {city.name}
-                and throughout {city.county} County. {businessInfo.yearsInBusiness}+ years of experience,
-                {businessInfo.projectsCompleted.toLocaleString()}+ projects completed.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                {/* Badge */}
+                <div className={`inline-flex items-center gap-2 ${colors.bg} ${colors.text} rounded-full px-4 py-2 mb-6 text-sm font-medium`}>
+                  <ServiceIcon size={16} />
+                  <span>{service.name} in {city.name}</span>
+                </div>
 
-              <div className="flex flex-wrap gap-4 mb-8">
-                <span className="bg-white/10 px-4 py-2 rounded-full text-sm">✓ Licensed & Insured</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full text-sm">✓ 5-Year Warranty</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full text-sm">✓ Free Estimates</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full text-sm">✓ {businessInfo.rating}★ Rating</span>
+                {/* H1 */}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
+                  {service.name} in{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-500">
+                    {city.name}, MA
+                  </span>
+                </h1>
+
+                {/* Sub-headline */}
+                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                  Professional {service.name.toLowerCase()} services for homes and businesses in {city.name}
+                  and throughout {city.county} County. {businessInfo.yearsInBusiness}+ years of experience,
+                  {businessInfo.projectsCompleted.toLocaleString()}+ projects completed.
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <a
+                    href="#quote"
+                    className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-4 px-8 rounded-full text-lg transition-all shadow-xl shadow-emerald-500/30 hover:scale-105"
+                  >
+                    Get Your Free Quote
+                    <ArrowRight size={20} />
+                  </a>
+                  <a
+                    href="tel:+17743415233"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full text-lg transition-all border border-white/20"
+                  >
+                    <Phone size={20} />
+                    Call Now
+                  </a>
+                </div>
+
+                {/* Trust Indicators */}
+                <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2">
+                    <CheckCircle2 size={16} className="text-emerald-500" />
+                    <span>Licensed & Insured</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2">
+                    <CheckCircle2 size={16} className="text-emerald-500" />
+                    <span>5-Year Warranty</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2">
+                    <Star size={16} className="text-yellow-400" />
+                    <span>{businessInfo.rating}★ Rating</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#quote"
-                  className="bg-[#00B894] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#00a085] transition"
-                >
-                  Get Your Free Estimate →
-                </a>
-                <a
-                  href={`tel:${businessInfo.phoneFormatted}`}
-                  className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition"
-                >
-                  Call {businessInfo.phone}
-                </a>
+              {/* Stats Card */}
+              <div className="hidden lg:block">
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-white/5 rounded-2xl p-6 text-center">
+                      <div className="text-4xl font-black text-white mb-1">{businessInfo.yearsInBusiness}+</div>
+                      <div className="text-gray-400 text-sm">Years Experience</div>
+                    </div>
+                    <div className={`bg-gradient-to-br ${colors.gradient} rounded-2xl p-6 text-center shadow-xl`}>
+                      <div className="text-4xl font-black text-white mb-1">{(businessInfo.projectsCompleted / 1000).toFixed(0)}K+</div>
+                      <div className="text-white/80 text-sm">Projects Done</div>
+                    </div>
+                    <div className={`bg-gradient-to-br ${colors.gradient} rounded-2xl p-6 text-center shadow-xl`}>
+                      <div className="text-4xl font-black text-white mb-1">100%</div>
+                      <div className="text-white/80 text-sm">Satisfaction</div>
+                    </div>
+                    <div className="bg-white/5 rounded-2xl p-6 text-center">
+                      <div className="flex items-center justify-center gap-1 text-4xl font-black text-white mb-1">
+                        {businessInfo.rating} <Star size={24} className="text-yellow-400" fill="#facc15" />
+                      </div>
+                      <div className="text-gray-400 text-sm">Google Rating</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* MAIN CONTENT */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4">
+        {/* Trust Bar */}
+        <section className="bg-gray-50 border-b border-gray-200 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: Shield, title: "Licensed & Insured", desc: "Full coverage" },
+                { icon: Users, title: "Family Owned", desc: "Local business" },
+                { icon: Award, title: "5-Year Warranty", desc: "Guaranteed" },
+                { icon: Clock, title: "Same Week Start", desc: "Fast scheduling" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center">
+                    <item.icon className="text-emerald-600" size={20} />
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 text-sm">{item.title}</div>
+                    <div className="text-gray-500 text-xs">{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <section className="py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-12">
-              {/* Main Content */}
+              {/* Content */}
               <div className="lg:col-span-2">
                 {/* Introduction */}
-                <h2 className="text-3xl font-bold text-[#1C1F2E] mb-6">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
                   Professional {service.name} Services in {city.name}
                 </h2>
-                <p className="text-[#6B7175] mb-6 text-lg leading-relaxed">
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   Looking for reliable {service.name.toLowerCase()} in {city.name}, Massachusetts?
-                  {businessInfo.name} is {city.county} County's trusted painting contractor,
+                  Mass Painters Pro is {city.county} County&apos;s trusted painting contractor,
                   serving homeowners and businesses with exceptional craftsmanship since 2009.
                 </p>
-                <p className="text-[#6B7175] mb-8 text-lg leading-relaxed">
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   Our team of experienced painters understands the unique challenges of New England
                   properties. From historic homes to modern construction, we deliver {service.name.toLowerCase()}
-                  that protects your investment and enhances your property's value.
+                  that protects your investment and enhances your property&apos;s value.
                 </p>
 
                 {/* Benefits */}
-                <h3 className="text-2xl font-bold text-[#1C1F2E] mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Why Choose Our {service.shortName} Painting in {city.name}?
                 </h3>
-                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                <div className="grid md:grid-cols-2 gap-4 mb-12">
                   {service.benefits.map((benefit, index) => (
                     <div
                       key={index}
-                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg"
+                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100"
                     >
-                      <span className="text-[#00B894] text-xl">✓</span>
-                      <span className="text-[#1C1F2E] font-medium">{benefit}</span>
+                      <CheckCircle2 size={20} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-medium">{benefit}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Process */}
-                <h3 className="text-2xl font-bold text-[#1C1F2E] mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Our {service.shortName} Painting Process
                 </h3>
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 mb-12">
                   {service.process.map((step, index) => (
                     <div key={index} className="flex items-center gap-4">
-                      <span className="w-10 h-10 bg-[#00B894] text-white rounded-full flex items-center justify-center font-bold">
+                      <div className="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                         {index + 1}
-                      </span>
-                      <span className="text-[#1C1F2E] text-lg">{step}</span>
+                      </div>
+                      <span className="text-gray-700 text-lg">{step}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Local Content */}
-                <h3 className="text-2xl font-bold text-[#1C1F2E] mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Serving {city.name} and {city.county} County
                 </h3>
-                <p className="text-[#6B7175] mb-6 text-lg leading-relaxed">
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   As a local {city.county} County painting company, we understand the specific needs
                   of {city.name} properties. Whether you own a colonial in the historic district
                   or a contemporary home in a newer development, our painters deliver results
                   that exceed expectations.
                 </p>
-                <p className="text-[#6B7175] mb-8 text-lg leading-relaxed">
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   With a population of {city.population.toLocaleString()}, {city.name} is home to
                   diverse architectural styles that require specialized painting expertise.
                   Our team is trained in the latest techniques and uses premium materials
@@ -341,143 +508,119 @@ export default function CityServicePage({
                 </p>
 
                 {/* FAQ Section */}
-                <h3 className="text-2xl font-bold text-[#1C1F2E] mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Frequently Asked Questions
                 </h3>
-                <div className="space-y-4 mb-8">
-                  <details className="bg-gray-50 rounded-lg p-4">
-                    <summary className="font-semibold text-[#1C1F2E] cursor-pointer">
-                      How much does {service.name.toLowerCase()} cost in {city.name}?
-                    </summary>
-                    <p className="mt-3 text-[#6B7175]">
-                      Costs vary based on project size, surface condition, and paint quality.
-                      Contact us for a free, no-obligation estimate tailored to your specific needs.
-                    </p>
-                  </details>
-                  <details className="bg-gray-50 rounded-lg p-4">
-                    <summary className="font-semibold text-[#1C1F2E] cursor-pointer">
-                      How long does {service.name.toLowerCase()} take?
-                    </summary>
-                    <p className="mt-3 text-[#6B7175]">
-                      Most {service.shortName.toLowerCase()} projects in {city.name} are completed
-                      within 2-5 days. We'll provide a detailed timeline during your consultation.
-                    </p>
-                  </details>
-                  <details className="bg-gray-50 rounded-lg p-4">
-                    <summary className="font-semibold text-[#1C1F2E] cursor-pointer">
-                      Do you offer a warranty?
-                    </summary>
-                    <p className="mt-3 text-[#6B7175]">
-                      Yes! We offer a comprehensive 5-year warranty on all {service.name.toLowerCase()}
-                      projects in {city.name} and throughout {city.county} County.
-                    </p>
-                  </details>
+                <div className="space-y-4">
+                  {[
+                    {
+                      q: `How much does ${service.name.toLowerCase()} cost in ${city.name}?`,
+                      a: `Costs vary based on project size, surface condition, and paint quality. Contact us for a free, no-obligation estimate tailored to your specific needs.`,
+                    },
+                    {
+                      q: `How long does ${service.name.toLowerCase()} take?`,
+                      a: `Most ${service.shortName.toLowerCase()} projects in ${city.name} are completed within 2-5 days. We'll provide a detailed timeline during your consultation.`,
+                    },
+                    {
+                      q: `Do you offer a warranty?`,
+                      a: `Yes! We offer a comprehensive 5-year warranty on all ${service.name.toLowerCase()} projects in ${city.name} and throughout ${city.county} County.`,
+                    },
+                  ].map((faq, i) => (
+                    <details key={i} className="bg-gray-50 rounded-xl border border-gray-100 group">
+                      <summary className="font-semibold text-gray-900 cursor-pointer p-4 hover:bg-gray-100 rounded-xl transition-colors">
+                        {faq.q}
+                      </summary>
+                      <p className="px-4 pb-4 text-gray-600">{faq.a}</p>
+                    </details>
+                  ))}
                 </div>
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-1">
                 {/* Quote Form */}
-                <div id="quote" className="bg-[#1C1F2E] text-white p-6 rounded-xl mb-8 sticky top-24">
-                  <h3 className="text-xl font-bold mb-4">
+                <div id="quote" className="bg-white rounded-3xl shadow-2xl p-6 border border-gray-100 sticky top-24">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     Get Your Free Estimate
                   </h3>
-                  <p className="text-gray-300 mb-4 text-sm">
+                  <p className="text-gray-600 text-sm mb-4">
                     Request a free quote for {service.name.toLowerCase()} in {city.name}
                   </p>
-                  <div className="min-h-[500px] bg-white rounded-lg overflow-hidden">
-                    <iframe
-                      src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
-                      style={{ width: '100%', height: '500px', border: 'none' }}
-                      id="inline-PAkCy4I8PqgdMLhpiPb0"
-                      data-layout="{'id':'INLINE'}"
-                      data-trigger-type="alwaysShow"
-                      data-trigger-value=""
-                      data-activation-type="alwaysActivated"
-                      data-activation-value=""
-                      data-deactivation-type="neverDeactivate"
-                      data-deactivation-value=""
-                      data-form-name="Form 1"
-                      data-height="500"
-                      data-layout-iframe-id="inline-PAkCy4I8PqgdMLhpiPb0"
-                      data-form-id="PAkCy4I8PqgdMLhpiPb0"
-                      title="Free Estimate Form"
-                    />
-                  </div>
-                  <p className="text-xs text-gray-400 mt-4 text-center">
-                    Or call us: {businessInfo.phone}
+                  <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/PAkCy4I8PqgdMLhpiPb0"
+                    className="w-full h-[500px] border-none rounded-lg"
+                    id="inline-PAkCy4I8PqgdMLhpiPb0"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Form 1"
+                    data-height="500"
+                    data-layout-iframe-id="inline-PAkCy4I8PqgdMLhpiPb0"
+                    data-form-id="PAkCy4I8PqgdMLhpiPb0"
+                    title="Free Estimate Form"
+                  />
+                  <p className="text-center text-gray-500 text-xs mt-3">
+                    Or call us: <a href="tel:+17743415233" className="text-emerald-600 font-medium">{businessInfo.phone}</a>
                   </p>
-                </div>
-
-                {/* Trust Signals */}
-                <div className="bg-gray-50 p-6 rounded-xl mb-8">
-                  <h4 className="font-bold text-[#1C1F2E] mb-4">Why Choose Us</h4>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#00B894]">✓</span>
-                      {businessInfo.yearsInBusiness}+ Years Experience
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#00B894]">✓</span>
-                      {businessInfo.projectsCompleted.toLocaleString()}+ Projects Completed
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#00B894]">✓</span>
-                      {businessInfo.rating}★ Google Rating ({businessInfo.reviewCount}+ reviews)
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#00B894]">✓</span>
-                      Licensed & Fully Insured
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="text-[#00B894]">✓</span>
-                      5-Year Workmanship Warranty
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* INTERNAL LINKING - Other Services */}
-        <section className="py-12 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl font-bold text-[#1C1F2E] mb-6">
+        {/* Other Services */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">
               Other Services in {city.name}, MA
             </h2>
-            <div className="grid md:grid-cols-3 gap-4">
-              {otherServices.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/ma/${city.slug}/${s.slug}`}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition border border-gray-100"
-                >
-                  <h3 className="font-bold text-[#1C1F2E] mb-2">{s.name}</h3>
-                  <p className="text-sm text-[#6B7175] mb-3">{s.description}</p>
-                  <span className="text-[#00B894] font-medium text-sm">
-                    Learn More →
-                  </span>
-                </Link>
-              ))}
+            <div className="grid md:grid-cols-3 gap-6">
+              {otherServices.map((s) => {
+                const Icon = serviceIcons[s.slug] || Paintbrush;
+                const sColors = serviceColors[s.slug] || serviceColors["interior-painting"];
+                return (
+                  <Link
+                    key={s.slug}
+                    href={`/ma/${city.slug}/${s.slug}`}
+                    className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-emerald-200 transition-all group"
+                  >
+                    <div className={`w-12 h-12 ${sColors.bg} rounded-xl flex items-center justify-center mb-4`}>
+                      <Icon className={sColors.text} size={24} />
+                    </div>
+                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                      {s.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3">{s.description}</p>
+                    <span className="inline-flex items-center gap-1 text-emerald-600 font-medium text-sm group-hover:gap-2 transition-all">
+                      Learn More
+                      <ChevronRight size={16} />
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* INTERNAL LINKING - Nearby Cities */}
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl font-bold text-[#1C1F2E] mb-6">
+        {/* Nearby Cities */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">
               {service.name} in Nearby {city.county} County Cities
             </h2>
-            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {nearbyCities.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/ma/${c.slug}/${service.slug}`}
-                  className="bg-gray-50 p-4 rounded-lg text-center hover:bg-[#00B894] hover:text-white transition group"
+                  className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 border border-gray-100 transition-all group"
                 >
-                  <span className="font-medium group-hover:text-white text-[#1C1F2E]">
+                  <MapPin size={14} className="text-emerald-500 flex-shrink-0" />
+                  <span className="text-gray-700 font-medium text-sm group-hover:text-emerald-700">
                     {c.name}
                   </span>
                 </Link>
@@ -486,83 +629,120 @@ export default function CityServicePage({
           </div>
         </section>
 
-        {/* CTA SECTION */}
-        <section className="py-16 bg-[#1C1F2E] text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        {/* CTA Section */}
+        <section className="py-16 lg:py-20 bg-gradient-to-r from-emerald-600 to-emerald-500">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
               Ready for {service.name} in {city.name}?
             </h2>
-            <p className="text-gray-300 mb-8 text-lg">
-              Get a free, no-obligation estimate from {city.county} County's trusted painters.
+            <p className="text-xl text-emerald-100 mb-8">
+              Get a free, no-obligation estimate from {city.county} County&apos;s most trusted painters.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#quote"
-                className="bg-[#00B894] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#00a085] transition"
+                className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 font-bold py-4 px-8 rounded-full text-lg transition-all hover:bg-gray-100 hover:scale-105 shadow-xl"
               >
                 Get Free Estimate
+                <ArrowRight size={20} />
               </a>
               <a
-                href={`tel:${businessInfo.phoneFormatted}`}
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-[#1C1F2E] transition"
+                href="tel:+17743415233"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all"
               >
-                Call {businessInfo.phone}
+                <Phone size={20} />
+                {businessInfo.phone}
               </a>
             </div>
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="bg-[#0f1118] text-white py-12">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-8">
+        {/* Footer */}
+        <footer className="bg-[#1C1F2E] text-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
               <div>
-                <h4 className="font-bold text-lg mb-4">{businessInfo.name}</h4>
-                <p className="text-gray-400 text-sm mb-4">
-                  {businessInfo.address.full}
+                <Image
+                  src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
+                  alt="Mass Painters Pro"
+                  width={160}
+                  height={45}
+                  className="h-10 w-auto mb-6 brightness-0 invert"
+                />
+                <p className="text-gray-400 mb-6">
+                  Massachusetts&apos; trusted painting professionals since 2009.
                 </p>
-                <p className="text-gray-400 text-sm">
-                  {businessInfo.phone}<br />
-                  {businessInfo.email}
-                </p>
+                <div className="flex gap-3">
+                  <a href={businessInfo.social.facebook} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                    <Facebook size={18} />
+                  </a>
+                  <a href={businessInfo.social.instagram} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                    <Instagram size={18} />
+                  </a>
+                  <a href={businessInfo.social.linkedin} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                </div>
               </div>
+
               <div>
-                <h4 className="font-bold mb-4">Services</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
+                <h3 className="text-lg font-bold mb-6">Services in {city.name}</h3>
+                <ul className="space-y-3">
                   {services.map((s) => (
                     <li key={s.slug}>
-                      <Link href={`/ma/${city.slug}/${s.slug}`} className="hover:text-white">
+                      <Link href={`/ma/${city.slug}/${s.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
                         {s.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
+
               <div>
-                <h4 className="font-bold mb-4">Service Areas</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
+                <h3 className="text-lg font-bold mb-6">Service Areas</h3>
+                <ul className="space-y-3">
                   {cities.slice(0, 6).map((c) => (
                     <li key={c.slug}>
-                      <Link href={`/ma/${c.slug}/${service.slug}`} className="hover:text-white">
+                      <Link href={`/ma/${c.slug}/${service.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
                         {c.name}, MA
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
+
               <div>
-                <h4 className="font-bold mb-4">Hours</h4>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  <li>Mon-Fri: {businessInfo.hours.weekdays}</li>
-                  <li>Saturday: {businessInfo.hours.saturday}</li>
-                  <li>Sunday: {businessInfo.hours.sunday}</li>
+                <h3 className="text-lg font-bold mb-6">Contact Us</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <MapPin size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
+                    <span className="text-gray-400">
+                      {businessInfo.address.street}<br />
+                      {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Phone size={20} className="text-emerald-500 flex-shrink-0" />
+                    <a href="tel:+17743415233" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      {businessInfo.phone}
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Mail size={20} className="text-emerald-500 flex-shrink-0" />
+                    <a href={`mailto:${businessInfo.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      {businessInfo.email}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} {businessInfo.name}. All rights reserved.
-              <br />
-              Serving {city.name}, {city.county} County, and all of Massachusetts.
+
+            <div className="border-t border-white/10 mt-12 pt-8">
+              <p className="text-gray-400 text-sm text-center">
+                &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in MA
+                <br />
+                <span className="text-gray-500">Serving {city.name}, {city.county} County, and all of Massachusetts.</span>
+              </p>
             </div>
           </div>
         </footer>

@@ -105,7 +105,7 @@ const jsonLd = {
   description:
     "Top-rated painting professionals serving all of Massachusetts. Interior, exterior painting & cabinet refinishing services.",
   url: "https://masspainter.pro",
-  telephone: "+1-555-123-4567",
+  telephone: "+1-774-341-5233",
   email: "info@masspainterspro.com",
   address: {
     "@type": "PostalAddress",

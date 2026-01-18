@@ -223,8 +223,8 @@ export const services = [
 
 export const businessInfo = {
   name: "Mass Painters Pro",
-  phone: "(555) 123-4567",
-  phoneFormatted: "+1-555-123-4567",
+  phone: "(774) 341-5233",
+  phoneFormatted: "+1-774-341-5233",
   email: "info@masspainterspro.com",
   address: {
     street: "123 Main Street",
