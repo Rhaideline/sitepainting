@@ -287,17 +287,31 @@ export default function CityServicePage({
               </Link>
 
               <nav className="hidden lg:flex items-center gap-8">
-                <Link href="/interior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                  Interior
+                <Link href="/" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Home
                 </Link>
-                <Link href="/exterior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                  Exterior
+                <Link href="/about" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  About
                 </Link>
-                <Link href="/cabinet-refinishing" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                  Cabinets
+                <div className="relative group">
+                  <button type="button" className="text-emerald-600 font-semibold flex items-center gap-1">
+                    Services
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                    <Link href="/interior-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Interior Painting</Link>
+                    <Link href="/exterior-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Exterior Painting</Link>
+                    <Link href="/cabinet-refinishing" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Cabinet Refinishing</Link>
+                    <Link href="/commercial-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Commercial Painting</Link>
+                  </div>
+                </div>
+                <Link href="/blog" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Blog
                 </Link>
-                <Link href="/commercial-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                  Commercial
+                <Link href="/contact" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                  Contact
                 </Link>
               </nav>
 
@@ -520,6 +534,81 @@ export default function CityServicePage({
                   suited for the Massachusetts climate.
                 </p>
 
+                {/* City-Specific Challenges Section */}
+                {city.paintingChallenges && city.paintingChallenges.length > 0 && (
+                  <div className="bg-gradient-to-br from-gray-50 to-emerald-50/30 rounded-2xl p-6 mb-8 border border-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Common Painting Challenges in {city.name}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {city.name} homes face unique painting challenges due to the local climate and common home styles. Here&apos;s what we commonly address:
+                    </p>
+                    <ul className="space-y-3">
+                      {city.paintingChallenges.map((challenge, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <CheckCircle2 size={20} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700">{challenge}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Local Facts */}
+                {city.localFacts && city.localFacts.length > 0 && (
+                  <div className="bg-blue-50/50 rounded-2xl p-6 mb-8 border border-blue-100">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      About {city.name}, Massachusetts
+                    </h3>
+                    <ul className="space-y-2">
+                      {city.localFacts.map((fact, idx) => (
+                        <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                          <span className="text-blue-500">•</span>
+                          {fact}
+                        </li>
+                      ))}
+                    </ul>
+                    {city.avgHomeAge && (
+                      <p className="text-gray-600 text-sm mt-4">
+                        <strong>Average Home Age:</strong> {city.avgHomeAge}
+                      </p>
+                    )}
+                    {city.commonHomeStyles && city.commonHomeStyles.length > 0 && (
+                      <p className="text-gray-600 text-sm mt-2">
+                        <strong>Common Home Styles:</strong> {city.commonHomeStyles.join(", ")}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Service-Specific Problems & Solutions */}
+                {service.commonProblems && service.commonProblems.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                      {service.shortName} Painting Problems We Solve in {city.name}
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {service.commonProblems.map((problem, idx) => (
+                        <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                          <div className="flex items-start gap-3">
+                            <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <span className="text-red-600 font-bold text-sm">!</span>
+                            </div>
+                            <div>
+                              <p className="font-medium text-gray-900">{problem}</p>
+                              {service.solutions && service.solutions[idx] && (
+                                <p className="text-sm text-emerald-600 mt-1">
+                                  ✓ {service.solutions[idx]}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* FAQ Section */}
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   Frequently Asked Questions
@@ -712,15 +801,33 @@ export default function CityServicePage({
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-6">Service Areas</h3>
+                <h3 className="text-lg font-bold mb-6">Quick Links</h3>
                 <ul className="space-y-3">
-                  {cities.slice(0, 6).map((c) => (
-                    <li key={c.slug}>
-                      <Link href={`/ma/${c.slug}/${service.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                        {c.name}, MA
-                      </Link>
-                    </li>
-                  ))}
+                  <li>
+                    <Link href="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/#areas" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      Service Areas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      Contact
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

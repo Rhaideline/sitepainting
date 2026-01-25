@@ -113,17 +113,31 @@ export default function ContactPage() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/interior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Interior
+              <Link href="/" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                Home
               </Link>
-              <Link href="/exterior-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Exterior
+              <Link href="/about" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                About
               </Link>
-              <Link href="/cabinet-refinishing" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Cabinets
+              <div className="relative group">
+                <button type="button" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors flex items-center gap-1">
+                  Services
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <Link href="/interior-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Interior Painting</Link>
+                  <Link href="/exterior-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Exterior Painting</Link>
+                  <Link href="/cabinet-refinishing" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Cabinet Refinishing</Link>
+                  <Link href="/commercial-painting" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Commercial Painting</Link>
+                </div>
+              </div>
+              <Link href="/blog" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                Blog
               </Link>
-              <Link href="/commercial-painting" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Commercial
+              <Link href="/contact" className="text-emerald-600 font-medium">
+                Contact
               </Link>
             </nav>
 
@@ -295,6 +309,52 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Map Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Service Area
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              We proudly serve all of Massachusetts, from Boston to Worcester and beyond.
+            </p>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1512096.5582277775!2d-72.68573897656251!3d42.11918265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3652d0d3d311b%3A0x787cbf240162e8a0!2sMassachusetts!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              width="100%"
+              height="450"
+              className="w-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mass Painters Pro Service Area - Massachusetts"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6 mt-8">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-black text-emerald-500 mb-2">100+</div>
+              <div className="text-gray-600">Cities Served</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-black text-emerald-500 mb-2">15+</div>
+              <div className="text-gray-600">Years Experience</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-black text-emerald-500 mb-2">2,500+</div>
+              <div className="text-gray-600">Projects Completed</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-black text-emerald-500 mb-2">4.9★</div>
+              <div className="text-gray-600">Google Rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-[#1C1F2E] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -342,6 +402,16 @@ export default function ContactPage() {
                 <li>
                   <Link href="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                    Blog
                   </Link>
                 </li>
                 <li>
