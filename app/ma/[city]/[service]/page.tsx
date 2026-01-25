@@ -293,8 +293,8 @@ export default function CityServicePage({
           </div>
         </div>
 
-        {/* Header */}
-        <header className="sticky top-0 z-50 bg-[#1C1F2E] shadow-lg">
+        {/* Header - Modern White Style */}
+        <header className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <Link href="/" className="flex items-center">
@@ -303,42 +303,102 @@ export default function CityServicePage({
                   alt="Mass Painters Pro"
                   width={180}
                   height={50}
-                  className="h-11 w-auto brightness-0 invert"
+                  className="h-11 w-auto"
                   priority
                 />
               </Link>
 
               <nav className="hidden lg:flex items-center gap-8">
-                <Link href="/" className="text-white hover:text-emerald-400 font-medium transition-colors">
+                <Link href="/" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
                   Home
                 </Link>
+
+                {/* Modern Mega Menu for Services */}
                 <div className="relative group">
-                  <button type="button" className="text-emerald-400 font-semibold flex items-center gap-1">
+                  <button type="button" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors flex items-center gap-1">
                     Services
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                    <Link href="/interior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Interior Painting</Link>
-                    <Link href="/exterior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Exterior Painting</Link>
-                    <Link href="/cabinet-refinishing" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Cabinet Refinishing</Link>
-                    <Link href="/commercial-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Commercial Painting</Link>
+
+                  {/* Modern Mega Menu Dropdown */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      {/* Interior Painting */}
+                      <Link href="/interior-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all group/item">
+                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-blue-200 transition-colors">
+                          <Home className="text-blue-600" size={24} />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 group-hover/item:text-blue-600 transition-colors">Interior Painting</h3>
+                          <p className="text-sm text-gray-500 mt-1">Transform your living spaces with premium finishes</p>
+                        </div>
+                      </Link>
+
+                      {/* Exterior Painting */}
+                      <Link href="/exterior-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-emerald-50 hover:to-emerald-100 transition-all group/item">
+                        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-emerald-200 transition-colors">
+                          <Paintbrush className="text-emerald-600" size={24} />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 group-hover/item:text-emerald-600 transition-colors">Exterior Painting</h3>
+                          <p className="text-sm text-gray-500 mt-1">Weather-resistant coatings for New England</p>
+                        </div>
+                      </Link>
+
+                      {/* Cabinet Refinishing */}
+                      <Link href="/cabinet-refinishing" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 transition-all group/item">
+                        <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-amber-200 transition-colors">
+                          <PaintBucket className="text-amber-600" size={24} />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 group-hover/item:text-amber-600 transition-colors">Cabinet Refinishing</h3>
+                          <p className="text-sm text-gray-500 mt-1">Factory-smooth finishes at a fraction of replacement</p>
+                        </div>
+                      </Link>
+
+                      {/* Commercial Painting */}
+                      <Link href="/commercial-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100 transition-all group/item">
+                        <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-purple-200 transition-colors">
+                          <Building2 className="text-purple-600" size={24} />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 group-hover/item:text-purple-600 transition-colors">Commercial Painting</h3>
+                          <p className="text-sm text-gray-500 mt-1">Minimal disruption for offices & businesses</p>
+                        </div>
+                      </Link>
+                    </div>
+
+                    {/* Mega Menu Footer */}
+                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <CheckCircle2 size={16} className="text-emerald-500" />
+                        <span>Free Estimates</span>
+                        <span className="mx-2">•</span>
+                        <CheckCircle2 size={16} className="text-emerald-500" />
+                        <span>5-Year Warranty</span>
+                      </div>
+                      <Link href="/contact" className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm flex items-center gap-1">
+                        Get Quote <ArrowRight size={14} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-                <Link href="/blog" className="text-white hover:text-emerald-400 font-medium transition-colors">
+
+                <Link href="/blog" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
                   Blog
                 </Link>
-                <Link href="/about" className="text-white hover:text-emerald-400 font-medium transition-colors">
+                <Link href="/about" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
                   About
                 </Link>
-                <Link href="/contact" className="text-white hover:text-emerald-400 font-medium transition-colors">
+                <Link href="/contact" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
                   Contact
                 </Link>
               </nav>
 
               <div className="hidden lg:flex items-center">
-                <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all">
+                <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25">
                   <Phone size={18} />
                   {businessInfo.phone}
                 </a>
@@ -721,25 +781,93 @@ export default function CityServicePage({
           </div>
         </section>
 
-        {/* Nearby Cities */}
+        {/* City Map Section */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">
-              {service.name} in Nearby {city.county} County Cities
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {nearbyCities.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/ma/${c.slug}/${service.slug}`}
-                  className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 border border-gray-100 transition-all group"
-                >
-                  <MapPin size={14} className="text-emerald-500 flex-shrink-0" />
-                  <span className="text-gray-700 font-medium text-sm group-hover:text-emerald-700">
-                    {c.name}
-                  </span>
-                </Link>
-              ))}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+                <MapPin size={16} />
+                <span>Service Area</span>
+              </div>
+              <h2 className="text-3xl font-black text-gray-900 mb-4">
+                {service.name} in {city.name}, MA
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                We proudly serve {city.name} and surrounding {city.county} County communities with professional painting services.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Google Map */}
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200 h-[400px]">
+                <iframe
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(city.name + ', Massachusetts')}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`${city.name}, MA - Mass Painters Pro Service Area`}
+                  className="w-full h-full"
+                />
+              </div>
+
+              {/* Nearby Cities */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {service.name} in Nearby {city.county} County Cities
+                </h3>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  {nearbyCities.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/ma/${c.slug}/${service.slug}`}
+                      className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 border border-gray-100 transition-all group"
+                    >
+                      <MapPin size={14} className="text-emerald-500 flex-shrink-0" />
+                      <span className="text-gray-700 font-medium text-sm group-hover:text-emerald-700">
+                        {c.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Location Info Card */}
+                <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-2xl p-5 border border-emerald-100">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">Serving {city.name}</h4>
+                      <p className="text-gray-600 text-sm mt-1">
+                        {city.county} County, Massachusetts
+                      </p>
+                      <p className="text-emerald-600 font-medium text-sm mt-2">
+                        Population: {city.population.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-emerald-200/50 flex gap-3">
+                    <a
+                      href={`https://www.google.com/maps/dir//${encodeURIComponent(city.name + ', MA')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg transition-all border border-gray-200 text-sm"
+                    >
+                      Get Directions
+                    </a>
+                    <a
+                      href={`tel:${businessInfo.phoneRaw}`}
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 px-4 rounded-lg transition-all text-sm"
+                    >
+                      <Phone size={16} />
+                      Call Now
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
