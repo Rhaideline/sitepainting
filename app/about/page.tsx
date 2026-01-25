@@ -65,8 +65,30 @@ export default function AboutPage() {
       />
 
       <div className="min-h-screen bg-white">
+        {/* Top Bar */}
+        <div className="bg-emerald-500 text-white py-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center text-sm">
+              <div className="flex items-center gap-6">
+                <span className="flex items-center gap-2">
+                  <MapPin size={14} />
+                  Serving Marlborough, Massachusetts
+                </span>
+                <a href={`mailto:${businessInfo.email}`} className="hidden md:flex items-center gap-2 hover:text-white/80 transition-colors">
+                  <Mail size={14} />
+                  {businessInfo.email}
+                </a>
+              </div>
+              <a href={`tel:${businessInfo.phoneRaw}`} className="flex items-center gap-2 font-semibold hover:text-white/80 transition-colors">
+                <Phone size={14} />
+                {businessInfo.phone}
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
+        <header className="sticky top-0 z-50 bg-[#1C1F2E] shadow-lg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center py-4">
               <Link href="/" className="flex items-center">
@@ -75,44 +97,45 @@ export default function AboutPage() {
                   alt="Mass Painters Pro"
                   width={180}
                   height={50}
-                  className="h-11 w-auto"
+                  className="h-11 w-auto brightness-0 invert"
                   priority
                 />
               </Link>
 
-              <nav className="hidden lg:flex items-center gap-1">
-                <Link href="/interior-painting" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
-                  Interior
+              <nav className="hidden lg:flex items-center gap-8">
+                <Link href="/" className="text-white hover:text-emerald-400 font-medium transition-colors">
+                  Home
                 </Link>
-                <Link href="/exterior-painting" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
-                  Exterior
-                </Link>
-                <Link href="/cabinet-refinishing" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
-                  Cabinets
-                </Link>
-                <Link href="/commercial-painting" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
-                  Commercial
-                </Link>
-                <Link href="/blog" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
+                <div className="relative group">
+                  <button type="button" className="text-white hover:text-emerald-400 font-medium transition-colors flex items-center gap-1">
+                    Services
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                    <Link href="/interior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Interior Painting</Link>
+                    <Link href="/exterior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Exterior Painting</Link>
+                    <Link href="/cabinet-refinishing" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Cabinet Refinishing</Link>
+                    <Link href="/commercial-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Commercial Painting</Link>
+                  </div>
+                </div>
+                <Link href="/blog" className="text-white hover:text-emerald-400 font-medium transition-colors">
                   Blog
                 </Link>
-                <Link href="/about" className="px-4 py-2 text-emerald-600 font-medium transition-colors rounded-lg bg-emerald-50">
+                <Link href="/about" className="text-emerald-400 font-medium">
                   About
                 </Link>
-                <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors rounded-lg hover:bg-gray-50">
+                <Link href="/contact" className="text-white hover:text-emerald-400 font-medium transition-colors">
                   Contact
                 </Link>
               </nav>
 
-              <div className="hidden lg:flex items-center gap-4">
-                <a href={`tel:${businessInfo.phoneRaw}`} className="flex items-center gap-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors">
-                  <Phone size={18} className="text-emerald-600" />
-                  <span>{businessInfo.phone}</span>
+              <div className="hidden lg:flex items-center">
+                <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all">
+                  <Phone size={18} />
+                  {businessInfo.phone}
                 </a>
-                <Link href="/#quote" className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25">
-                  Free Estimate
-                  <ArrowRight size={18} />
-                </Link>
               </div>
             </div>
           </div>
