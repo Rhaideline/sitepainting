@@ -91,6 +91,15 @@ export const metadata: Metadata = {
   creator: "Mass Painters Pro",
   publisher: "Mass Painters Pro",
   category: "Home Services",
+
+  // Favicon and icons
+  icons: {
+    icon: [
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", type: "image/png" },
+    ],
+    shortcut: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png",
+    apple: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png",
+  },
 };
 
 /**

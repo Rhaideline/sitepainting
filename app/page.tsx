@@ -191,6 +191,68 @@ const jsonLd = {
         availableLanguage: ["English", "Portuguese", "Spanish"],
       },
     },
+    {
+      "@type": "FAQPage",
+      "@id": "https://masspainter.pro/#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How much does professional painting cost in Massachusetts?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Interior painting in Massachusetts typically ranges from $2-$6 per square foot, while exterior painting ranges from $3-$7 per square foot. Factors affecting cost include surface condition, paint quality, prep work needed, and architectural details."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "When is the best time to paint exterior in Massachusetts?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The ideal time for exterior painting in Massachusetts is late spring through early fall, when temperatures are consistently above 50°F and humidity is moderate. We typically schedule exterior projects from May through October."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "How long does a typical painting project take?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most interior rooms take 1-2 days per room. A complete interior repaint of a typical 3-bedroom home takes 4-7 days. Exterior projects for an average-sized home typically take 5-10 days, depending on prep work needed."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Do you handle lead paint in older Massachusetts homes?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, we're EPA Lead-Safe certified and follow strict protocols for homes built before 1978. We safely contain and remove lead paint, protecting your family and meeting all Massachusetts and federal regulations."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "What paint brands do you use and recommend?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We use exclusively premium paints from Benjamin Moore, Sherwin-Williams, and Behr. These professional-grade products offer superior coverage, durability, and color retention compared to consumer-grade alternatives."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "What kind of warranty do you offer?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We provide a comprehensive 5-year written warranty covering peeling, blistering, cracking, and adhesion failures. Our warranty covers both materials and labor."
+          }
+        },
+        {
+          "@type": "Question",
+          name: "Do you provide color consultation services?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes! We offer complimentary color consultations with every project. Our color experts will visit your home with large sample boards and help you select the perfect palette."
+          }
+        }
+      ]
+    },
   ],
 };
 
@@ -775,6 +837,90 @@ export default function HomePage() {
         </section>
 
         {/* ============================================
+            WHY MASSACHUSETTS HOMEOWNERS CHOOSE US
+            ============================================ */}
+        <section className="py-16 lg:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+                <Award size={16} />
+                <span>Why Choose Us</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+                Why Massachusetts Homeowners Trust Mass Painters Pro
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                For over {businessInfo.yearsInBusiness} years, we&apos;ve been the go-to painting contractor for discerning homeowners across the Bay State.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* Left Column - Detailed Content */}
+              <div className="prose prose-lg max-w-none">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Understanding New England&apos;s Unique Painting Challenges</h3>
+                <p className="text-gray-600 mb-4">
+                  Massachusetts homes face some of the most challenging weather conditions in the country. From harsh winters with sub-zero temperatures and heavy snowfall to humid summers that can cause paint to peel and blister, New England properties require painting solutions specifically engineered for this climate. At Mass Painters Pro, we&apos;ve spent {businessInfo.yearsInBusiness} years perfecting our techniques to ensure your paint job not only looks beautiful but stands up to everything Mother Nature throws at it.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  Our deep understanding of local architecture—from historic colonials and Victorian homes to modern constructions—means we know exactly which preparation methods, primers, and paints work best for each situation. We&apos;ve painted everything from 18th-century Federalist homes in Concord to contemporary builds in the MetroWest suburbs, always adapting our approach to match the specific needs of each property.
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Premium Paint Products for Lasting Results</h3>
+                <p className="text-gray-600 mb-4">
+                  We partner exclusively with industry-leading paint manufacturers including Benjamin Moore, Sherwin-Williams, and Behr. These premium products cost more than big-box store alternatives, but the difference in durability, coverage, and finish quality is substantial. Benjamin Moore&apos;s Aura line, for example, offers superior color retention and can withstand the UV exposure Massachusetts homes receive without fading. Sherwin-Williams Duration provides exceptional weather resistance for exteriors, protecting against moisture infiltration that commonly damages New England homes.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  For families with health concerns, we offer zero-VOC and low-VOC paint options from all our partner brands. These environmentally-friendly formulations produce virtually no harmful fumes, making them safe for homes with children, elderly residents, or anyone with respiratory sensitivities. We believe professional painting shouldn&apos;t compromise your family&apos;s health or indoor air quality.
+                </p>
+              </div>
+
+              {/* Right Column - Benefits & Stats */}
+              <div>
+                <div className="bg-gradient-to-br from-emerald-50 to-blue-50 rounded-3xl p-8 border border-emerald-100 mb-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">The Mass Painters Pro Difference</h3>
+                  <div className="space-y-4">
+                    {[
+                      { icon: Shield, title: "Fully Licensed & Insured", desc: "Complete liability coverage and workers' compensation for every project, protecting you from any potential issues." },
+                      { icon: Award, title: "5-Year Written Warranty", desc: "Our industry-leading warranty covers peeling, blistering, and adhesion failures—because we stand behind our work." },
+                      { icon: Users, title: "Family-Owned Since 2009", desc: "We're not a franchise. We're local craftsmen who live and work in the communities we serve." },
+                      { icon: Clock, title: "Same-Week Scheduling", desc: "Need your project started quickly? We often have crews available to begin within days, not months." },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-xl">
+                        <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <item.icon className="text-emerald-600" size={20} />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">{item.title}</h4>
+                          <p className="text-gray-600 text-sm mt-1">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Local Expertise Card */}
+                <div className="bg-[#1C1F2E] rounded-3xl p-8">
+                  <h3 className="text-xl font-bold text-white mb-4">Local Expertise Matters</h3>
+                  <p className="text-gray-300 mb-6">
+                    We&apos;ve painted in {businessInfo.citiesServed}+ Massachusetts cities and towns. From the historic homes of Lexington and Concord to the lakefront properties of Worcester County, we understand the unique challenges each area presents.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-black text-emerald-400">{businessInfo.projectsCompleted.toLocaleString()}+</div>
+                      <div className="text-gray-400 text-sm">Projects Completed</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-black text-emerald-400">{businessInfo.rating}★</div>
+                      <div className="text-gray-400 text-sm">Google Rating</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
             TESTIMONIALS
             ============================================ */}
         <section className="py-16 lg:py-24 bg-gray-50">
@@ -1085,6 +1231,100 @@ export default function HomePage() {
                 View All Service Areas
                 <ChevronRight size={18} />
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
+            COMPREHENSIVE FAQ SECTION
+            ============================================ */}
+        <section className="py-16 lg:py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+                <CheckCircle2 size={16} />
+                <span>FAQ</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+                Frequently Asked Questions About Painting in Massachusetts
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Everything you need to know about professional painting services, costs, timing, and more.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Left Column */}
+              <div className="space-y-4">
+                {[
+                  {
+                    q: "How much does professional painting cost in Massachusetts?",
+                    a: "Interior painting in Massachusetts typically ranges from $2-$6 per square foot, while exterior painting ranges from $3-$7 per square foot. Factors affecting cost include surface condition, paint quality, prep work needed, and architectural details. We provide free, detailed estimates that break down all costs with no hidden fees."
+                  },
+                  {
+                    q: "When is the best time to paint exterior in Massachusetts?",
+                    a: "The ideal time for exterior painting in Massachusetts is late spring through early fall, when temperatures are consistently above 50°F and humidity is moderate. We typically schedule exterior projects from May through October. For interior projects, we work year-round since temperature and weather aren't factors."
+                  },
+                  {
+                    q: "How long does a typical painting project take?",
+                    a: "Most interior rooms take 1-2 days per room. A complete interior repaint of a typical 3-bedroom home takes 4-7 days. Exterior projects for an average-sized home typically take 5-10 days, depending on prep work needed. We'll provide a detailed timeline during your free consultation."
+                  },
+                  {
+                    q: "Do you handle lead paint in older Massachusetts homes?",
+                    a: "Yes, we're EPA Lead-Safe certified and follow strict protocols for homes built before 1978. We safely contain and remove lead paint, protecting your family and meeting all Massachusetts and federal regulations. Lead paint removal does add to project cost but is essential for safety."
+                  },
+                ].map((faq, i) => (
+                  <details key={i} className="bg-white rounded-2xl border border-gray-100 group shadow-sm">
+                    <summary className="font-bold text-gray-900 cursor-pointer p-5 hover:bg-gray-50 rounded-2xl transition-colors list-none flex items-center justify-between">
+                      {faq.q}
+                      <ChevronRight size={20} className="text-emerald-500 group-open:rotate-90 transition-transform flex-shrink-0" />
+                    </summary>
+                    <p className="px-5 pb-5 text-gray-600 leading-relaxed">{faq.a}</p>
+                  </details>
+                ))}
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-4">
+                {[
+                  {
+                    q: "What paint brands do you use and recommend?",
+                    a: "We use exclusively premium paints from Benjamin Moore, Sherwin-Williams, and Behr. These professional-grade products offer superior coverage, durability, and color retention compared to consumer-grade alternatives. We recommend Benjamin Moore Aura for interiors and Sherwin-Williams Duration for Massachusetts exteriors."
+                  },
+                  {
+                    q: "How should I prepare my home for painters?",
+                    a: "For interiors: remove small items from walls, clear valuables from rooms being painted, and ensure we have clear access. We handle all furniture moving and protection. For exteriors: clear items 6 feet from the house, ensure we can access all sides, and consider trimming bushes close to the house."
+                  },
+                  {
+                    q: "What kind of warranty do you offer?",
+                    a: "We provide a comprehensive 5-year written warranty covering peeling, blistering, cracking, and adhesion failures. This is one of the strongest warranties in Massachusetts. Our warranty covers both materials and labor, giving you complete peace of mind."
+                  },
+                  {
+                    q: "Do you provide color consultation services?",
+                    a: "Yes! We offer complimentary color consultations with every project. Our color experts will visit your home with large sample boards, consider your lighting conditions, existing décor, and architectural style, and help you select the perfect palette. We stay current on trending colors and can suggest options that enhance your home's value."
+                  },
+                ].map((faq, i) => (
+                  <details key={i} className="bg-white rounded-2xl border border-gray-100 group shadow-sm">
+                    <summary className="font-bold text-gray-900 cursor-pointer p-5 hover:bg-gray-50 rounded-2xl transition-colors list-none flex items-center justify-between">
+                      {faq.q}
+                      <ChevronRight size={20} className="text-emerald-500 group-open:rotate-90 transition-transform flex-shrink-0" />
+                    </summary>
+                    <p className="px-5 pb-5 text-gray-600 leading-relaxed">{faq.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            {/* Additional Questions CTA */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600 mb-4">Have more questions? We&apos;re here to help.</p>
+              <a
+                href={`tel:${businessInfo.phoneRaw}`}
+                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all"
+              >
+                <Phone size={18} />
+                Call {businessInfo.phone}
+              </a>
             </div>
           </div>
         </section>
