@@ -256,27 +256,35 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Stats Cards */}
+            {/* Hero Image */}
             <div className="hidden lg:block">
               <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-colors">
-                    <div className="text-4xl font-black text-white mb-2">15+</div>
-                    <div className="text-gray-400">Years Serving MA</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl p-6 shadow-xl shadow-emerald-500/30">
-                    <div className="text-4xl font-black text-white mb-2">5,000+</div>
-                    <div className="text-emerald-100">Projects Done</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl p-6 shadow-xl shadow-emerald-500/30">
-                    <div className="text-4xl font-black text-white mb-2">100%</div>
-                    <div className="text-emerald-100">Satisfaction</div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-colors">
-                    <div className="flex items-center gap-1 text-4xl font-black text-white mb-2">
-                      4.9 <Star size={28} className="text-yellow-400" fill="#facc15" />
+                <div className="rounded-3xl overflow-hidden shadow-2xl shadow-black/30">
+                  <Image
+                    src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png"
+                    alt="Professional painting services in Massachusetts"
+                    width={600}
+                    height={450}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                </div>
+                {/* Stats Overlay */}
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                      <Star size={24} className="text-white" fill="white" />
                     </div>
-                    <div className="text-gray-400">Google Rating</div>
+                    <div>
+                      <div className="text-2xl font-black text-gray-900">5,000+</div>
+                      <div className="text-gray-500 text-sm">Projects Completed</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -top-4 -right-4 bg-emerald-500 rounded-2xl p-4 shadow-xl">
+                  <div className="text-white text-center">
+                    <div className="text-2xl font-black">15+</div>
+                    <div className="text-emerald-100 text-sm">Years</div>
                   </div>
                 </div>
               </div>
@@ -356,9 +364,67 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
+          BEFORE/AFTER GALLERY - Real Results
+          ============================================ */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+              <Sparkles size={16} />
+              <span>Real Results</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+              Before & After Transformations
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              See the dramatic difference professional painting makes. These are real projects from Massachusetts homes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad8f105b511665630cfba.png",
+              "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad89205b511551530c27b.png",
+              "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad7123ccdd6fdb803536b.png",
+              "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad674edb8a28b37d6bce7.png",
+              "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad5cf05b5112dd73058c0.png",
+            ].map((img, i) => (
+              <div key={i} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <Image
+                  src={img}
+                  alt={`Before and After Painting Transformation ${i + 1}`}
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="flex justify-between text-white text-sm font-medium">
+                      <span className="bg-red-500/80 px-3 py-1 rounded-full">Before</span>
+                      <span className="bg-emerald-500/80 px-3 py-1 rounded-full">After</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <a
+              href="#quote"
+              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:scale-105"
+            >
+              Get Your Free Quote
+              <ArrowRight size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
           SERVICES SECTION - Modern Cards
           ============================================ */}
-      <section id="services" className="py-16 lg:py-24 bg-gray-50">
+      <section id="services" className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
@@ -381,15 +447,15 @@ export default function HomePage() {
                 desc: "Transform your living spaces with premium paints and expert craftsmanship.",
                 features: ["Walls & Ceilings", "Trim & Molding", "Color Consultation"],
                 href: "/interior-painting",
-                gradient: "from-blue-500 to-blue-600",
+                image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png",
               },
               {
                 icon: Paintbrush,
                 title: "Exterior Painting",
-                desc: "Weather-resistant finishes built to withstand New England&apos;s harsh climate.",
+                desc: "Weather-resistant finishes built to withstand New England's harsh climate.",
                 features: ["Siding & Trim", "Deck Staining", "Power Washing"],
                 href: "/exterior-painting",
-                gradient: "from-emerald-500 to-emerald-600",
+                image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef3ccdd6a866021204.png",
               },
               {
                 icon: PaintBucket,
@@ -397,7 +463,7 @@ export default function HomePage() {
                 desc: "Give your kitchen a stunning makeover at a fraction of replacement cost.",
                 features: ["Kitchen Cabinets", "Bathroom Vanities", "Built-ins"],
                 href: "/cabinet-refinishing",
-                gradient: "from-amber-500 to-orange-500",
+                image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad202edb8a223b9d5c8c9.png",
               },
               {
                 icon: Building2,
@@ -405,7 +471,7 @@ export default function HomePage() {
                 desc: "Minimal disruption, maximum impact for your business space.",
                 features: ["After-Hours Work", "Large Crews", "Fast Turnaround"],
                 href: "/commercial-painting",
-                gradient: "from-purple-500 to-purple-600",
+                image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png",
               },
             ].map((service, i) => (
               <Link
@@ -413,12 +479,20 @@ export default function HomePage() {
                 href={service.href}
                 className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-emerald-200"
               >
-                <div className={`h-32 bg-gradient-to-br ${service.gradient} flex items-center justify-center relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                  <service.icon
-                    size={48}
-                    className="text-white group-hover:scale-110 transition-transform duration-300"
+                <div className="h-48 relative overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-3 left-3">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                      <service.icon size={20} className="text-emerald-600" />
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">

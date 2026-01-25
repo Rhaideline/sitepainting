@@ -168,7 +168,8 @@ export default function CommercialPaintingPage() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="max-w-3xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
             <div className="inline-flex items-center gap-2 bg-purple-500/20 text-purple-400 rounded-full px-4 py-2 mb-6 text-sm font-medium">
               <Building2 size={16} />
               <span>Commercial Painting Services</span>
@@ -216,6 +217,23 @@ export default function CommercialPaintingPage() {
                 <span>Fast Turnarounds</span>
               </div>
             </div>
+          </div>
+
+          {/* Hero Image */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              <div className="rounded-3xl overflow-hidden shadow-2xl shadow-black/30">
+                <Image
+                  src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png"
+                  alt="Commercial painting services in Massachusetts"
+                  width={600}
+                  height={450}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </section>

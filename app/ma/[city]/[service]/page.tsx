@@ -220,6 +220,14 @@ const serviceIcons: Record<string, any> = {
   "commercial-painting": Building2,
 };
 
+// Service image mapping
+const serviceImages: Record<string, string> = {
+  "interior-painting": "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png",
+  "exterior-painting": "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef3ccdd6a866021204.png",
+  "cabinet-refinishing": "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad202edb8a223b9d5c8c9.png",
+  "commercial-painting": "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png",
+};
+
 // Service color mapping
 const serviceColors: Record<string, { bg: string; text: string; gradient: string }> = {
   "interior-painting": { bg: "bg-blue-500/10", text: "text-blue-600", gradient: "from-blue-500 to-blue-600" },
@@ -385,28 +393,33 @@ export default function CityServicePage({
                 </div>
               </div>
 
-              {/* Stats Card */}
+              {/* Hero Image */}
               <div className="hidden lg:block">
-                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/5 rounded-2xl p-6 text-center">
-                      <div className="text-4xl font-black text-white mb-1">{businessInfo.yearsInBusiness}+</div>
-                      <div className="text-gray-400 text-sm">Years Experience</div>
-                    </div>
-                    <div className={`bg-gradient-to-br ${colors.gradient} rounded-2xl p-6 text-center shadow-xl`}>
-                      <div className="text-4xl font-black text-white mb-1">{(businessInfo.projectsCompleted / 1000).toFixed(0)}K+</div>
-                      <div className="text-white/80 text-sm">Projects Done</div>
-                    </div>
-                    <div className={`bg-gradient-to-br ${colors.gradient} rounded-2xl p-6 text-center shadow-xl`}>
-                      <div className="text-4xl font-black text-white mb-1">100%</div>
-                      <div className="text-white/80 text-sm">Satisfaction</div>
-                    </div>
-                    <div className="bg-white/5 rounded-2xl p-6 text-center">
-                      <div className="flex items-center justify-center gap-1 text-4xl font-black text-white mb-1">
-                        {businessInfo.rating} <Star size={24} className="text-yellow-400" fill="#facc15" />
+                <div className="relative">
+                  <div className="rounded-3xl overflow-hidden shadow-2xl shadow-black/30">
+                    <Image
+                      src={serviceImages[service.slug] || serviceImages["interior-painting"]}
+                      alt={`${service.name} services in ${city.name}, Massachusetts`}
+                      width={600}
+                      height={450}
+                      className="w-full h-auto object-cover"
+                      priority
+                    />
+                  </div>
+                  {/* Stats Overlay */}
+                  <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <Star className="text-white" size={24} fill="white" />
                       </div>
-                      <div className="text-gray-400 text-sm">Google Rating</div>
+                      <div>
+                        <div className="text-2xl font-black text-gray-900">{businessInfo.rating}★</div>
+                        <div className="text-sm text-gray-600">{businessInfo.reviewCount}+ Reviews</div>
+                      </div>
                     </div>
+                  </div>
+                  <div className="absolute -top-4 -right-4 bg-emerald-500 text-white rounded-2xl px-4 py-2 shadow-xl">
+                    <div className="text-lg font-bold">{businessInfo.yearsInBusiness}+ Years</div>
                   </div>
                 </div>
               </div>
