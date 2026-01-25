@@ -870,7 +870,31 @@ export default function CityServicePage({
               </div>
             </div>
 
-            <div className="border-t border-white/10 mt-12 pt-8">
+            {/* Certifications & Authority Links */}
+            <div className="border-t border-white/10 mt-12 pt-8 pb-8">
+              <div className="text-center">
+                <p className="text-gray-500 text-xs mb-4">Certified & Recognized By Industry Leaders</p>
+                <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-gray-500">
+                  <a href="https://www.epa.gov/lead/lead-renovation-repair-and-painting-program" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                    EPA Lead-Safe Certified
+                  </a>
+                  <span className="hidden md:inline text-gray-700">|</span>
+                  <a href="https://www.benjaminmoore.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                    Benjamin Moore Partner
+                  </a>
+                  <span className="hidden md:inline text-gray-700">|</span>
+                  <a href="https://www.sherwin-williams.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                    Sherwin-Williams Pro
+                  </a>
+                  <span className="hidden md:inline text-gray-700">|</span>
+                  <a href="https://www.mass.gov/orgs/division-of-professional-licensure" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                    MA Licensed Contractor
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-white/10 pt-8">
               <p className="text-gray-400 text-sm text-center">
                 &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in MA
                 <br />

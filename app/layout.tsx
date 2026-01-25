@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { businessInfo } from "@/lib/data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,10 +81,10 @@ export const metadata: Metadata = {
     canonical: "https://masspainter.pro",
   },
 
-  // Verification (add your actual verification codes)
-  verification: {
-    google: "your-google-verification-code",
-  },
+  // Verification - Add Google Search Console verification code when available
+  // verification: {
+  //   google: "your-google-verification-code",
+  // },
 
   // Other metadata
   authors: [{ name: "Mass Painters Pro" }],
@@ -99,31 +100,37 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://masspainter.pro",
-  name: "Mass Painters Pro",
+  "@id": "https://masspainter.pro/#business",
+  name: businessInfo.name,
+  legalName: businessInfo.legalName,
   image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
+  logo: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
   description:
     "Top-rated painting professionals serving all of Massachusetts. Interior, exterior painting & cabinet refinishing services.",
   url: "https://masspainter.pro",
-  telephone: "+1-774-341-5233",
-  email: "info@masspainterspro.com",
+  telephone: businessInfo.phoneFormatted,
+  email: businessInfo.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Main Street",
-    addressLocality: "Boston",
-    addressRegion: "MA",
-    postalCode: "02101",
+    streetAddress: businessInfo.address.street,
+    addressLocality: businessInfo.address.city,
+    addressRegion: businessInfo.address.state,
+    postalCode: businessInfo.address.zip,
     addressCountry: "US",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 42.3601,
-    longitude: -71.0589,
+    latitude: businessInfo.coordinates.latitude,
+    longitude: businessInfo.coordinates.longitude,
   },
   areaServed: [
     {
       "@type": "State",
       name: "Massachusetts",
+    },
+    {
+      "@type": "City",
+      name: "Marlborough",
     },
     {
       "@type": "City",
@@ -135,7 +142,7 @@ const jsonLd = {
     },
     {
       "@type": "City",
-      name: "Springfield",
+      name: "Framingham",
     },
     {
       "@type": "City",
@@ -159,13 +166,26 @@ const jsonLd = {
   priceRange: "$$",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "200",
+    ratingValue: businessInfo.rating.toString(),
+    reviewCount: businessInfo.reviewCount.toString(),
+    bestRating: "5",
+    worstRating: "1",
   },
   sameAs: [
-    "https://facebook.com/masspainterspro",
-    "https://instagram.com/masspainterspro",
-    "https://linkedin.com/company/masspainterspro",
+    businessInfo.social.facebook,
+    businessInfo.social.instagram,
+    businessInfo.social.linkedin,
+    businessInfo.social.youtube,
+  ],
+  knowsAbout: [
+    "Interior Painting",
+    "Exterior Painting",
+    "Cabinet Refinishing",
+    "Commercial Painting",
+    "House Painting",
+    "Color Consultation",
+    "Lead Paint Removal",
+    "Pressure Washing",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -193,6 +213,14 @@ const jsonLd = {
           "@type": "Service",
           name: "Cabinet Refinishing",
           description: "Expert cabinet painting and refinishing services",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Commercial Painting",
+          description: "Professional commercial and industrial painting services",
         },
       },
     ],
