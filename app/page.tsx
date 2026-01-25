@@ -988,7 +988,7 @@ export default function HomePage() {
         </section>
 
         {/* ============================================
-            AI COLOR VISUALIZER SECTION
+            2025 COLOR TRENDS SECTION
             ============================================ */}
         <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
           {/* Background Effects */}
@@ -1001,126 +1001,42 @@ export default function HomePage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full px-4 py-2 mb-4 text-sm font-medium">
                 <Sparkles size={16} />
-                <span>AI-Powered Color Preview</span>
+                <span>2025 Color Trends</span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                Visualize Your Dream Colors
+                This Year&apos;s Most Popular Paint Colors
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                See how different paint colors will look in your space before painting. Our AI-powered visualizer helps you make confident color choices.
+                Stay ahead of the trends with colors recommended by top paint brands. Our color experts can help you choose the perfect palette for your home.
               </p>
             </div>
 
-            {/* Color Visualizer Grid */}
-            <div className="grid lg:grid-cols-2 gap-8 mb-12">
-              {/* Room Preview */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
-                <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                  <Home size={20} className="text-emerald-400" />
-                  Living Room Preview
-                </h3>
-                <div className="relative rounded-2xl overflow-hidden">
-                  <Image
-                    src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png"
-                    alt="Living room color visualization"
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover"
+            {/* Trending Colors Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+              {[
+                { name: "Mocha Mousse", color: "#A47864", brand: "Pantone Color of 2025", desc: "Warm and inviting" },
+                { name: "Whipped Sage", color: "#A3B899", brand: "Benjamin Moore", desc: "Calming natural green" },
+                { name: "Naval", color: "#34495E", brand: "Sherwin-Williams", desc: "Bold and sophisticated" },
+                { name: "Warm Honey", color: "#D4A84B", brand: "Behr", desc: "Cozy golden warmth" },
+                { name: "Dusty Rose", color: "#D4A5A5", brand: "PPG", desc: "Soft and elegant" },
+              ].map((color, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 text-center">
+                  <div
+                    className="w-20 h-20 rounded-2xl mx-auto mb-4 shadow-lg"
+                    style={{ backgroundColor: color.color }}
                   />
-                  {/* Color Overlay Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-transparent mix-blend-overlay" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-black/70 backdrop-blur-sm rounded-xl p-4">
-                      <p className="text-emerald-400 text-sm font-semibold mb-1">Suggested Color</p>
-                      <p className="text-white font-bold">Benjamin Moore &quot;Sage Wisdom&quot; 2138-40</p>
-                    </div>
-                  </div>
+                  <h3 className="text-white font-bold text-lg">{color.name}</h3>
+                  <p className="text-emerald-400 text-sm font-medium">{color.brand}</p>
+                  <p className="text-gray-400 text-sm mt-1">{color.desc}</p>
                 </div>
-
-                {/* Color Palette Options */}
-                <div className="mt-4">
-                  <p className="text-gray-400 text-sm mb-3">Popular 2025 Color Palettes:</p>
-                  <div className="flex gap-2">
-                    {[
-                      { name: "Mocha Mousse", color: "#A47864", brand: "Pantone 2025" },
-                      { name: "Whipped Sage", color: "#A3B899", brand: "Benjamin Moore" },
-                      { name: "Naval", color: "#34495E", brand: "Sherwin-Williams" },
-                      { name: "Warm Honey", color: "#D4A84B", brand: "Behr" },
-                      { name: "Dusty Rose", color: "#D4A5A5", brand: "PPG" },
-                    ].map((color, i) => (
-                      <div key={i} className="group relative">
-                        <div
-                          className="w-10 h-10 rounded-full cursor-pointer ring-2 ring-transparent hover:ring-white transition-all shadow-lg"
-                          style={{ backgroundColor: color.color }}
-                        />
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                          <div className="bg-white rounded-lg px-3 py-2 shadow-xl text-xs">
-                            <p className="font-bold text-gray-900">{color.name}</p>
-                            <p className="text-gray-500">{color.brand}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Kitchen/Cabinet Preview */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
-                <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                  <PaintBucket size={20} className="text-amber-400" />
-                  Kitchen Cabinet Preview
-                </h3>
-                <div className="relative rounded-2xl overflow-hidden">
-                  <Image
-                    src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad674edb8a28b37d6bce7.png"
-                    alt="Kitchen cabinet color visualization"
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-black/70 backdrop-blur-sm rounded-xl p-4">
-                      <p className="text-amber-400 text-sm font-semibold mb-1">Trending Cabinet Color</p>
-                      <p className="text-white font-bold">Sherwin-Williams &quot;Alabaster&quot; SW 7008</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Cabinet Color Options */}
-                <div className="mt-4">
-                  <p className="text-gray-400 text-sm mb-3">Top Cabinet Finishes:</p>
-                  <div className="flex gap-2">
-                    {[
-                      { name: "Pure White", color: "#FFFFFF", brand: "All Brands" },
-                      { name: "Chantilly Lace", color: "#F5F5F5", brand: "Benjamin Moore" },
-                      { name: "Deep Navy", color: "#1C3A5F", brand: "Sherwin-Williams" },
-                      { name: "Forest Green", color: "#2D5A3D", brand: "Behr" },
-                      { name: "Charcoal", color: "#36454F", brand: "PPG" },
-                    ].map((color, i) => (
-                      <div key={i} className="group relative">
-                        <div
-                          className="w-10 h-10 rounded-full cursor-pointer ring-2 ring-transparent hover:ring-white transition-all shadow-lg"
-                          style={{ backgroundColor: color.color }}
-                        />
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                          <div className="bg-white rounded-lg px-3 py-2 shadow-xl text-xs">
-                            <p className="font-bold text-gray-900">{color.name}</p>
-                            <p className="text-gray-500">{color.brand}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* CTA */}
             <div className="text-center">
               <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-2xl p-8 border border-white/10 max-w-2xl mx-auto">
-                <h3 className="text-white text-xl font-bold mb-2">Want a Personalized Color Consultation?</h3>
-                <p className="text-gray-400 mb-6">Our color experts will visit your home with sample boards and help you choose the perfect palette.</p>
+                <h3 className="text-white text-xl font-bold mb-2">Free In-Home Color Consultation</h3>
+                <p className="text-gray-400 mb-6">Our color experts will visit your home with large sample boards and help you choose the perfect palette for your lighting and décor.</p>
                 <a
                   href={`tel:${businessInfo.phoneRaw}`}
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25"
