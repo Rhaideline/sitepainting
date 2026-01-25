@@ -5,7 +5,9 @@
       "Bash(git commit:*)",
       "Bash(dir:*)",
       "Bash(git push:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)"
     ]
   }
 }
