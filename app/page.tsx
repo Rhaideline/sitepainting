@@ -25,10 +25,9 @@ import {
   Quote,
   Calendar,
   Sparkles,
-  Menu,
-  X,
 } from "lucide-react";
 import { businessInfo, services, cities, testimonials } from "@/lib/data";
+import MobileMenu from "@/components/MobileMenu";
 
 // ============================================
 // METADATA - Maximum SEO
@@ -416,15 +415,8 @@ export default function HomePage() {
                 </a>
               </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                type="button"
-                className="lg:hidden p-2 text-gray-900 hover:text-emerald-600"
-                aria-label="Open menu"
-                title="Open menu"
-              >
-                <Menu size={28} />
-              </button>
+              {/* Mobile Menu */}
+              <MobileMenu />
             </div>
           </div>
         </header>
