@@ -72,7 +72,7 @@ const jsonLd = {
     headline: article.title,
     description: article.excerpt,
     url: `https://masspainter.pro/blog/${article.slug}`,
-    datePublished: article.publishedDate,
+    datePublished: article.date,
     author: {
       "@type": "Person",
       name: article.author,
@@ -205,7 +205,7 @@ export default function BlogPage() {
                   </span>
                   <span className="flex items-center gap-1">
                     <Calendar size={14} />
-                    {new Date(featuredArticle.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    {new Date(featuredArticle.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                   </span>
                   <span className="flex items-center gap-1">
                     <Clock size={14} />
@@ -265,7 +265,7 @@ export default function BlogPage() {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">
-                        {new Date(article.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
                       <span className="text-emerald-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                         Read More <ArrowRight size={14} />
@@ -323,13 +323,13 @@ export default function BlogPage() {
                 Massachusetts&apos; trusted painting professionals since 2009.
               </p>
               <div className="flex gap-3">
-                <a href={businessInfo.social.facebook} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                <a href={businessInfo.social.facebook} aria-label="Follow us on Facebook" title="Facebook" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
                   <Facebook size={18} />
                 </a>
-                <a href={businessInfo.social.instagram} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                <a href={businessInfo.social.instagram} aria-label="Follow us on Instagram" title="Instagram" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
                   <Instagram size={18} />
                 </a>
-                <a href={businessInfo.social.linkedin} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
+                <a href={businessInfo.social.linkedin} aria-label="Connect with us on LinkedIn" title="LinkedIn" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
                   <Linkedin size={18} />
                 </a>
               </div>
