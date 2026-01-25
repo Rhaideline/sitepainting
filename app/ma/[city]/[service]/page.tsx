@@ -507,12 +507,15 @@ export default function CityServicePage({
                   Our {service.shortName} Painting Process
                 </h3>
                 <div className="space-y-4 mb-12">
-                  {service.process.map((step, index) => (
-                    <div key={index} className="flex items-center gap-4">
+                  {service.process.map((processStep, index) => (
+                    <div key={index} className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                         {index + 1}
                       </div>
-                      <span className="text-gray-700 text-lg">{step}</span>
+                      <div>
+                        <span className="text-gray-900 font-semibold">{processStep.step}</span>
+                        <p className="text-gray-600 text-sm mt-1">{processStep.description}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -555,19 +558,14 @@ export default function CityServicePage({
                 )}
 
                 {/* Local Facts */}
-                {city.localFacts && city.localFacts.length > 0 && (
+                {city.localFacts && (
                   <div className="bg-blue-50/50 rounded-2xl p-6 mb-8 border border-blue-100">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">
                       About {city.name}, Massachusetts
                     </h3>
-                    <ul className="space-y-2">
-                      {city.localFacts.map((fact, idx) => (
-                        <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
-                          <span className="text-blue-500">•</span>
-                          {fact}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-gray-600 mb-4">
+                      {city.localFacts}
+                    </p>
                     {city.avgHomeAge && (
                       <p className="text-gray-600 text-sm mt-4">
                         <strong>Average Home Age:</strong> {city.avgHomeAge}
