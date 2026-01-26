@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: "storage.googleapis.com",
         pathname: "/msgsndr/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        pathname: "/**",
+      },
     ],
   },
 };
