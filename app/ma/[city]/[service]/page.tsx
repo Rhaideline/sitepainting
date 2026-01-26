@@ -12,14 +12,10 @@ import {
 } from "@/lib/data";
 import {
   Phone,
-  Mail,
   MapPin,
   Shield,
   Star,
   CheckCircle2,
-  Facebook,
-  Instagram,
-  Linkedin,
   ArrowRight,
   Clock,
   Award,
@@ -30,6 +26,8 @@ import {
   Building2,
   PaintBucket,
 } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // ============================================
 // STATIC PARAMS - Generate all 400+ pages at build time
@@ -271,141 +269,7 @@ export default function CityServicePage({
       />
 
       <div className="min-h-screen bg-white">
-        {/* Top Bar */}
-        <div className="bg-emerald-500 text-white py-2">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center text-sm">
-              <div className="flex items-center gap-6">
-                <span className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  Serving {city.name}, Massachusetts
-                </span>
-                <a href={`mailto:${businessInfo.email}`} className="hidden md:flex items-center gap-2 hover:text-white/80 transition-colors">
-                  <Mail size={14} />
-                  {businessInfo.email}
-                </a>
-              </div>
-              <a href={`tel:${businessInfo.phoneRaw}`} className="flex items-center gap-2 font-semibold hover:text-white/80 transition-colors">
-                <Phone size={14} />
-                {businessInfo.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Header - Modern White Style */}
-        <header className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                  alt="Mass Painters Pro"
-                  width={180}
-                  height={50}
-                  className="h-11 w-auto"
-                  priority
-                />
-              </Link>
-
-              <nav className="hidden lg:flex items-center gap-8">
-                <Link href="/" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
-                  Home
-                </Link>
-
-                {/* Modern Mega Menu for Services */}
-                <div className="relative group">
-                  <button type="button" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors flex items-center gap-1">
-                    Services
-                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-
-                  {/* Modern Mega Menu Dropdown */}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      {/* Interior Painting */}
-                      <Link href="/interior-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all group/item">
-                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-blue-200 transition-colors">
-                          <Home className="text-blue-600" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 group-hover/item:text-blue-600 transition-colors">Interior Painting</h3>
-                          <p className="text-sm text-gray-500 mt-1">Transform your living spaces with premium finishes</p>
-                        </div>
-                      </Link>
-
-                      {/* Exterior Painting */}
-                      <Link href="/exterior-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-emerald-50 hover:to-emerald-100 transition-all group/item">
-                        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-emerald-200 transition-colors">
-                          <Paintbrush className="text-emerald-600" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 group-hover/item:text-emerald-600 transition-colors">Exterior Painting</h3>
-                          <p className="text-sm text-gray-500 mt-1">Weather-resistant coatings for New England</p>
-                        </div>
-                      </Link>
-
-                      {/* Cabinet Refinishing */}
-                      <Link href="/cabinet-refinishing" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100 transition-all group/item">
-                        <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-amber-200 transition-colors">
-                          <PaintBucket className="text-amber-600" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 group-hover/item:text-amber-600 transition-colors">Cabinet Refinishing</h3>
-                          <p className="text-sm text-gray-500 mt-1">Factory-smooth finishes at a fraction of replacement</p>
-                        </div>
-                      </Link>
-
-                      {/* Commercial Painting */}
-                      <Link href="/commercial-painting" className="flex items-start gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100 transition-all group/item">
-                        <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/item:bg-purple-200 transition-colors">
-                          <Building2 className="text-purple-600" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 group-hover/item:text-purple-600 transition-colors">Commercial Painting</h3>
-                          <p className="text-sm text-gray-500 mt-1">Minimal disruption for offices & businesses</p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    {/* Mega Menu Footer */}
-                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <CheckCircle2 size={16} className="text-emerald-500" />
-                        <span>Free Estimates</span>
-                        <span className="mx-2">•</span>
-                        <CheckCircle2 size={16} className="text-emerald-500" />
-                        <span>5-Year Warranty</span>
-                      </div>
-                      <Link href="/contact" className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm flex items-center gap-1">
-                        Get Quote <ArrowRight size={14} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                <Link href="/blog" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
-                  Blog
-                </Link>
-                <Link href="/about" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
-                  About
-                </Link>
-                <Link href="/contact" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
-                  Contact
-                </Link>
-              </nav>
-
-              <div className="hidden lg:flex items-center">
-                <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25">
-                  <Phone size={18} />
-                  {businessInfo.phone}
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header currentPage="services" />
 
         {/* Hero Section */}
         <section className="relative bg-[#1C1F2E] overflow-hidden">
@@ -900,137 +764,7 @@ export default function CityServicePage({
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-[#1C1F2E] text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div>
-                <Image
-                  src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                  alt="Mass Painters Pro"
-                  width={160}
-                  height={45}
-                  className="h-10 w-auto mb-6 brightness-0 invert"
-                />
-                <p className="text-gray-400 mb-6">
-                  Massachusetts&apos; trusted painting professionals since 2009.
-                </p>
-                <div className="flex gap-3">
-                  <a href={businessInfo.social.facebook} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                    <Facebook size={18} />
-                  </a>
-                  <a href={businessInfo.social.instagram} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                    <Instagram size={18} />
-                  </a>
-                  <a href={businessInfo.social.linkedin} className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                    <Linkedin size={18} />
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold mb-6">Services in {city.name}</h3>
-                <ul className="space-y-3">
-                  {services.map((s) => (
-                    <li key={s.slug}>
-                      <Link href={`/ma/${city.slug}/${s.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                        {s.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/#areas" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      Service Areas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold mb-6">Contact Us</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <MapPin size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
-                    <span className="text-gray-400">
-                      {businessInfo.address.street}<br />
-                      {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Phone size={20} className="text-emerald-500 flex-shrink-0" />
-                    <a href="tel:+17743415233" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      {businessInfo.phone}
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Mail size={20} className="text-emerald-500 flex-shrink-0" />
-                    <a href={`mailto:${businessInfo.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      {businessInfo.email}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Certifications & Authority Links */}
-            <div className="border-t border-white/10 mt-12 pt-8 pb-8">
-              <div className="text-center">
-                <p className="text-gray-500 text-xs mb-4">Certified & Recognized By Industry Leaders</p>
-                <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-gray-500">
-                  <a href="https://www.epa.gov/lead/lead-renovation-repair-and-painting-program" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
-                    EPA Lead-Safe Certified
-                  </a>
-                  <span className="hidden md:inline text-gray-700">|</span>
-                  <a href="https://www.benjaminmoore.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
-                    Benjamin Moore Partner
-                  </a>
-                  <span className="hidden md:inline text-gray-700">|</span>
-                  <a href="https://www.sherwin-williams.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
-                    Sherwin-Williams Pro
-                  </a>
-                  <span className="hidden md:inline text-gray-700">|</span>
-                  <a href="https://www.mass.gov/orgs/division-of-professional-licensure" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
-                    MA Licensed Contractor
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-white/10 pt-8">
-              <p className="text-gray-400 text-sm text-center">
-                &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in MA
-                <br />
-                <span className="text-gray-500">Serving {city.name}, {city.county} County, and all of Massachusetts.</span>
-              </p>
-            </div>
-          </div>
-        </footer>
+<Footer />
       </div>
     </>
   );

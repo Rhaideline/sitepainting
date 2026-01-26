@@ -8,15 +8,12 @@ import {
   Calendar,
   Clock,
   User,
-  Facebook,
-  Instagram,
-  Linkedin,
-  MapPin,
-  Mail,
   ArrowLeft,
   Share2,
 } from "lucide-react";
-import { blogArticles, services, businessInfo, getBlogArticleBySlug } from "@/lib/data";
+import { blogArticles, businessInfo, getBlogArticleBySlug } from "@/lib/data";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // Helper function to render text with bold formatting
 function renderWithBold(text: string) {
@@ -128,81 +125,7 @@ export default async function BlogArticlePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Top Bar */}
-      <div className="bg-emerald-500 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center gap-6">
-              <span className="flex items-center gap-2">
-                <MapPin size={14} />
-                Serving Marlborough, Massachusetts
-              </span>
-              <a href={`mailto:${businessInfo.email}`} className="hidden md:flex items-center gap-2 hover:text-white/80 transition-colors">
-                <Mail size={14} />
-                {businessInfo.email}
-              </a>
-            </div>
-            <a href={`tel:${businessInfo.phoneRaw}`} className="flex items-center gap-2 font-semibold hover:text-white/80 transition-colors">
-              <Phone size={14} />
-              {businessInfo.phone}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#1C1F2E] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                alt="Mass Painters Pro"
-                width={180}
-                height={50}
-                className="h-11 w-auto brightness-0 invert"
-                priority
-              />
-            </Link>
-
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/" className="text-white hover:text-emerald-400 font-medium transition-colors">
-                Home
-              </Link>
-              <div className="relative group">
-                <button type="button" className="text-white hover:text-emerald-400 font-medium transition-colors flex items-center gap-1">
-                  Services
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                  <Link href="/interior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Interior Painting</Link>
-                  <Link href="/exterior-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Exterior Painting</Link>
-                  <Link href="/cabinet-refinishing" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Cabinet Refinishing</Link>
-                  <Link href="/commercial-painting" className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Commercial Painting</Link>
-                </div>
-              </div>
-              <Link href="/blog" className="text-emerald-400 font-medium">
-                Blog
-              </Link>
-              <Link href="/about" className="text-white hover:text-emerald-400 font-medium transition-colors">
-                About
-              </Link>
-              <Link href="/contact" className="text-white hover:text-emerald-400 font-medium transition-colors">
-                Contact
-              </Link>
-            </nav>
-
-            <div className="hidden lg:flex items-center">
-              <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all">
-                <Phone size={18} />
-                {businessInfo.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+<Header currentPage="blog" />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
@@ -417,111 +340,7 @@ export default async function BlogArticlePage({ params }: Props) {
         </section>
       )}
 
-      {/* Footer */}
-      <footer className="bg-[#1C1F2E] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <div>
-              <Image
-                src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                alt="Mass Painters Pro"
-                width={160}
-                height={45}
-                className="h-10 w-auto mb-6 brightness-0 invert"
-              />
-              <p className="text-gray-400 mb-6">
-                Massachusetts&apos; trusted painting professionals since 2009.
-              </p>
-              <div className="flex gap-3">
-                <a href={businessInfo.social.facebook} aria-label="Follow us on Facebook" title="Facebook" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                  <Facebook size={18} />
-                </a>
-                <a href={businessInfo.social.instagram} aria-label="Follow us on Instagram" title="Instagram" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                  <Instagram size={18} />
-                </a>
-                <a href={businessInfo.social.linkedin} aria-label="Connect with us on LinkedIn" title="LinkedIn" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                  <Linkedin size={18} />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-6">Services</h3>
-              <ul className="space-y-3">
-                {services.map((service) => (
-                  <li key={service.slug}>
-                    <Link href={`/${service.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#areas" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    Service Areas
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-6">Contact Us</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <MapPin size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-400">
-                    {businessInfo.address.street}<br />
-                    {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone size={20} className="text-emerald-500 flex-shrink-0" />
-                  <a href="tel:+17743415233" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    {businessInfo.phone}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail size={20} className="text-emerald-500 flex-shrink-0" />
-                  <a href={`mailto:${businessInfo.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    {businessInfo.email}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 mt-12 pt-8">
-            <p className="text-gray-400 text-sm text-center">
-              &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in MA
-            </p>
-          </div>
-        </div>
-      </footer>
+<Footer />
     </div>
   );
 }

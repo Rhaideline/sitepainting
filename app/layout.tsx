@@ -92,13 +92,17 @@ export const metadata: Metadata = {
   publisher: "Mass Painters Pro",
   category: "Home Services",
 
-  // Favicon and icons
+  // Favicon and icons - Using larger icon sizes for better visibility
   icons: {
     icon: [
-      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "32x32", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "96x96", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "192x192", type: "image/png" },
     ],
     shortcut: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png",
-    apple: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png",
+    apple: [
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "180x180" },
+    ],
   },
 };
 

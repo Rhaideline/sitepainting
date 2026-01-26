@@ -1,11 +1,12 @@
+"use client";
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   Phone,
   ArrowRight,
-  Mail,
-  MapPin,
   Star,
   Palette,
   Brush,
@@ -20,354 +21,563 @@ import {
   Mountain,
   Flower2,
   Gem,
+  Play,
+  ChevronRight,
+  Zap,
+  Clock,
+  BookOpen,
+  Home,
+  Sofa,
+  Lamp,
+  Frame,
+  Newspaper,
+  Bell,
+  ExternalLink,
+  MousePointer,
 } from "lucide-react";
-import { businessInfo, services } from "@/lib/data";
+import { businessInfo } from "@/lib/data";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "Paint Trends Magazine 2025 | Colors, Textures & Design Inspiration | Mass Painters Pro",
-  description: "Discover 2025's hottest paint colors, textures, and design trends. Expert insights on Pantone's Mocha Mousse, biophilic design, limewash finishes, and more. Your complete guide to transforming any space.",
-  keywords: [
-    "2025 paint trends",
-    "Pantone color of the year",
-    "Mocha Mousse",
-    "interior design trends",
-    "paint textures",
-    "limewash walls",
-    "color psychology",
-    "Massachusetts painting trends",
-  ],
-  openGraph: {
-    title: "Paint Trends Magazine 2025 | Mass Painters Pro",
-    description: "Discover 2025's hottest paint colors, textures, and design inspiration.",
-    url: "https://masspainter.pro/magazine",
-    siteName: "Mass Painters Pro",
-    locale: "en_US",
-    type: "website",
-  },
-};
-
-// 2025 Color Trends Data - Real information
-const colorTrends2025 = [
+// 2026 Color Trends Data - Updated for 2026
+const colorTrends2026 = [
   {
-    name: "Mocha Mousse",
-    hex: "#A47864",
-    brand: "Pantone 17-1230",
-    category: "Color of the Year 2025",
-    description: "A warming brown rooted in nature. This evocative soft brown emits the rich, delicious quality of chocolate and coffee, satisfying our craving for comfort.",
-    psychology: "Creates feelings of warmth, security, and sophisticated comfort",
-    bestFor: "Living rooms, bedrooms, home offices",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    id: "peach-fuzz-evolution",
+    name: "Burnt Sienna Dream",
+    hex: "#C65D3B",
+    brand: "Pantone 18-1345",
+    category: "Color of the Year 2026",
+    description: "A bold evolution of warm earth tones. This rich terracotta speaks to our desire for grounding and authenticity in an increasingly digital world.",
+    psychology: "Evokes warmth, creativity, and connection to earth",
+    bestFor: "Living rooms, dining rooms, creative spaces",
+    image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+    article: "/blog/color-of-the-year-2026",
   },
   {
-    name: "Whipped Sage",
-    hex: "#A3B899",
-    brand: "Benjamin Moore",
-    category: "Nature-Inspired",
-    description: "A muted, dusty sage green that brings the outdoors in. Part of the biophilic design movement that connects interior spaces with nature.",
-    psychology: "Promotes calm, balance, and a connection to the natural world",
-    bestFor: "Bathrooms, kitchens, meditation spaces",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
+    id: "digital-lavender",
+    name: "Digital Lavender",
+    hex: "#E6E6FA",
+    brand: "Benjamin Moore 2026-60",
+    category: "Tech-Inspired",
+    description: "A soft, ethereal purple that bridges the physical and digital worlds. The color of AI interfaces and calming tech spaces.",
+    psychology: "Promotes focus, creativity, and digital wellness",
+    bestFor: "Home offices, meditation rooms, bedrooms",
+    image: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800",
+    article: "/blog/digital-lavender-trend",
   },
   {
-    name: "Hale Navy",
-    hex: "#434C56",
-    brand: "Benjamin Moore HC-154",
-    category: "Bold Statement",
-    description: "A rich, complex navy with depth and sophistication. The perfect backdrop for brass accents and warm wood tones.",
-    psychology: "Evokes trust, intelligence, and timeless elegance",
-    bestFor: "Dining rooms, libraries, accent walls",
-    image: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=600&q=80",
+    id: "forest-bathing",
+    name: "Forest Bathing Green",
+    hex: "#2D5A4A",
+    brand: "Sherwin-Williams SW 2026",
+    category: "Biophilic Design",
+    description: "A deep, saturated forest green inspired by the Japanese practice of Shinrin-yoku. Brings the restorative power of nature indoors.",
+    psychology: "Reduces stress, improves concentration, connects to nature",
+    bestFor: "Bedrooms, bathrooms, reading nooks",
+    image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
+    article: "/blog/biophilic-design-2026",
   },
   {
-    name: "Evergreen Fog",
-    hex: "#96A48B",
-    brand: "Sherwin-Williams SW 9130",
-    category: "2022 Color of the Year - Still Trending",
-    description: "A sophisticated gray-green that references the natural world in an understated way. Continues to dominate design in 2025.",
-    psychology: "Brings serenity and a sense of renewal",
-    bestFor: "Whole-house color, exteriors, cabinetry",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    id: "warm-concrete",
+    name: "Warm Concrete",
+    hex: "#A69F98",
+    brand: "Farrow & Ball No. 2026",
+    category: "Industrial Luxe",
+    description: "The industrial aesthetic evolves with warmth. This sophisticated gray-beige hybrid brings urban edge with cozy undertones.",
+    psychology: "Creates grounding, modern sophistication with warmth",
+    bestFor: "Kitchens, lofts, contemporary spaces",
+    image: "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=800",
+    article: "/blog/industrial-luxe-trend",
   },
 ];
 
-// Texture Trends
-const textureTrends = [
+// Breaking News Items
+const breakingNews = [
+  "NEW: Pantone reveals 2026 Color of the Year - Burnt Sienna Dream",
+  "TREND ALERT: AI-generated color palettes are revolutionizing interior design",
+  "HOT: Limewash finishes see 300% increase in demand across Massachusetts",
+  "EXCLUSIVE: Benjamin Moore launches sustainable paint line for 2026",
+];
+
+// Interactive Room Colors
+const roomColors = [
+  { name: "Burnt Sienna Dream", hex: "#C65D3B" },
+  { name: "Digital Lavender", hex: "#E6E6FA" },
+  { name: "Forest Bathing Green", hex: "#2D5A4A" },
+  { name: "Warm Concrete", hex: "#A69F98" },
+  { name: "Classic White", hex: "#F8F6F4" },
+  { name: "Midnight Navy", hex: "#1B2838" },
+];
+
+// Texture Trends 2026
+const textureTrends2026 = [
   {
-    name: "Limewash",
-    description: "This ancient technique is having a major moment in 2025. Limewash creates a soft, mottled appearance with incredible depth and movement. As the lime carbonates, it becomes part of the wall itself.",
-    finish: "Matte, chalky, organic",
-    bestColors: ["Warm whites", "Soft pinks", "Earthy terracottas"],
+    name: "Microcement",
+    description: "The ultimate seamless finish. Ultra-thin cement coating creates a continuous surface from floors to walls to countertops. The industrial-meets-luxe aesthetic of 2026.",
+    finish: "Smooth, seamless, industrial",
+    bestColors: ["Warm grays", "Off-whites", "Charcoal"],
+    difficulty: "Professional only",
+    icon: Gem,
+    image: "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/microcement-guide",
+  },
+  {
+    name: "Clay Plaster",
+    description: "Natural, breathable, and sustainable. Clay plaster regulates humidity and creates a soft, organic texture that's both ancient and ultra-modern.",
+    finish: "Matte, organic, tactile",
+    bestColors: ["Earth tones", "Terracotta", "Sage"],
+    difficulty: "Professional recommended",
+    icon: Mountain,
+    image: "https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/clay-plaster-benefits",
+  },
+  {
+    name: "Zellige Effect",
+    description: "Moroccan-inspired hand-cut tile look achieved through paint. The perfectly imperfect aesthetic adds artisanal charm to any space.",
+    finish: "Glossy, irregular, artisanal",
+    bestColors: ["Deep blues", "Emerald", "Terracotta"],
+    difficulty: "Advanced DIY",
+    icon: Layers,
+    image: "https://images.pexels.com/photos/1571447/pexels-photo-1571447.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/zellige-paint-technique",
+  },
+  {
+    name: "Ombre Walls",
+    description: "Gradient color transitions from floor to ceiling. The ethereal effect adds dimension and drama while maintaining sophistication.",
+    finish: "Gradient, dreamy, dimensional",
+    bestColors: ["Blues", "Sunset tones", "Neutrals"],
     difficulty: "Professional recommended",
     icon: Droplets,
-    image: "https://images.unsplash.com/photo-1615529328331-f8917597711f?w=400&q=80",
-  },
-  {
-    name: "Venetian Plaster",
-    description: "Luxurious polished plaster that creates a marble-like finish. Multiple thin layers are burnished to achieve a lustrous, reflective surface.",
-    finish: "Glossy, stone-like, dimensional",
-    bestColors: ["Warm taupes", "Soft grays", "Cream"],
-    difficulty: "Expert only",
-    icon: Gem,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
-  },
-  {
-    name: "German Smear (Schmear)",
-    description: "A mortar-wash technique for brick that creates a European, Old-World aesthetic. Unlike whitewashing, German smear uses actual mortar.",
-    finish: "Rustic, textured, authentic",
-    bestColors: ["White", "Gray", "Cream"],
-    difficulty: "DIY possible with prep",
-    icon: Mountain,
-    image: "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=400&q=80",
-  },
-  {
-    name: "Suede Effect",
-    description: "Creates the soft, tactile appearance of suede fabric on walls. Perfect for bedrooms and intimate spaces where warmth is desired.",
-    finish: "Soft, velvety, matte",
-    bestColors: ["Deep blues", "Warm grays", "Forest greens"],
-    difficulty: "Advanced DIY",
-    icon: Flower2,
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
+    image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/ombre-wall-guide",
   },
 ];
 
-// Design Movements
-const designMovements = [
+// Featured Articles
+const featuredArticles = [
   {
-    name: "Quiet Luxury",
-    description: "Less is more in 2025. Think rich, muted tones, premium materials, and understated elegance. No logos, no flash—just quality craftsmanship and timeless design.",
-    colors: ["Taupe", "Greige", "Soft black", "Warm white"],
+    title: "The Complete Guide to Sustainable Paints in 2026",
+    excerpt: "Zero-VOC, carbon-negative, and biodegradable options for the eco-conscious homeowner.",
+    category: "Sustainability",
+    readTime: "8 min read",
+    image: "https://images.pexels.com/photos/1571452/pexels-photo-1571452.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/sustainable-paints-2026",
+    featured: true,
+  },
+  {
+    title: "AI Color Matching: The Future is Here",
+    excerpt: "How artificial intelligence is revolutionizing paint selection and interior design.",
+    category: "Technology",
+    readTime: "5 min read",
+    image: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/ai-color-matching",
+    featured: false,
+  },
+  {
+    title: "Japandi 2.0: The Evolution Continues",
+    excerpt: "Japanese minimalism meets Scandinavian warmth in this enduring design trend.",
+    category: "Design Trends",
+    readTime: "6 min read",
+    image: "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=600",
+    link: "/blog/japandi-2-evolution",
+    featured: false,
+  },
+];
+
+// Design Movements 2026
+const designMovements2026 = [
+  {
+    name: "Dopamine Decor",
+    description: "Bold, joyful colors that spark happiness. After years of neutrals, 2026 embraces unapologetic color.",
+    colors: ["Hot pink", "Electric blue", "Sunshine yellow", "Lime green"],
+    icon: Zap,
+    link: "/blog/dopamine-decor",
+  },
+  {
+    name: "Quiet Luxury 2.0",
+    description: "The evolution continues with richer textures and deeper earth tones. Understated opulence.",
+    colors: ["Chocolate brown", "Camel", "Burgundy", "Olive"],
     icon: Heart,
+    link: "/blog/quiet-luxury-2",
   },
   {
-    name: "Biophilic Design",
-    description: "Connecting interior spaces with nature through organic colors, natural textures, and materials that reference the outdoors. Green is the dominant color family.",
-    colors: ["Sage", "Olive", "Terracotta", "Sky blue"],
-    icon: Flower2,
-  },
-  {
-    name: "Warm Minimalism",
-    description: "The cold, stark minimalism of the 2010s is out. 2025 embraces minimalism with warmth—think earthy neutrals and cozy textures.",
-    colors: ["Warm whites", "Caramel", "Soft clay"],
+    name: "Digital Detox",
+    description: "Spaces designed for unplugging. Soft, calming colors that reduce screen fatigue.",
+    colors: ["Soft sage", "Blush", "Cream", "Dusty blue"],
     icon: Sun,
+    link: "/blog/digital-detox-design",
   },
   {
-    name: "Dark Academia",
-    description: "Inspired by old libraries, universities, and classical architecture. Deep, scholarly colors create spaces perfect for reading and contemplation.",
-    colors: ["Hunter green", "Burgundy", "Navy", "Brown"],
-    icon: Moon,
+    name: "Neo-Maximalism",
+    description: "Pattern mixing, bold colors, and collected-over-time aesthetic. More is more in 2026.",
+    colors: ["Jewel tones", "Deep teal", "Mustard", "Plum"],
+    icon: Sparkles,
+    link: "/blog/neo-maximalism",
   },
 ];
 
 export default function MagazinePage() {
+  const [selectedWallColor, setSelectedWallColor] = useState("#C65D3B");
+  const [newsIndex, setNewsIndex] = useState(0);
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Bar */}
-      <div className="bg-emerald-500 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center gap-6">
-              <span className="flex items-center gap-2">
-                <MapPin size={14} />
-                Serving All Massachusetts
+      <Header currentPage="magazine" />
+
+      {/* Breaking News Ticker */}
+      <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white py-2 overflow-hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 bg-red-700 px-4 flex items-center gap-2 z-10 shadow-lg">
+          <Bell size={16} className="animate-pulse" />
+          <span className="font-black text-sm uppercase tracking-wider">Breaking</span>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-32">
+          <div className="flex items-center gap-8 animate-marquee whitespace-nowrap">
+            {[...breakingNews, ...breakingNews].map((news, i) => (
+              <span key={i} className="flex items-center gap-4 text-sm font-medium">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                {news}
               </span>
-              <a href={`mailto:${businessInfo.email}`} className="hidden md:flex items-center gap-2 hover:text-white/80 transition-colors">
-                <Mail size={14} />
-                {businessInfo.email}
-              </a>
-            </div>
-            <a href={`tel:${businessInfo.phoneRaw}`} className="flex items-center gap-2 font-semibold hover:text-white/80 transition-colors">
-              <Phone size={14} />
-              {businessInfo.phone}
-            </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                alt="Mass Painters Pro"
-                width={180}
-                height={50}
-                className="h-11 w-auto"
-                priority
-              />
-            </Link>
+      {/* Hero Section - Magazine Cover 2026 */}
+      <section className="relative bg-[#0A0B0D] overflow-hidden min-h-[90vh] flex items-center">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0B0D] via-[#1a1a2e] to-[#0A0B0D]" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-emerald-500/20 via-purple-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-orange-500/20 via-red-500/10 to-transparent rounded-full blur-3xl" />
+          {/* Floating Elements */}
+          <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-emerald-400 rounded-full animate-bounce opacity-60" />
+          <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-purple-400 rounded-full animate-bounce delay-300 opacity-60" />
+        </div>
 
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Home
-              </Link>
-              <div className="relative group">
-                <button type="button" className="text-gray-700 hover:text-emerald-600 font-medium flex items-center gap-1">
-                  Services
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                  {services.map((service) => (
-                    <Link key={service.slug} href={`/${service.slug}`} className="block px-4 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                      {service.name}
-                    </Link>
-                  ))}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              {/* Edition Badge */}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-5 py-2 text-sm font-black tracking-widest uppercase rounded-full shadow-lg shadow-red-500/30">
+                  January 2026
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm text-white px-5 py-2 text-sm font-medium rounded-full border border-white/20">
+                  <Newspaper size={14} className="inline mr-2" />
+                  Digital Edition
                 </div>
               </div>
-              <Link href="/magazine" className="text-emerald-600 font-semibold">
-                Magazine
-              </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Blog
-              </Link>
-              <Link href="/about" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                About
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Contact
-              </Link>
-            </nav>
 
-            <div className="hidden lg:flex items-center">
-              <a href={`tel:${businessInfo.phoneRaw}`} className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all">
-                <Phone size={18} />
-                {businessInfo.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                  Paint Trends
+                </span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 animate-gradient">
+                  Magazine 2026
+                </span>
+              </h1>
 
-      {/* Hero Section - Magazine Cover Style */}
-      <section className="relative bg-[#1C1F2E] overflow-hidden min-h-[80vh] flex items-center">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80"
-            alt="2025 Paint Trends"
-            fill
-            className="object-cover opacity-40"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1C1F2E] via-[#1C1F2E]/80 to-transparent" />
-        </div>
+              <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-xl">
+                The definitive guide to colors, textures, and design movements
+                transforming homes in the new year.
+              </p>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-emerald-500 text-white px-4 py-1 text-sm font-bold tracking-wider uppercase">
-                2025 Edition
+              <div className="flex flex-wrap gap-4 mb-8">
+                <Link
+                  href="#interactive-room"
+                  className="group inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold py-4 px-8 rounded-full transition-all shadow-xl shadow-emerald-500/30 hover:scale-105"
+                >
+                  <MousePointer size={20} />
+                  Try Interactive Visualizer
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="#trends"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/30 backdrop-blur-sm"
+                >
+                  <BookOpen size={20} />
+                  Read Articles
+                </Link>
               </div>
-              <div className="bg-white/20 text-white px-4 py-1 text-sm font-medium">
-                Paint Trends Magazine
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { value: "12+", label: "Trend Reports" },
+                  { value: "50+", label: "Color Palettes" },
+                  { value: "2026", label: "Predictions" },
+                ].map((stat, i) => (
+                  <div key={i} className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10">
+                    <div className="text-2xl font-black text-emerald-400">{stat.value}</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6">
-              The Colors
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-500">
-                Defining 2025
-              </span>
-            </h1>
+            {/* Magazine Cover Preview */}
+            <div className="relative hidden lg:block">
+              <div className="relative perspective-1000">
+                {/* 3D Magazine Stack Effect */}
+                <div className="absolute top-8 left-8 w-full h-full bg-gray-800 rounded-2xl transform rotate-6 opacity-30" />
+                <div className="absolute top-4 left-4 w-full h-full bg-gray-700 rounded-2xl transform rotate-3 opacity-50" />
+                <div className="relative bg-gradient-to-br from-[#1C1F2E] to-[#0A0B0D] rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform hover:rotate-0 transition-transform duration-500">
+                  <div className="aspect-[3/4] relative">
+                    <Image
+                      src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Magazine Cover - Modern Interior 2026"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              From Pantone&apos;s Mocha Mousse to the resurgence of limewash textures, discover the trends that are transforming homes across Massachusetts and beyond.
-            </p>
+                    {/* Cover Content */}
+                    <div className="absolute top-4 left-4 right-4">
+                      <div className="text-emerald-400 font-black text-xl tracking-wider">PAINT TRENDS</div>
+                      <div className="text-white text-xs tracking-widest mt-1">JANUARY 2026</div>
+                    </div>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#trends"
-                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-full transition-all"
-              >
-                Explore Trends
-                <ArrowRight size={20} />
-              </a>
-              <a
-                href={`tel:${businessInfo.phoneRaw}`}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/30"
-              >
-                <Phone size={20} />
-                Get Color Consultation
-              </a>
+                    <div className="absolute bottom-6 left-4 right-4">
+                      <div className="text-white font-black text-3xl leading-tight mb-2">
+                        THE COLOR
+                        <br />REVOLUTION
+                      </div>
+                      <div className="flex gap-2 mt-3">
+                        <span className="bg-emerald-500/80 text-white text-xs px-2 py-1 rounded-full">AI Design</span>
+                        <span className="bg-purple-500/80 text-white text-xs px-2 py-1 rounded-full">Sustainability</span>
+                        <span className="bg-orange-500/80 text-white text-xs px-2 py-1 rounded-full">Textures</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex flex-col items-center justify-center text-white transform rotate-12 shadow-2xl animate-bounce-slow">
+                <span className="text-xs font-medium">Issue</span>
+                <span className="text-2xl font-black">#01</span>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Magazine Issue Badge */}
-        <div className="absolute top-20 right-10 hidden lg:block">
-          <div className="w-32 h-32 rounded-full bg-emerald-500 flex flex-col items-center justify-center text-white transform rotate-12 shadow-2xl">
-            <span className="text-sm font-medium">Issue</span>
-            <span className="text-3xl font-black">#01</span>
-            <span className="text-xs">2025</span>
           </div>
         </div>
       </section>
 
-      {/* Color of the Year Feature */}
-      <section id="trends" className="py-20 bg-gradient-to-b from-[#A47864]/10 to-white">
+      {/* Interactive Room Visualizer */}
+      <section id="interactive-room" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 rounded-full px-5 py-2 mb-4 text-sm font-bold backdrop-blur-sm border border-emerald-500/30">
+              <MousePointer size={16} />
+              <span>Interactive Experience</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Visualize Your Space
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Click on a color below to see how it transforms this modern living room with furniture
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Room Preview */}
+            <div className="lg:col-span-2">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/10]">
+                {/* Wall Color Background */}
+                <div
+                  className="absolute inset-0 transition-colors duration-700"
+                  style={{ backgroundColor: selectedWallColor }}
+                />
+
+                {/* Room Interior SVG Overlay */}
+                <div className="absolute inset-0 flex items-end justify-center p-8">
+                  {/* Floor */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-amber-900/40 to-transparent" />
+
+                  {/* Furniture - Sofa */}
+                  <div className="absolute bottom-[15%] left-[10%] w-[45%]">
+                    <div className="relative">
+                      {/* Sofa Back */}
+                      <div className="bg-gray-800 h-24 rounded-t-3xl shadow-xl" />
+                      {/* Sofa Seat */}
+                      <div className="bg-gray-700 h-12 rounded-b-lg shadow-xl">
+                        <div className="absolute bottom-0 left-4 right-4 h-8 bg-gray-600 rounded-lg" />
+                      </div>
+                      {/* Pillows */}
+                      <div className="absolute top-4 left-4 w-16 h-14 bg-emerald-600 rounded-lg transform -rotate-6" />
+                      <div className="absolute top-4 right-4 w-16 h-14 bg-amber-600 rounded-lg transform rotate-6" />
+                    </div>
+                  </div>
+
+                  {/* Coffee Table */}
+                  <div className="absolute bottom-[12%] left-[35%] w-[20%]">
+                    <div className="bg-amber-800 h-4 rounded-lg shadow-lg" />
+                    <div className="flex justify-between mt-1">
+                      <div className="w-1 h-8 bg-amber-900" />
+                      <div className="w-1 h-8 bg-amber-900" />
+                    </div>
+                    {/* Items on table */}
+                    <div className="absolute -top-2 left-1/4 w-6 h-8 bg-white/80 rounded" />
+                    <div className="absolute -top-1 right-1/4 w-8 h-3 bg-green-600 rounded-full" />
+                  </div>
+
+                  {/* Floor Lamp */}
+                  <div className="absolute bottom-[15%] right-[15%]">
+                    <div className="w-1 h-32 bg-gray-700 mx-auto" />
+                    <div className="w-16 h-10 bg-amber-100 rounded-full -mt-2 shadow-lg shadow-amber-200/50" />
+                    <div className="w-4 h-4 bg-gray-800 rounded-full mx-auto -mt-8" />
+                  </div>
+
+                  {/* Side Table */}
+                  <div className="absolute bottom-[15%] right-[25%]">
+                    <div className="w-12 h-16 bg-gray-800 rounded-lg shadow-lg">
+                      <div className="absolute top-2 left-2 right-2 h-4 bg-emerald-500/50 rounded" />
+                    </div>
+                  </div>
+
+                  {/* Wall Art */}
+                  <div className="absolute top-[15%] left-[20%] w-24 h-32 bg-white/90 rounded-lg shadow-xl p-2">
+                    <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-600 rounded" />
+                  </div>
+                  <div className="absolute top-[20%] left-[45%] w-16 h-16 bg-white/90 rounded-full shadow-xl p-2">
+                    <div className="w-full h-full bg-gradient-to-br from-amber-400 to-orange-600 rounded-full" />
+                  </div>
+
+                  {/* Plant */}
+                  <div className="absolute bottom-[15%] right-[5%]">
+                    <div className="w-8 h-10 bg-amber-700 rounded-lg" />
+                    <div className="absolute -top-16 left-1/2 -translate-x-1/2">
+                      <div className="w-4 h-12 bg-green-700 rounded-full transform -rotate-12" />
+                      <div className="w-4 h-14 bg-green-600 rounded-full transform rotate-12 -mt-10 ml-2" />
+                      <div className="w-4 h-10 bg-green-800 rounded-full -mt-12 -ml-1" />
+                    </div>
+                  </div>
+
+                  {/* Window */}
+                  <div className="absolute top-[10%] right-[10%] w-20 h-28 bg-white/20 rounded-lg border-4 border-white/40 backdrop-blur-sm">
+                    <div className="absolute inset-0 flex">
+                      <div className="w-1/2 border-r border-white/40" />
+                    </div>
+                    <div className="absolute top-1/2 left-0 right-0 border-b border-white/40" />
+                  </div>
+                </div>
+
+                {/* Color Name Overlay */}
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/20">
+                  <p className="text-white font-bold">
+                    {roomColors.find(c => c.hex === selectedWallColor)?.name}
+                  </p>
+                  <p className="text-gray-300 text-sm">{selectedWallColor}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Color Picker */}
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <Palette size={20} className="text-emerald-400" />
+                Select Wall Color
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {roomColors.map((color) => (
+                  <button
+                    type="button"
+                    key={color.hex}
+                    onClick={() => setSelectedWallColor(color.hex)}
+                    className={`group relative p-4 rounded-xl transition-all ${
+                      selectedWallColor === color.hex
+                        ? "ring-2 ring-emerald-400 ring-offset-2 ring-offset-gray-900 scale-105"
+                        : "hover:scale-105"
+                    }`}
+                    style={{ backgroundColor: color.hex }}
+                  >
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 rounded-xl transition-colors" />
+                    <div className={`text-xs font-bold ${
+                      ["#E6E6FA", "#F8F6F4", "#A69F98"].includes(color.hex) ? "text-gray-800" : "text-white"
+                    } text-center relative z-10`}>
+                      {color.name}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-6 p-4 bg-emerald-500/20 rounded-xl border border-emerald-500/30">
+                <p className="text-emerald-400 text-sm font-medium mb-2">Pro Tip:</p>
+                <p className="text-gray-300 text-sm">
+                  Want to see this color in YOUR home? Call us for a free in-home color consultation!
+                </p>
+                <a
+                  href={`tel:${businessInfo.phoneRaw}`}
+                  className="mt-3 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm"
+                >
+                  <Phone size={14} />
+                  {businessInfo.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Color of the Year 2026 */}
+      <section id="trends" className="py-20 bg-gradient-to-b from-[#C65D3B]/10 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-[#A47864] text-white rounded-full px-4 py-2 mb-6 text-sm font-bold">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#C65D3B] to-orange-500 text-white rounded-full px-5 py-2 mb-6 text-sm font-bold shadow-lg">
                 <Star size={16} fill="white" />
-                Pantone Color of the Year 2025
+                Pantone Color of the Year 2026
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-                Mocha Mousse
-                <span className="block text-2xl font-medium text-[#A47864] mt-2">PANTONE 17-1230</span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Burnt Sienna Dream
+                <span className="block text-2xl font-medium text-[#C65D3B] mt-2">PANTONE 18-1345</span>
               </h2>
               <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-                &quot;A warming brown rooted in nature, Mocha Mousse emits the rich, delicious quality of chocolate and coffee, satisfying our craving for comfort.&quot;
+                &ldquo;A bold evolution of warm earth tones that speaks to our collective desire for grounding and authenticity in an increasingly digital world.&rdquo;
               </p>
               <p className="text-gray-600 mb-8">
-                This evocative soft brown reflects our desire for comfort in uncertain times. It pairs beautifully with warm whites, sage greens, and terracotta accents. In Massachusetts homes, we&apos;re seeing it used in living rooms and home offices where warmth and sophistication are desired.
+                This rich terracotta connects us to the earth while energizing our spaces. In Massachusetts homes, we&apos;re seeing it paired with soft whites, deep greens, and brass accents for a sophisticated yet warm aesthetic.
               </p>
 
               <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                  <Eye size={24} className="mx-auto mb-2 text-[#A47864]" />
-                  <p className="font-bold text-gray-900">Comfort</p>
-                  <p className="text-sm text-gray-500">Evokes security</p>
-                </div>
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                  <Heart size={24} className="mx-auto mb-2 text-[#A47864]" />
-                  <p className="font-bold text-gray-900">Warmth</p>
-                  <p className="text-sm text-gray-500">Cozy & inviting</p>
-                </div>
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                  <Palette size={24} className="mx-auto mb-2 text-[#A47864]" />
-                  <p className="font-bold text-gray-900">Versatile</p>
-                  <p className="text-sm text-gray-500">Pairs easily</p>
-                </div>
+                {[
+                  { icon: Sun, title: "Energizing", desc: "Sparks creativity" },
+                  { icon: Heart, title: "Grounding", desc: "Earth connection" },
+                  { icon: Sparkles, title: "Bold", desc: "Statement color" },
+                ].map((item, i) => (
+                  <div key={i} className="text-center p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <item.icon size={24} className="mx-auto mb-2 text-[#C65D3B]" />
+                    <p className="font-bold text-gray-900">{item.title}</p>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
+                ))}
               </div>
 
-              <div className="flex gap-3">
-                <div className="w-12 h-12 rounded-lg" style={{ backgroundColor: "#A47864" }} title="Mocha Mousse" />
-                <div className="w-12 h-12 rounded-lg" style={{ backgroundColor: "#F5F3EF" }} title="Warm White" />
-                <div className="w-12 h-12 rounded-lg" style={{ backgroundColor: "#A3B899" }} title="Sage" />
-                <div className="w-12 h-12 rounded-lg" style={{ backgroundColor: "#C4A484" }} title="Caramel" />
-                <div className="w-12 h-12 rounded-lg" style={{ backgroundColor: "#8B7355" }} title="Deep Brown" />
-              </div>
-              <p className="text-sm text-gray-500 mt-2">Suggested color palette</p>
+              <Link
+                href="/blog/color-of-the-year-2026"
+                className="inline-flex items-center gap-2 text-[#C65D3B] hover:text-orange-600 font-bold transition-colors"
+              >
+                Read Full Article
+                <ExternalLink size={18} />
+              </Link>
             </div>
 
             <div className="relative">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-                  alt="Mocha Mousse interior"
+                  src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Burnt Sienna Dream interior"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
-                <div className="w-20 h-20 rounded-xl mb-3" style={{ backgroundColor: "#A47864" }} />
-                <p className="font-bold text-gray-900">Mocha Mousse</p>
-                <p className="text-sm text-gray-500">PANTONE 17-1230</p>
+                <div className="w-20 h-20 rounded-xl mb-3 shadow-inner" style={{ backgroundColor: "#C65D3B" }} />
+                <p className="font-bold text-gray-900">Burnt Sienna Dream</p>
+                <p className="text-sm text-gray-500">PANTONE 18-1345</p>
+              </div>
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-2xl px-4 py-2 shadow-xl font-bold">
+                #1 Trend 2026
               </div>
             </div>
           </div>
@@ -378,30 +588,34 @@ export default function MagazinePage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-5 py-2 mb-4 text-sm font-bold">
               <TrendingUp size={16} />
-              <span>Top Colors of 2025</span>
+              <span>Top Colors of 2026</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Colors Making Waves This Year
+              Colors Defining the Year
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These carefully curated colors from leading paint brands are defining the look of 2025
+              Click on any color to read the full trend report and see pairing suggestions
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {colorTrends2025.map((color, index) => (
-              <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            {colorTrends2026.map((color) => (
+              <Link
+                key={color.id}
+                href={color.article}
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2"
+              >
                 <div className="relative h-64">
                   <Image
                     src={color.image}
                     alt={color.name}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-black/70 text-white px-4 py-1 rounded-full text-sm font-bold backdrop-blur-sm">
                       {color.category}
                     </span>
                   </div>
@@ -410,10 +624,15 @@ export default function MagazinePage() {
                       className="w-16 h-16 rounded-xl shadow-lg border-4 border-white"
                       style={{ backgroundColor: color.hex }}
                     />
-                    <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
                       <p className="font-bold text-gray-900">{color.name}</p>
                       <p className="text-sm text-gray-600">{color.brand}</p>
                     </div>
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                      Read More <ArrowRight size={12} />
+                    </span>
                   </div>
                 </div>
                 <div className="p-6">
@@ -429,278 +648,243 @@ export default function MagazinePage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Texture Trends */}
-      <section className="py-20 bg-[#1C1F2E]">
+      {/* Featured Articles */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-emerald-400 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-600 rounded-full px-5 py-2 mb-4 text-sm font-bold">
+              <BookOpen size={16} />
+              <span>Featured Articles</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+              Deep Dives & Expert Insights
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              In-depth articles from our design experts
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {featuredArticles.map((article, index) => (
+              <Link
+                key={index}
+                href={article.link}
+                className={`group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 ${
+                  article.featured ? "lg:col-span-2 lg:row-span-2" : ""
+                }`}
+              >
+                <div className={`relative ${article.featured ? "h-80 lg:h-full" : "h-48"}`}>
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        {article.category}
+                      </span>
+                      <span className="text-white/80 text-sm flex items-center gap-1">
+                        <Clock size={12} />
+                        {article.readTime}
+                      </span>
+                    </div>
+                    <h3 className={`font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors ${
+                      article.featured ? "text-2xl lg:text-3xl" : "text-lg"
+                    }`}>
+                      {article.title}
+                    </h3>
+                    <p className={`text-gray-300 ${article.featured ? "text-base" : "text-sm"}`}>
+                      {article.excerpt}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Texture Trends 2026 */}
+      <section className="py-20 bg-[#0A0B0D]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-white/10 text-emerald-400 rounded-full px-5 py-2 mb-4 text-sm font-bold backdrop-blur-sm border border-white/10">
               <Layers size={16} />
-              <span>Texture Trends</span>
+              <span>Texture Trends 2026</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              Beyond Flat Paint: Textures That Transform
+              Beyond Flat Paint
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              2025 is the year of texture. These finishes add depth, character, and visual interest that flat paint simply cannot achieve.
+              The textures that are transforming walls into works of art
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {textureTrends.map((texture, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all">
-                <div className="relative h-48">
+            {textureTrends2026.map((texture, index) => (
+              <Link
+                key={index}
+                href={texture.link}
+                className="group bg-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 hover:border-emerald-500/50 transition-all hover:-translate-y-2"
+              >
+                <div className="relative h-56">
                   <Image
                     src={texture.image}
                     alt={texture.name}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F2E] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B0D] via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                    <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-emerald-500/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-emerald-500/30">
                       <texture.icon className="text-emerald-400" size={24} />
                     </div>
                     <h3 className="text-2xl font-bold text-white">{texture.name}</h3>
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                      Learn More <ArrowRight size={12} />
+                    </span>
                   </div>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-300 mb-4">{texture.description}</p>
                   <div className="space-y-3">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <span className="text-gray-500">Finish:</span>
                       <span className="text-white font-medium">{texture.finish}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <span className="text-gray-500">Best Colors:</span>
                       <span className="text-emerald-400 font-medium">{texture.bestColors.join(", ")}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <span className="text-gray-500">Difficulty:</span>
                       <span className="text-white font-medium">{texture.difficulty}</span>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
-          </div>
-
-          {/* Texture CTA */}
-          <div className="mt-12 text-center">
-            <div className="bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-2xl p-8 border border-emerald-500/30 max-w-2xl mx-auto">
-              <h3 className="text-white text-2xl font-bold mb-3">Want a Specialty Finish?</h3>
-              <p className="text-gray-400 mb-6">
-                Our master painters are trained in limewash, Venetian plaster, and other specialty techniques. Let&apos;s discuss your vision.
-              </p>
-              <a
-                href={`tel:${businessInfo.phoneRaw}`}
-                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all"
-              >
-                <Phone size={18} />
-                Discuss Your Project
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Design Movements */}
+      {/* Design Movements 2026 */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-5 py-2 mb-4 text-sm font-bold">
               <Brush size={16} />
               <span>Design Movements</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              The Styles Shaping 2025 Interiors
+              The Aesthetics of 2026
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Understanding these movements will help you choose colors that feel current yet timeless
+              The design philosophies shaping how we think about color and space
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {designMovements.map((movement, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+            {designMovements2026.map((movement, index) => (
+              <Link
+                key={index}
+                href={movement.link}
+                className="group bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition-all hover:-translate-y-2 border border-gray-100 hover:border-emerald-200"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <movement.icon className="text-emerald-600" size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{movement.name}</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                  {movement.name}
+                </h3>
                 <p className="text-gray-600 mb-4 text-sm">{movement.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {movement.colors.map((color, i) => (
-                    <span key={i} className="bg-white px-3 py-1 rounded-full text-sm text-gray-600 border border-gray-200">
+                    <span key={i} className="bg-white px-3 py-1 rounded-full text-xs text-gray-600 border border-gray-200">
                       {color}
                     </span>
                   ))}
                 </div>
-              </div>
+                <div className="mt-4 text-emerald-600 font-medium text-sm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Read Article <ArrowRight size={14} />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Color Psychology Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-emerald-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
-              <Sparkles size={16} />
-              <span>Color Psychology</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              How Colors Affect Your Mood
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The right color can transform not just a room, but how you feel in it
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-blue-500">
-              <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-blue-500" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Blues & Greens</h3>
-              <p className="text-gray-600 mb-4">
-                Calming and restorative. These colors lower heart rate and reduce anxiety. Perfect for bedrooms, bathrooms, and spaces meant for relaxation.
-              </p>
-              <p className="text-sm text-gray-500">Best rooms: Bedrooms, bathrooms, offices</p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-amber-500">
-              <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-amber-500" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Yellows & Oranges</h3>
-              <p className="text-gray-600 mb-4">
-                Energizing and optimistic. These warm tones stimulate creativity and conversation. Use in kitchens and social spaces.
-              </p>
-              <p className="text-sm text-gray-500">Best rooms: Kitchens, dining rooms, playrooms</p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-gray-700">
-              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-gray-700" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Neutrals & Earth Tones</h3>
-              <p className="text-gray-600 mb-4">
-                Grounding and sophisticated. Browns, taupes, and warm grays create a sense of stability and timeless elegance.
-              </p>
-              <p className="text-sm text-gray-500">Best rooms: Living rooms, whole-house palettes</p>
-            </div>
-          </div>
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl" />
         </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 bg-[#1C1F2E]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Ready to Transform Your Space?
+            Bring These Trends to Life
           </h2>
-          <p className="text-xl text-gray-400 mb-8">
-            Our color experts can bring these trends to life in your Massachusetts home. Schedule a free consultation and let&apos;s create something beautiful together.
+          <p className="text-xl text-emerald-100 mb-8">
+            Our color experts can help you choose the perfect palette for your Massachusetts home.
+            Schedule a free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${businessInfo.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-full transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 font-bold py-4 px-8 rounded-full transition-all hover:bg-gray-100 hover:scale-105 shadow-xl"
             >
               <Phone size={20} />
               {businessInfo.phone}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/30"
+              className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 px-8 rounded-full transition-all border border-emerald-500"
             >
-              Request Free Estimate
+              Book Color Consultation
               <ArrowRight size={20} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2 md:col-span-1">
-              <Image
-                src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                alt="Mass Painters Pro"
-                width={160}
-                height={45}
-                className="h-10 w-auto brightness-0 invert mb-4"
-              />
-              <p className="text-gray-400 text-sm">
-                Massachusetts&apos; trusted painting professionals since 2009.
-              </p>
-            </div>
+      <Footer />
 
-            <div>
-              <h3 className="text-lg font-bold mb-4">Services</h3>
-              <ul className="space-y-2">
-                {services.map((service) => (
-                  <li key={service.slug}>
-                    <Link href={`/${service.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li><Link href="/" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Home</Link></li>
-                <li><Link href="/magazine" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Magazine</Link></li>
-                <li><Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Blog</Link></li>
-                <li><Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">About</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">Contact</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-4">Contact</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2">
-                  <Phone size={16} className="text-emerald-500" />
-                  <a href={`tel:${businessInfo.phoneRaw}`} className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
-                    {businessInfo.phone}
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail size={16} className="text-emerald-500" />
-                  <a href={`mailto:${businessInfo.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors text-sm">
-                    {businessInfo.email}
-                  </a>
-                </li>
-                <li className="flex items-start gap-2">
-                  <MapPin size={16} className="text-emerald-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-400 text-sm">
-                    {businessInfo.address.street}<br />
-                    {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 pt-8">
-            <p className="text-gray-500 text-sm text-center">
-              &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in Massachusetts
-            </p>
-          </div>
-        </div>
-      </footer>
+      {/* Custom Styles */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0) rotate(12deg); }
+          50% { transform: translateY(-10px) rotate(12deg); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }
