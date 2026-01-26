@@ -86,6 +86,15 @@ export default function MobileMenu() {
                 )}
               </div>
 
+              {/* Magazine Link */}
+              <Link
+                href="/magazine"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center py-3 px-4 text-gray-900 font-semibold hover:bg-gray-50 rounded-lg"
+              >
+                Magazine
+              </Link>
+
               {/* Blog Link */}
               <Link
                 href="/blog"

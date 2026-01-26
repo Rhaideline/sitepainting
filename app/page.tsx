@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { businessInfo, services, cities, testimonials } from "@/lib/data";
 import MobileMenu from "@/components/MobileMenu";
+import ColorVisualizer from "@/components/ColorVisualizer";
 
 // ============================================
 // METADATA - Maximum SEO
@@ -393,6 +394,9 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                <Link href="/magazine" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
+                  Magazine
+                </Link>
                 <Link href="/blog" className="text-gray-900 hover:text-emerald-600 font-semibold transition-colors">
                   Blog
                 </Link>
@@ -980,66 +984,9 @@ export default function HomePage() {
         </section>
 
         {/* ============================================
-            2025 COLOR TRENDS SECTION
+            INTERACTIVE COLOR VISUALIZER
             ============================================ */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-full px-4 py-2 mb-4 text-sm font-medium">
-                <Sparkles size={16} />
-                <span>2025 Color Trends</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                This Year&apos;s Most Popular Paint Colors
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Stay ahead of the trends with colors recommended by top paint brands. Our color experts can help you choose the perfect palette for your home.
-              </p>
-            </div>
-
-            {/* Trending Colors Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-              {[
-                { name: "Mocha Mousse", color: "#A47864", brand: "Pantone Color of 2025", desc: "Warm and inviting" },
-                { name: "Whipped Sage", color: "#A3B899", brand: "Benjamin Moore", desc: "Calming natural green" },
-                { name: "Naval", color: "#34495E", brand: "Sherwin-Williams", desc: "Bold and sophisticated" },
-                { name: "Warm Honey", color: "#D4A84B", brand: "Behr", desc: "Cozy golden warmth" },
-                { name: "Dusty Rose", color: "#D4A5A5", brand: "PPG", desc: "Soft and elegant" },
-              ].map((color, i) => (
-                <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 text-center">
-                  <div
-                    className="w-20 h-20 rounded-2xl mx-auto mb-4 shadow-lg"
-                    style={{ backgroundColor: color.color }}
-                  />
-                  <h3 className="text-white font-bold text-lg">{color.name}</h3>
-                  <p className="text-emerald-400 text-sm font-medium">{color.brand}</p>
-                  <p className="text-gray-400 text-sm mt-1">{color.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-2xl p-8 border border-white/10 max-w-2xl mx-auto">
-                <h3 className="text-white text-xl font-bold mb-2">Free In-Home Color Consultation</h3>
-                <p className="text-gray-400 mb-6">Our color experts will visit your home with large sample boards and help you choose the perfect palette for your lighting and décor.</p>
-                <a
-                  href={`tel:${businessInfo.phoneRaw}`}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold py-3 px-6 rounded-full transition-all shadow-lg shadow-emerald-500/25"
-                >
-                  <Phone size={18} />
-                  Schedule Free Color Consultation
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ColorVisualizer />
 
         {/* ============================================
             SERVICE AREAS WITH MAP
@@ -1368,6 +1315,11 @@ export default function HomePage() {
                   <li>
                     <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
                       About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/magazine" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                      Magazine
                     </Link>
                   </li>
                   <li>

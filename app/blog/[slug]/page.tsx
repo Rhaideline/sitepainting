@@ -18,6 +18,17 @@ import {
 } from "lucide-react";
 import { blogArticles, services, businessInfo, getBlogArticleBySlug } from "@/lib/data";
 
+// Helper function to render text with bold formatting
+function renderWithBold(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -276,14 +287,14 @@ export default async function BlogArticlePage({ params }: Props) {
               if (paragraph.startsWith('## ')) {
                 return (
                   <h2 key={index} className="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-6">
-                    {paragraph.replace('## ', '')}
+                    {renderWithBold(paragraph.replace('## ', ''))}
                   </h2>
                 );
               }
               if (paragraph.startsWith('### ')) {
                 return (
                   <h3 key={index} className="text-xl md:text-2xl font-bold text-gray-900 mt-8 mb-4">
-                    {paragraph.replace('### ', '')}
+                    {renderWithBold(paragraph.replace('### ', ''))}
                   </h3>
                 );
               }
@@ -293,15 +304,28 @@ export default async function BlogArticlePage({ params }: Props) {
                   <ul key={index} className="list-disc pl-6 space-y-2 my-6">
                     {items.map((item, i) => (
                       <li key={i} className="text-gray-700">
-                        {item.replace('- ', '')}
+                        {renderWithBold(item.replace('- ', ''))}
                       </li>
                     ))}
                   </ul>
                 );
               }
+              // Handle numbered lists (1. 2. 3. etc)
+              if (/^\d+\.\s/.test(paragraph)) {
+                const items = paragraph.split('\n').filter(line => /^\d+\.\s/.test(line));
+                return (
+                  <ol key={index} className="list-decimal pl-6 space-y-2 my-6">
+                    {items.map((item, i) => (
+                      <li key={i} className="text-gray-700">
+                        {renderWithBold(item.replace(/^\d+\.\s/, ''))}
+                      </li>
+                    ))}
+                  </ol>
+                );
+              }
               return (
                 <p key={index} className="text-gray-700 leading-relaxed mb-6">
-                  {paragraph}
+                  {renderWithBold(paragraph)}
                 </p>
               );
             })}
