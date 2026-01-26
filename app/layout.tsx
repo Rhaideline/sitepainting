@@ -92,17 +92,20 @@ export const metadata: Metadata = {
   publisher: "Mass Painters Pro",
   category: "Home Services",
 
-  // Favicon and icons - Using logo SVG for consistent branding
+  // Favicon and icons - Using PNG for better visibility
   icons: {
     icon: [
-      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg", type: "image/svg+xml" },
-      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "32x32", type: "image/png" },
-      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "96x96", type: "image/png" },
       { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "192x192", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "96x96", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "48x48", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "32x32", type: "image/png" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "16x16", type: "image/png" },
     ],
-    shortcut: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg",
+    shortcut: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png",
     apple: [
       { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "180x180" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "152x152" },
+      { url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png", sizes: "120x120" },
     ],
   },
 };
@@ -258,6 +261,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://storage.googleapis.com" />
+        {/* Web App Manifest for better icon support */}
+        <link rel="manifest" href="/manifest.webmanifest" />
+        {/* Apple Touch Icon */}
+        <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6976aa87a87beb85c3e447e1.png" />
         {/* LeadConnector Form Embed Script */}
         <script src="https://link.msgsndr.com/js/form_embed.js" async />
       </head>
