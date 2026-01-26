@@ -51,7 +51,7 @@ const colorTrends2026 = [
     psychology: "Evokes warmth, creativity, and connection to earth",
     bestFor: "Living rooms, dining rooms, creative spaces",
     image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
-    article: "/blog/color-of-the-year-2026",
+    article: "/blog/paint-color-trends-2025-massachusetts",
   },
   {
     id: "digital-lavender",
@@ -63,7 +63,7 @@ const colorTrends2026 = [
     psychology: "Promotes focus, creativity, and digital wellness",
     bestFor: "Home offices, meditation rooms, bedrooms",
     image: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800",
-    article: "/blog/digital-lavender-trend",
+    article: "/blog/choosing-paint-colors-massachusetts-homes",
   },
   {
     id: "forest-bathing",
@@ -75,7 +75,7 @@ const colorTrends2026 = [
     psychology: "Reduces stress, improves concentration, connects to nature",
     bestFor: "Bedrooms, bathrooms, reading nooks",
     image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
-    article: "/blog/biophilic-design-2026",
+    article: "/blog/modern-interior-design-styles-paint",
   },
   {
     id: "warm-concrete",
@@ -87,7 +87,7 @@ const colorTrends2026 = [
     psychology: "Creates grounding, modern sophistication with warmth",
     bestFor: "Kitchens, lofts, contemporary spaces",
     image: "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=800",
-    article: "/blog/industrial-luxe-trend",
+    article: "/blog/paint-finishes-textures-guide",
   },
 ];
 
@@ -119,7 +119,7 @@ const textureTrends2026 = [
     difficulty: "Professional only",
     icon: Gem,
     image: "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/microcement-guide",
+    link: "/blog/paint-finishes-textures-guide",
   },
   {
     name: "Clay Plaster",
@@ -129,7 +129,7 @@ const textureTrends2026 = [
     difficulty: "Professional recommended",
     icon: Mountain,
     image: "https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/clay-plaster-benefits",
+    link: "/blog/paint-finishes-textures-guide",
   },
   {
     name: "Zellige Effect",
@@ -139,7 +139,7 @@ const textureTrends2026 = [
     difficulty: "Advanced DIY",
     icon: Layers,
     image: "https://images.pexels.com/photos/1571447/pexels-photo-1571447.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/zellige-paint-technique",
+    link: "/blog/paint-finishes-textures-guide",
   },
   {
     name: "Ombre Walls",
@@ -149,7 +149,7 @@ const textureTrends2026 = [
     difficulty: "Professional recommended",
     icon: Droplets,
     image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/ombre-wall-guide",
+    link: "/blog/paint-finishes-textures-guide",
   },
 ];
 
@@ -161,7 +161,7 @@ const featuredArticles = [
     category: "Sustainability",
     readTime: "8 min read",
     image: "https://images.pexels.com/photos/1571452/pexels-photo-1571452.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/sustainable-paints-2026",
+    link: "/blog/best-premium-paints-2025",
     featured: true,
   },
   {
@@ -170,7 +170,7 @@ const featuredArticles = [
     category: "Technology",
     readTime: "5 min read",
     image: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/ai-color-matching",
+    link: "/blog/choosing-paint-colors-massachusetts-homes",
     featured: false,
   },
   {
@@ -179,7 +179,7 @@ const featuredArticles = [
     category: "Design Trends",
     readTime: "6 min read",
     image: "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=600",
-    link: "/blog/japandi-2-evolution",
+    link: "/blog/modern-interior-design-styles-paint",
     featured: false,
   },
 ];
@@ -191,28 +191,28 @@ const designMovements2026 = [
     description: "Bold, joyful colors that spark happiness. After years of neutrals, 2026 embraces unapologetic color.",
     colors: ["Hot pink", "Electric blue", "Sunshine yellow", "Lime green"],
     icon: Zap,
-    link: "/blog/dopamine-decor",
+    link: "/blog/paint-color-trends-2025-massachusetts",
   },
   {
     name: "Quiet Luxury 2.0",
     description: "The evolution continues with richer textures and deeper earth tones. Understated opulence.",
     colors: ["Chocolate brown", "Camel", "Burgundy", "Olive"],
     icon: Heart,
-    link: "/blog/quiet-luxury-2",
+    link: "/blog/modern-interior-design-styles-paint",
   },
   {
     name: "Digital Detox",
     description: "Spaces designed for unplugging. Soft, calming colors that reduce screen fatigue.",
     colors: ["Soft sage", "Blush", "Cream", "Dusty blue"],
     icon: Sun,
-    link: "/blog/digital-detox-design",
+    link: "/blog/choosing-paint-colors-massachusetts-homes",
   },
   {
     name: "Neo-Maximalism",
     description: "Pattern mixing, bold colors, and collected-over-time aesthetic. More is more in 2026.",
     colors: ["Jewel tones", "Deep teal", "Mustard", "Plum"],
     icon: Sparkles,
-    link: "/blog/neo-maximalism",
+    link: "/blog/modern-interior-design-styles-paint",
   },
 ];
 
@@ -554,7 +554,7 @@ export default function MagazinePage() {
               </div>
 
               <Link
-                href="/blog/color-of-the-year-2026"
+                href="/blog/paint-color-trends-2025-massachusetts"
                 className="inline-flex items-center gap-2 text-[#C65D3B] hover:text-orange-600 font-bold transition-colors"
               >
                 Read Full Article
