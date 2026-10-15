@@ -1,0 +1,438 @@
+{
+"acton": {
+"lat": 42.485,
+"lng": -71.4333
+},
+"arlington": {
+"lat": 42.4153,
+"lng": -71.1569
+},
+"ashland": {
+"lat": 42.2611,
+"lng": -71.4639
+},
+"auburn": {
+"lat": 42.2,
+"lng": -71.8333
+},
+"ayer": {
+"lat": 42.5611,
+"lng": -71.5903
+},
+"bedford": {
+"lat": 42.4906,
+"lng": -71.2767
+},
+"bellingham": {
+"lat": 42.0867,
+"lng": -71.475
+},
+"belmont": {
+"lat": 42.3958,
+"lng": -71.1792
+},
+"berlin": {
+"lat": 42.3811,
+"lng": -71.6375
+},
+"beverly": {
+"lat": 42.558,
+"lng": -70.88
+},
+"blackstone": {
+"lat": 42.0178,
+"lng": -71.5417
+},
+"bolton": {
+"lat": 42.4333,
+"lng": -71.6083
+},
+"boxborough": {
+"lat": 42.4833,
+"lng": -71.5167
+},
+"boylston": {
+"lat": 42.3342,
+"lng": -71.7382
+},
+"braintree": {
+"lat": 42.206,
+"lng": -71.005
+},
+"brookline": {
+"lat": 42.3317,
+"lng": -71.1217
+},
+"burlington": {
+"lat": 42.5047,
+"lng": -71.1961
+},
+"cambridge": {
+"lat": 42.3736,
+"lng": -71.1106
+},
+"carlisle": {
+"lat": 42.5292,
+"lng": -71.35
+},
+"charlton": {
+"lat": 42.1356,
+"lng": -71.9706
+},
+"chelmsford": {
+"lat": 42.5997,
+"lng": -71.3678
+},
+"clinton": {
+"lat": 42.4167,
+"lng": -71.6833
+},
+"concord": {
+"lat": 42.4603,
+"lng": -71.3494
+},
+"danvers": {
+"lat": 42.575,
+"lng": -70.9306
+},
+"dedham": {
+"lat": 42.2417,
+"lng": -71.1667
+},
+"douglas": {
+"lat": 42.0542,
+"lng": -71.74
+},
+"dudley": {
+"lat": 42.045,
+"lng": -71.9306
+},
+"fitchburg": {
+"lat": 42.5833,
+"lng": -71.8028
+},
+"foxborough": {
+"lat": 42.065,
+"lng": -71.25
+},
+"framingham": {
+"lat": 42.2792,
+"lng": -71.4167
+},
+"franklin": {
+"lat": 42.0833,
+"lng": -71.4
+},
+"grafton": {
+"lat": 42.2069,
+"lng": -71.6861
+},
+"groton": {
+"lat": 42.6111,
+"lng": -71.575
+},
+"harvard": {
+"lat": 42.5,
+"lng": -71.5833
+},
+"holden": {
+"lat": 42.3517,
+"lng": -71.8639
+},
+"holliston": {
+"lat": 42.1833,
+"lng": -71.425
+},
+"hopedale": {
+"lat": 42.1306,
+"lng": -71.5417
+},
+"hopkinton": {
+"lat": 42.2286,
+"lng": -71.5231
+},
+"hudson": {
+"lat": 42.3917,
+"lng": -71.5667
+},
+"lancaster": {
+"lat": 42.4556,
+"lng": -71.6736
+},
+"leicester": {
+"lat": 42.2458,
+"lng": -71.9092
+},
+"leominster": {
+"lat": 42.525,
+"lng": -71.7603
+},
+"lexington": {
+"lat": 42.4475,
+"lng": -71.2275
+},
+"lincoln": {
+"lat": 42.4258,
+"lng": -71.3044
+},
+"littleton": {
+"lat": 42.5375,
+"lng": -71.5125
+},
+"lunenburg": {
+"lat": 42.5944,
+"lng": -71.725
+},
+"lynn": {
+"lat": 42.4667,
+"lng": -70.95
+},
+"malden": {
+"lat": 42.425,
+"lng": -71.0667
+},
+"marlborough": {
+"lat": 42.3458,
+"lng": -71.5528
+},
+"maynard": {
+"lat": 42.4333,
+"lng": -71.45
+},
+"medfield": {
+"lat": 42.1875,
+"lng": -71.3069
+},
+"medford": {
+"lat": 42.4183,
+"lng": -71.1067
+},
+"medway": {
+"lat": 42.1417,
+"lng": -71.3972
+},
+"melrose": {
+"lat": 42.4583,
+"lng": -71.0667
+},
+"mendon": {
+"lat": 42.1056,
+"lng": -71.5528
+},
+"milford": {
+"lat": 42.1397,
+"lng": -71.5167
+},
+"millbury": {
+"lat": 42.1939,
+"lng": -71.7606
+},
+"millis": {
+"lat": 42.1675,
+"lng": -71.3583
+},
+"milton": {
+"lat": 42.25,
+"lng": -71.0667
+},
+"natick": {
+"lat": 42.2833,
+"lng": -71.35
+},
+"needham": {
+"lat": 42.2833,
+"lng": -71.2333
+},
+"newton": {
+"lat": 42.3369,
+"lng": -71.2097
+},
+"norfolk": {
+"lat": 42.1194,
+"lng": -71.3256
+},
+"northborough": {
+"lat": 42.3194,
+"lng": -71.6417
+},
+"northbridge": {
+"lat": 42.1514,
+"lng": -71.65
+},
+"norwood": {
+"lat": 42.1944,
+"lng": -71.2
+},
+"oxford": {
+"lat": 42.1286,
+"lng": -71.8664
+},
+"paxton": {
+"lat": 42.3111,
+"lng": -71.9286
+},
+"peabody": {
+"lat": 42.5278,
+"lng": -70.9292
+},
+"princeton": {
+"lat": 42.4486,
+"lng": -71.8778
+},
+"quincy": {
+"lat": 42.25,
+"lng": -71
+},
+"randolph": {
+"lat": 42.1625,
+"lng": -71.0417
+},
+"reading": {
+"lat": 42.5256,
+"lng": -71.0958
+},
+"rutland": {
+"lat": 42.3694,
+"lng": -71.9486
+},
+"salem": {
+"lat": 42.5194,
+"lng": -70.8972
+},
+"saugus": {
+"lat": 42.4647,
+"lng": -71.0106
+},
+"sharon": {
+"lat": 42.1128,
+"lng": -71.1839
+},
+"sherborn": {
+"lat": 42.2389,
+"lng": -71.3703
+},
+"shirley": {
+"lat": 42.5586,
+"lng": -71.6464
+},
+"shrewsbury": {
+"lat": 42.2958,
+"lng": -71.7133
+},
+"somerville": {
+"lat": 42.3875,
+"lng": -71.1
+},
+"southborough": {
+"lat": 42.3056,
+"lng": -71.525
+},
+"spencer": {
+"lat": 42.2439,
+"lng": -71.9928
+},
+"sterling": {
+"lat": 42.4375,
+"lng": -71.7611
+},
+"stoneham": {
+"lat": 42.48,
+"lng": -71.1
+},
+"stoughton": {
+"lat": 42.125,
+"lng": -71.1028
+},
+"stow": {
+"lat": 42.4369,
+"lng": -71.5061
+},
+"sudbury": {
+"lat": 42.3833,
+"lng": -71.4167
+},
+"sutton": {
+"lat": 42.15,
+"lng": -71.7633
+},
+"upton": {
+"lat": 42.1744,
+"lng": -71.6028
+},
+"uxbridge": {
+"lat": 42.0772,
+"lng": -71.63
+},
+"wakefield": {
+"lat": 42.5064,
+"lng": -71.0733
+},
+"walpole": {
+"lat": 42.1417,
+"lng": -71.25
+},
+"waltham": {
+"lat": 42.3764,
+"lng": -71.2361
+},
+"watertown": {
+"lat": 42.3708,
+"lng": -71.1833
+},
+"wayland": {
+"lat": 42.3625,
+"lng": -71.3614
+},
+"webster": {
+"lat": 42.05,
+"lng": -71.8806
+},
+"wellesley": {
+"lat": 42.2964,
+"lng": -71.2931
+},
+"west-boylston": {
+"lat": 42.3667,
+"lng": -71.7861
+},
+"westborough": {
+"lat": 42.2694,
+"lng": -71.6167
+},
+"westford": {
+"lat": 42.5792,
+"lng": -71.4383
+},
+"weston": {
+"lat": 42.3667,
+"lng": -71.3031
+},
+"weymouth": {
+"lat": 42.2208,
+"lng": -70.9403
+},
+"winchester": {
+"lat": 42.4522,
+"lng": -71.1375
+},
+"woburn": {
+"lat": 42.4792,
+"lng": -71.1528
+},
+"worcester": {
+"lat": 42.2714,
+"lng": -71.7989
+},
+"wrentham": {
+"lat": 42.0667,
+"lng": -71.3286
+},
+"canton": {
+"lat": 42.1583,
+"lng": -71.1453
+},
+"dover": {
+"lat": 42.2458,
+"lng": -71.2833
+}
+}

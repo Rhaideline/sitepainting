@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Palette, MousePointer, ArrowRight } from "lucide-react";
+import { Palette, MousePointer, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { businessInfo } from "@/lib/data";
 
 // Interactive Room Colors
 const roomColors = [
@@ -168,15 +167,9 @@ export default function InteractiveRoomVisualizer({
               <div className="mt-5 p-4 bg-emerald-500/20 rounded-xl border border-emerald-500/30">
                 <p className="text-emerald-400 text-sm font-medium mb-2">Pro Tip:</p>
                 <p className="text-gray-300 text-xs">
-                  Want to see this color in YOUR home? Call us for a free in-home color consultation!
+                  Want to see this color in your own home? Request free color help from a local painter.
                 </p>
-                <a
-                  href={`tel:${businessInfo.phoneRaw}`}
-                  className="mt-2 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm"
-                >
-                  <Phone size={14} />
-                  {businessInfo.phone}
-                </a>
+                <Link href="/services/color-consultation" className="mt-2 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm">Request color help <ArrowRight size={14} /></Link>
               </div>
             )}
 

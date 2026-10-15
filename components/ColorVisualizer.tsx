@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Sparkles, Check, Palette, MousePointer } from "lucide-react";
-import { businessInfo } from "@/lib/data";
+import Link from "next/link";
+import { Sparkles, Check, Palette, MousePointer, ArrowRight } from "lucide-react";
 
 // 2025 trending paint colors with real brand names
 const trendingColors = [
@@ -325,15 +325,15 @@ export default function ColorVisualizer() {
             <div className="mt-6 p-4 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-xl border border-emerald-500/30">
               <h4 className="text-white font-bold mb-2">Love this color?</h4>
               <p className="text-gray-300 text-sm mb-4">
-                Our color experts can bring large samples to your home for a true-to-life preview in your actual lighting conditions.
+                A local painter can bring large samples to your home so you see the color in your actual lighting.
               </p>
-              <a
-                href={`tel:${businessInfo.phoneRaw}`}
+              <Link
+                href="/services/color-consultation"
                 className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all text-sm"
               >
-                <Phone size={16} />
-                Schedule Free Color Consultation
-              </a>
+                Get Free Color Help
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </div>

@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Phone,
   ArrowRight,
   Calendar,
   Clock,
   User,
 } from "lucide-react";
-import { blogArticles, businessInfo } from "@/lib/data";
+import { blogArticles } from "@/lib/data";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -224,16 +223,12 @@ export default function BlogPage() {
             Ready to Transform Your Home?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Get a free estimate from Massachusetts&apos; most trusted painting professionals.
+            Get matched with an independent local painter and a free written estimate.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+17743415233"
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#1C1F2E] font-bold py-4 px-8 rounded-full hover:bg-gray-100 transition-all"
-            >
-              <Phone size={20} />
-              Call {businessInfo.phone}
-            </a>
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-[#1C1F2E] font-bold py-4 px-8 rounded-full hover:bg-gray-100 transition-all">
+              Get a Free Estimate <ArrowRight size={18} />
+            </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-8 rounded-full transition-all shadow-lg shadow-emerald-500/25"

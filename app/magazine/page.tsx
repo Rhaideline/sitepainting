@@ -1,11 +1,9 @@
 "use client";
 
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  Phone,
   ArrowRight,
   Star,
   Palette,
@@ -35,7 +33,7 @@ import {
   ExternalLink,
   MousePointer,
 } from "lucide-react";
-import { businessInfo } from "@/lib/data";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FlipbookMagazine from "@/components/FlipbookMagazine";
@@ -657,15 +655,11 @@ export default function MagazinePage() {
               <div className="mt-6 p-4 bg-emerald-500/20 rounded-xl border border-emerald-500/30">
                 <p className="text-emerald-400 text-sm font-medium mb-2">Pro Tip:</p>
                 <p className="text-gray-300 text-sm">
-                  Want to see this color in YOUR home? Call us for a free in-home color consultation!
+                  Want to see this color in your own home? Request free color help from a local painter.
                 </p>
-                <a
-                  href={`tel:${businessInfo.phoneRaw}`}
-                  className="mt-3 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm transition-colors"
-                >
-                  <Phone size={14} />
-                  {businessInfo.phone}
-                </a>
+                <Link href="/contact" className="mt-3 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm transition-colors">
+              Get a Free Estimate <ArrowRight size={18} />
+            </Link>
               </div>
             </div>
           </div>
@@ -996,13 +990,9 @@ export default function MagazinePage() {
             Schedule a free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${businessInfo.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 font-bold py-4 px-8 rounded-full transition-all hover:bg-gray-100 hover:scale-105 shadow-xl"
-            >
-              <Phone size={20} />
-              {businessInfo.phone}
-            </a>
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 font-bold py-4 px-8 rounded-full transition-all hover:bg-gray-100 hover:scale-105 shadow-xl">
+              Get a Free Estimate <ArrowRight size={18} />
+            </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 px-8 rounded-full transition-all border border-emerald-500"

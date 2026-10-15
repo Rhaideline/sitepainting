@@ -1,125 +1,55 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import { businessInfo, services } from "@/lib/data";
+import { services } from "@/lib/services";
+import { cities } from "@/lib/cities";
+import { SITE } from "@/lib/site";
+
+// Footer links to the largest towns: strong internal links without listing all 109.
+const topCities = [...cities].sort((a, b) => b.population - a.population).slice(0, 12);
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1C1F2E] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <Image
-                src="https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695a97fe6e700e1a414da216.svg"
-                alt="Mass Painters Pro"
-                width={160}
-                height={45}
-                className="h-10 w-auto brightness-0 invert"
-              />
-            </Link>
-            <p className="text-gray-400 mb-6">
-              Massachusetts&apos; trusted painting professionals. Serving {businessInfo.citiesServed}+ cities with quality craftsmanship since 2009.
-            </p>
-            <div className="flex gap-4">
-              <a href={businessInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href={businessInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href={businessInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href={businessInfo.social.youtube} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-emerald-500 rounded-full flex items-center justify-center transition-colors">
-                <Youtube size={18} />
-              </a>
-            </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Our Services</h3>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.slug}>
-                  <Link href={`/${service.slug}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/magazine" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Magazine
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/#areas" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Service Areas
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
-                <div>
-                  <a href={`tel:${businessInfo.phoneRaw}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    {businessInfo.phone}
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
-                <div>
-                  <a href={`mailto:${businessInfo.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors">
-                    {businessInfo.email}
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-emerald-500 flex-shrink-0 mt-1" />
-                <div className="text-gray-400">
-                  {businessInfo.address.street}<br />
-                  {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
-                </div>
-              </li>
-            </ul>
-          </div>
+    <footer className="bg-[#1C1F2E] text-gray-300">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <div>
+          <Image src={SITE.logo} alt={SITE.name} width={170} height={48} className="h-10 w-auto rounded bg-white p-1" />
+          <p className="mt-4 text-sm leading-relaxed text-gray-400">{SITE.description}</p>
+          <Link href="/contact" className="mt-5 inline-block rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-emerald-400">
+            Get a free estimate
+          </Link>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <p className="text-gray-400 text-sm text-center">
-            &copy; {new Date().getFullYear()} Mass Painters Pro. All rights reserved. | Licensed & Insured in Massachusetts
-          </p>
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white">Services</h2>
+          <ul className="mt-4 space-y-2 text-sm">
+            {services.map((s) => (
+              <li key={s.slug}><Link href={`/services/${s.slug}`} className="hover:text-emerald-400">{s.name}</Link></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white">Popular towns</h2>
+          <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+            {topCities.map((c) => (
+              <li key={c.slug}><Link href={`/${c.slug}`} className="hover:text-emerald-400">{c.name}</Link></li>
+            ))}
+          </ul>
+          <Link href="/service-areas" className="mt-4 inline-block text-sm font-semibold text-emerald-400 hover:text-emerald-300">All {cities.length} service areas →</Link>
+        </div>
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white">Company</h2>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li><Link href="/how-it-works" className="hover:text-emerald-400">How it works</Link></li>
+            <li><Link href="/about" className="hover:text-emerald-400">About</Link></li>
+            <li><Link href="/blog" className="hover:text-emerald-400">Blog</Link></li>
+            <li><Link href="/magazine" className="hover:text-emerald-400">Magazine</Link></li>
+            <li><Link href="/contact" className="hover:text-emerald-400">Free estimate</Link></li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-6 text-xs leading-relaxed text-gray-500 sm:px-6 lg:px-8">
+          <p>{SITE.disclosure}</p>
+          <p className="mt-2">© {new Date().getFullYear()} {SITE.name}. Stock photography used under the Unsplash and Pexels licenses.</p>
         </div>
       </div>
     </footer>

@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  Phone,
   ArrowRight,
   Calendar,
   Clock,
@@ -11,7 +10,7 @@ import {
   ArrowLeft,
   Share2,
 } from "lucide-react";
-import { blogArticles, businessInfo, getBlogArticleBySlug } from "@/lib/data";
+import { blogArticles, getBlogArticleBySlug } from "@/lib/data";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -275,16 +274,12 @@ export default async function BlogArticlePage({ params }: Props) {
               Need Professional Painting Help?
             </h3>
             <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-              Our expert team is ready to help transform your space with quality craftsmanship and attention to detail.
+              Tell us about your project and an independent local painter will follow up with a free written estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+17743415233"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#1C1F2E] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-all"
-              >
-                <Phone size={18} />
-                {businessInfo.phone}
-              </a>
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-[#1C1F2E] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-all">
+              Get a Free Estimate <ArrowRight size={18} />
+            </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-full transition-all"
