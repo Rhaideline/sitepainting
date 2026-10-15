@@ -41,6 +41,9 @@ export function pickMany<T>(pool: T[], n: number, key: string, salt: string): T[
 
 const fill = (t: string, v: Record<string, string>) => t.replace(/\{(\w+)\}/g, (_, k) => v[k] ?? `{${k}}`);
 
+/** Home style names in running text: keep proper nouns (Cape Cod, Victorian...) capitalized. */
+const styleWord = (s: string) => (/cape|victorian|mid-century|colonial revival/i.test(s) ? s : s.toLowerCase());
+
 const listText = (items: string[]) =>
   items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 
@@ -162,9 +165,9 @@ export function cityServiceContent(city: City, service: Service): CityServiceCon
     summary: service.metaSummary,
     summaryLower: service.metaSummary.charAt(0).toLowerCase() + service.metaSummary.slice(1),
     facts: city.localFacts,
-    style1: styles[0]?.toLowerCase() ?? "colonial",
-    style2: (styles[1] ?? styles[0] ?? "cape").toLowerCase(),
-    stylesList: listText(styles.map((s) => s.toLowerCase())),
+    style1: styleWord(styles[0] ?? "colonial"),
+    style2: styleWord(styles[1] ?? styles[0] ?? "Cape Cod"),
+    stylesList: listText(styles.map(styleWord)),
     near1: near[0]?.name ?? city.name,
     near2: near[1]?.name ?? city.name,
     pop: city.population.toLocaleString("en-US"),

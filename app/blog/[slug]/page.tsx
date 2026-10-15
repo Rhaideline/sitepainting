@@ -11,6 +11,7 @@ import {
   Share2,
 } from "lucide-react";
 import { blogArticles, getBlogArticleBySlug } from "@/lib/data";
+import { pageMetadata } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -40,43 +41,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getBlogArticleBySlug(slug);
 
   if (!article) {
-    return {
-      title: "Article Not Found | Mass Painters Pro",
-    };
+    return pageMetadata({ title: "Article not found", description: "This article could not be found.", path: `/blog/${slug}`, noIndex: true });
   }
 
-  return {
-    title: `${article.title} | Mass Painters Pro Blog`,
-    description: article.excerpt,
-    keywords: article.tags,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      url: `https://masspainter.pro/blog/${article.slug}`,
-      siteName: "Mass Painters Pro",
-      locale: "en_US",
-      type: "article",
-      publishedTime: article.date,
-      authors: [article.author],
-      images: [
-        {
-          url: article.image,
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.excerpt,
-      images: [article.image],
-    },
-    alternates: {
-      canonical: `https://masspainter.pro/blog/${article.slug}`,
-    },
-  };
+  const base = pageMetadata({
+    title: article.title.length <= 60 ? article.title : article.title.slice(0, 57).replace(/\s+\S*$/, "") + "...",
+    description: article.excerpt.length <= 155 ? article.excerpt : article.excerpt.slice(0, 152).replace(/\s+\S*$/, "") + "...",
+    path: `/blog/${article.slug}`,
+    image: article.image,
+    type: "article",
+    publishedTime: article.date,
+  });
+  return { ...base, authors: [{ name: article.author }] };
 }
 
 export default async function BlogArticlePage({ params }: Props) {

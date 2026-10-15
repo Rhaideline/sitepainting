@@ -8,44 +8,15 @@ import {
   User,
 } from "lucide-react";
 import { blogArticles } from "@/lib/data";
+import { pageMetadata } from "@/lib/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "Painting Tips & Insights Blog | Mass Painters Pro",
-  description:
-    "Expert painting tips, advice, and insights from Massachusetts' trusted painting professionals. Learn about interior painting, exterior painting, color trends, and home improvement.",
-  keywords: [
-    "painting tips",
-    "painting advice Massachusetts",
-    "interior painting tips",
-    "exterior painting guide",
-    "house painting blog",
-    "paint color trends",
-    "home improvement tips",
-    "painting preparation",
-  ],
-  openGraph: {
-    title: "Painting Tips & Insights Blog | Mass Painters Pro",
-    description:
-      "Expert painting tips, advice, and insights from Massachusetts' trusted painting professionals.",
-    url: "https://masspainter.pro/blog",
-    siteName: "Mass Painters Pro",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/6840882903eee05c80e3e93e.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Mass Painters Pro Blog",
-      },
-    ],
-  },
-  alternates: {
-    canonical: "https://masspainter.pro/blog",
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Painting Tips & Guides for Massachusetts Homes | Blog",
+  description: "Practical painting guides for Massachusetts homes: prep, paint selection, colors, lead-safe work and seasonal timing. Free estimate.",
+  path: "/blog",
+});
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -269,7 +269,7 @@ export default function MagazinePage() {
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6">
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
-                  Paint Trends
+                  Paint Trends{" "}
                 </span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 animate-gradient">
                   Magazine 2026

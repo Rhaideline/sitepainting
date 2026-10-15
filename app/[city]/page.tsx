@@ -86,7 +86,7 @@ export default function CityHubPage({ params }: Params) {
               <h2 className="text-3xl font-black text-gray-900">About painting in {city.name}</h2>
               <p className="mt-6 text-lg leading-relaxed text-gray-600">{city.localFacts}</p>
               <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                {city.name} has about {city.population.toLocaleString("en-US")} residents (2020 Census) in {city.county} County. Common home styles include {city.homeStyles.join(", ").toLowerCase()}.
+                {city.name} has about {city.population.toLocaleString("en-US")} residents (2020 Census) in {city.county} County. Common home styles include {city.homeStyles.join(", ")}.
               </p>
               <h3 className="mt-10 text-2xl font-bold text-gray-900">What painters watch for in {city.name}</h3>
               <div className="mt-6"><CheckList items={city.challenges} /></div>

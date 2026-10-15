@@ -1822,7 +1822,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2024-01-15",
     readTime: "8 min read",
     featured: true,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png",
+    image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["interior painting", "massachusetts", "paint tips", "home improvement"]
   },
   {
@@ -1985,7 +1985,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2024-01-05",
     readTime: "6 min read",
     featured: false,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad202edb8a223b9d5c8c9.png",
+    image: "https://images.pexels.com/photos/1571452/pexels-photo-1571452.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["cabinet painting", "kitchen renovation", "cabinet refinishing", "cost comparison"]
   },
   {
@@ -2077,7 +2077,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2023-12-28",
     readTime: "7 min read",
     featured: false,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png",
+    image: "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["color selection", "paint colors", "massachusetts homes", "interior design"]
   },
   {
@@ -2171,7 +2171,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2023-12-20",
     readTime: "6 min read",
     featured: false,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad8f105b511665630cfba.png",
+    image: "https://images.pexels.com/photos/1571447/pexels-photo-1571447.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["lead paint", "safety", "older homes", "regulations"]
   },
   {
@@ -2387,7 +2387,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2025-01-15",
     readTime: "8 min read",
     featured: true,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad1a7edb8a226dcd5b69f.png",
+    image: "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["color trends", "2025", "interior design", "paint colors", "home trends"]
   },
   {
@@ -2525,7 +2525,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2025-01-10",
     readTime: "10 min read",
     featured: true,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad202edb8a223b9d5c8c9.png",
+    image: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["paint finishes", "textures", "interior design", "limewash", "venetian plaster"]
   },
   {
@@ -2703,7 +2703,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2025-01-08",
     readTime: "12 min read",
     featured: true,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad0ef3ccdd6a866021204.png",
+    image: "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["paint reviews", "benjamin moore", "sherwin-williams", "premium paint", "paint comparison"]
   },
   {
@@ -2884,7 +2884,7 @@ Request a free estimate through Mass Painters Pro and get matched with a local p
     date: "2025-01-05",
     readTime: "11 min read",
     featured: true,
-    image: "https://storage.googleapis.com/msgsndr/npwVVdTpo5dMM8CCSeCT/media/695ad3283ccdd6426a027fb6.png",
+    image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1600",
     tags: ["interior design", "design styles", "japandi", "modern farmhouse", "color palettes"]
   }
 ];

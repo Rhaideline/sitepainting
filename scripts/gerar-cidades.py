@@ -5,6 +5,8 @@ Fontes:
   scripts/dados/cidades-atuais.json -> dados ja existentes no site (81 cidades em comum)
   scripts/dados/cidades-novas.json  -> 28 cidades novas (fatos da Wikipedia, censo 2020)
   scripts/dados/coords.json         -> lat/lng da Wikipedia (para "cidades proximas")
+  scripts/dados/fatos-81.json       -> fatos locais verificados das 81 cidades herdadas
+  scripts/dados/populacao-2020.json -> populacao do censo 2020 das 81 cidades herdadas
 Uso: python scripts/gerar-cidades.py
 """
 import json, os
@@ -15,6 +17,8 @@ wolfs = load("cidades-wolfs.json")
 atuais = {c["slug"]: c for c in load("cidades-atuais.json")}
 novas = {c["slug"]: c for c in load("cidades-novas.json")}
 coords = load("coords.json")
+fatos = load("fatos-81.json")          # fatos verificados (Wikipedia) para as 81 cidades herdadas
+pops = load("populacao-2020.json")     # censo 2020 para as 81 cidades herdadas
 
 out, faltando = [], []
 for slug in wolfs:
@@ -26,11 +30,11 @@ for slug in wolfs:
         "slug": slug,
         "name": c["name"],
         "county": c["county"],
-        "population": c["population"],
+        "population": pops.get(slug, c["population"]),
         "region": c["region"],
         "lat": coords[slug]["lat"],
         "lng": coords[slug]["lng"],
-        "localFacts": c["localFacts"],
+        "localFacts": fatos.get(slug, c["localFacts"]),
         "challenges": c["paintingChallenges"],
         "homeStyles": c["commonHomeStyles"],
     })
